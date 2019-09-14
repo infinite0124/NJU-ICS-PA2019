@@ -7,7 +7,7 @@ void set_CF_add(uint32_t result, uint32_t src, size_t data_size ){
 }
 
 void set_ZF (uint32_t result, size_t data_size ){
-	result = result & (0xFFFFFFFF >> (32-data_size);
+	result = result & (0xFFFFFFFF >> (32-data_size));
 	cpu.eflags.ZF= (result ==0);
 }
 
@@ -33,7 +33,7 @@ void set_PF (uint32_t result) {
 } 
 
 void set_OF_add (uint32_t result, uint32_t src , uint32_t dest , size_t data_size ){
-	switch(data_size )
+	switch(data_size ){
 		case 8:
 			result =sign_ext (result & 0xFF, 8);
 			src= sign_ext (src & 0xFF, 8);
@@ -45,7 +45,8 @@ void set_OF_add (uint32_t result, uint32_t src , uint32_t dest , size_t data_siz
 			dest= sign_ext (dest & 0xFFFF, 16);
 			break;
 		default: break;// do nothing
-}
+	}
+
 	if(sign(src ) ==sign( dest )){
 		if(sign(src ) != sign(result))
 			cpu.eflags.OF=1;
