@@ -80,17 +80,17 @@ uint32_t alu_adc(uint32_t src, uint32_t dest, size_t data_size)
 {
 #ifdef NEMU_REF_ALU
 	return __ref_alu_adc(src, dest, data_size);
+
 #else
 	//printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
 	uint32_t res=0;
 	res=src+dest;
 	set_CF_add(res,src,data_size);
+	res+=cpu.eflags.CF;
 	set_PF(res);
 	set_ZF(res,data_size);
 	set_SF(res,data_size);
-	//set_OF_add(res,src,dest,data_size);
-	
-	res+=cpu.eflags.CF;
+	set_OF_add(res,src,dest,data_size);
 	return res&(0xFFFFFFFF>>(32-data_size));
 	//assert(0);
 	//return 0;
