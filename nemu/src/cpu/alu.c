@@ -1,9 +1,9 @@
 #include "cpu/cpu.h"
 // CF contains information relevant to unsigned integers
-void set_CF_add(uint32_t result, uint32_t sr c, size_t data_size ){
+void set_CF_add(uint32_t result, uint32_t src, size_t data_size ){
 	result =sign_ext (result & (0xFFFFFFFF >> (32-data_size )), data_size);
 	src= sign_ext (src & (0xFFFFFFFF >> (32-data_size )), data_size);
-	cpu.eflags.CF = result <src;
+	cpu.eflags.CF = result < src;
 }
 
 void set_ZF (uint32_t result, size_t data_size ){
@@ -18,8 +18,19 @@ void set_SF (uint32_t result, size_t data_size ){
 }
 
 void set_PF (uint32_t result) {
-	
-} // 简单暴力穷举也行
+	result=result&0x000000FF;
+	int count=0;
+	while(result){
+		int temp=result;
+		result>>=1;
+		if(temp!=result*2)
+			count++;
+	}
+	if(count%2)
+		cpu.eflags.PF=0;
+	else
+		cpu.eflags.PF=1;
+} 
 
 void set_OF_add (uint32_t result, uint32_t src , uint32_t dest , size_t data_size ){
 	switch(data_size )
@@ -59,8 +70,8 @@ uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
 	set_SF(res , data_size);
 	set_OF_add(res, src,dest , data_size);
 	return res & (0xFFFFFFFF >> (32-data_size));
-	assert(0);
-	return 0;
+	//assert(0);
+	//return 0;
 //#endif
 }
 
