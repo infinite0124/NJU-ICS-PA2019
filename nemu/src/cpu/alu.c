@@ -26,7 +26,7 @@ void set_PF (uint32_t result) {
 		if(temp!=result*2)
 			count++;
 	}
-	if(count%2)
+	if(!count%2)
 		cpu.eflags.PF=0;
 	else
 		cpu.eflags.PF=1;
