@@ -20,15 +20,7 @@ void set_CF_sub(uint32_t result,uint32_t src,uint32_t dest,size_t data_size){
 	if(dest<src)
 		cpu.eflags.CF=1;
 	else
-	{
-		if(dest>0&&src<0)
-		{
-			if(result<dest)
-				cpu.eflags.CF=1;
-			else cpu.eflags.CF=0;
-		}
-		else cpu.eflags.CF=0;
-	}
+		cpu.eflags.CF=0;
 }
 
 void set_ZF (uint32_t result, size_t data_size ){
@@ -169,7 +161,6 @@ uint32_t alu_sub(uint32_t src, uint32_t dest, size_t data_size)
 	//return __ref_alu_sub(src, dest, data_size);
 //#else
 	//printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
-	alu_test_sub();
 	uint32_t res=0;
 	res=dest-src;
 	set_CF_sub(res,src,dest,data_size);
