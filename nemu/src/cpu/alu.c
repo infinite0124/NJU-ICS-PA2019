@@ -15,6 +15,22 @@ void set_CF_adc(uint32_t result,uint32_t src,size_t data_size){
 		cpu.eflags.CF=result<src;
 }
 
+void set_CF_sub(uint32_t result,uint32_t src,uint32_t dest,size_t data_size){
+	result =sign_ext (result & (0xFFFFFFFF >> (32-data_size )), data_size);
+	if(dest<src)
+		cpu.eflags.CF=1;
+	else
+	{
+		if(dest>0&&src<0)
+		{
+			if(res<dest)
+				cpu.eflafs.CF=1;
+			else cpu.eflags.CF=0;
+		}
+		else cpu.eflags.CF=0;
+	}
+}
+
 void set_ZF (uint32_t result, size_t data_size ){
 	result = result & (0xFFFFFFFF >> (32-data_size));
 	cpu.eflags.ZF= (result ==0);
@@ -153,7 +169,12 @@ uint32_t alu_sub(uint32_t src, uint32_t dest, size_t data_size)
 	//return __ref_alu_sub(src, dest, data_size);
 //#else
 	//printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
-	
+	uint32_t res=0;
+	res=dest-src;
+	set_CF_sub(res,src,dest,data_size);
+	set_PF(res);
+	set_ZF(res,data_size);
+	set_SF(res,data_size);
 	//assert(0);
 	return 0;
 //#endif
