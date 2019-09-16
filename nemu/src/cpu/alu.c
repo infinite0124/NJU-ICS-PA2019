@@ -169,6 +169,7 @@ uint32_t alu_sub(uint32_t src, uint32_t dest, size_t data_size)
 	//return __ref_alu_sub(src, dest, data_size);
 //#else
 	//printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
+	alu_test_sub();
 	uint32_t res=0;
 	res=dest-src;
 	set_CF_sub(res,src,dest,data_size);
@@ -180,6 +181,8 @@ uint32_t alu_sub(uint32_t src, uint32_t dest, size_t data_size)
 
 //#endif
 }
+
+
 
 uint32_t alu_sbb(uint32_t src, uint32_t dest, size_t data_size)
 {
