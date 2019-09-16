@@ -23,8 +23,8 @@ void set_CF_sub(uint32_t result,uint32_t src,uint32_t dest,size_t data_size){
 	{
 		if(dest>0&&src<0)
 		{
-			if(res<dest)
-				cpu.eflafs.CF=1;
+			if(result<dest)
+				cpu.eflags.CF=1;
 			else cpu.eflags.CF=0;
 		}
 		else cpu.eflags.CF=0;
