@@ -209,7 +209,7 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 //#else
 	//printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
 	uint64_t res=0;
-	res=sign_ext(dest,2*data_size)*sign_ext(src,2*data_size);
+	res=(uint64_t)dest*(uint64_t)src;
 
 	return res&(0xFFFFFFFFFFFFFFFF>>(64-data_size));
 	//assert(0);
