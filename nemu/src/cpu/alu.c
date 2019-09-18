@@ -44,18 +44,6 @@ void set_CF_sbb(uint32_t src,uint32_t dest,size_t data_size){
 
 void set_CF_OF_mul(uint64_t result,size_t data_size)
 {
-	/*switch(data_size)
-	{
-		case 8:
-			if(result&0x00000000FF00)
-			{
-				cpu.eflags.CF=1;
-				cpu.eflags.OF=1;
-			}
-
-
-
-	}*/
 	result=result>>data_size;
 	if(result)
 	{
@@ -68,6 +56,7 @@ void set_CF_OF_mul(uint64_t result,size_t data_size)
 		cpu.eflags.OF=0;
 	}
 }
+
 void set_ZF (uint32_t result, size_t data_size ){
 	result = result & (0xFFFFFFFF >> (32-data_size));
 	cpu.eflags.ZF= (result ==0);
@@ -244,13 +233,17 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 
 int64_t alu_imul(int32_t src, int32_t dest, size_t data_size)
 {
-#ifdef NEMU_REF_ALU
-	return __ref_alu_imul(src, dest, data_size);
-#else
-	printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
-	assert(0);
-	return 0;
-#endif
+//#ifdef NEMU_REF_ALU
+	//return __ref_alu_imul(src, dest, data_size);
+//#else
+	int64_t res=0;
+	res=(int64_t)dest*(int64_t)src;
+	set_CF_OF_mul(res,data_size);
+	return res;
+	//printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
+	//assert(0);
+	//return 0;
+//#endif
 }
 
 // need to implement alu_mod before testing
