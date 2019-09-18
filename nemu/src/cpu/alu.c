@@ -62,11 +62,12 @@ void set_CF_OF_mul(uint64_t result,size_t data_size)
 void set_CF_shl(uint32_t src,uint32_t dest,size_t data_size)
 {
 	dest=dest>>(data_size-src);
-	if(dest&0xFFFFFFF1)
+	if(dest&0x00000001)
 		cpu.eflags.CF=1;
 	else
 		cpu.eflags.CF=0;
 }
+
 void set_ZF (uint32_t result, size_t data_size ){
 	result = result & (0xFFFFFFFF >> (32-data_size));
 	cpu.eflags.ZF= (result ==0);
