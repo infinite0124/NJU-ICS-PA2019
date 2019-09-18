@@ -42,7 +42,32 @@ void set_CF_sbb(uint32_t src,uint32_t dest,size_t data_size){
 	}
 }
 
+void set_CF_OF_mul(uint64_t result,size_t data_size)
+{
+	/*switch(data_size)
+	{
+		case 8:
+			if(result&0x00000000FF00)
+			{
+				cpu.eflags.CF=1;
+				cpu.eflags.OF=1;
+			}
 
+
+
+	}*/
+	result=result>>data_size;
+	if(result)
+	{
+		cpu.eflags.CF=1;
+		cpu.eflags.OF=1;
+	}
+	else
+	{
+		cpu.eflags.CF=0;
+		cpu.eflags.OF=0;
+	}
+}
 void set_ZF (uint32_t result, size_t data_size ){
 	result = result & (0xFFFFFFFF >> (32-data_size));
 	cpu.eflags.ZF= (result ==0);
@@ -210,7 +235,7 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 	//printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
 	uint64_t res=0;
 	res=(uint64_t)dest*(uint64_t)src;
-
+	set_CF_OF_mul(res,data_size);
 	return res&(0xFFFFFFFFFFFFFFFF>>(64-2*data_size));
 	//assert(0);
 	//return 0;
