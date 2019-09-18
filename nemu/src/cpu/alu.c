@@ -59,6 +59,14 @@ void set_CF_OF_mul(uint64_t result,size_t data_size)
 	}
 }
 
+void set_CF_shl(uint32_t src,uint32_t dest,size_t data_size)
+{
+	dest=dest>>(data_size-src);
+	if(dest&0xFFFFFFF1)
+		cpu.eflags.CF=1;
+	else
+		cpu.eflags.CF=0;
+}
 void set_ZF (uint32_t result, size_t data_size ){
 	result = result & (0xFFFFFFFF >> (32-data_size));
 	cpu.eflags.ZF= (result ==0);
@@ -356,6 +364,11 @@ uint32_t alu_shl(uint32_t src, uint32_t dest, size_t data_size)
 	//printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
 	//assert(0);
 	uint32_t res=dest<<src;
+	set_CF_shl(src,dest,data_size);
+	set_PF(res);
+	set_ZF(res,data_size);
+	set_SF(res,data_size);
+
 	return res&(0xFFFFFFFF>>(32-data_size));
 #endif
 }
