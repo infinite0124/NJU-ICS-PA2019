@@ -213,6 +213,7 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 	{
 		case 8:
 			res=(dest&0x000000FF)*src;
+		
 			break;
 		case 16:
 			res=(dest&0x0000FFFF)*src;
@@ -221,7 +222,7 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 			res=(dest&0xFFFFFFFF)*src;
 	}
 
-	return res&(0xFFFFFFFF>>(32-data_size));
+	return res&(0xFFFFFFFFFFFFFFFF>>(64-data_size));
 	//assert(0);
 	//return 0;
 //#endif
