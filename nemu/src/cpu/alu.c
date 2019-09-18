@@ -1,5 +1,5 @@
 #include "cpu/cpu.h"
-#define NEMU_REF_ALU 1
+//#define NEMU_REF_ALU 1
 
 // CF contains information relevant to unsigned integers
 void set_CF_add(uint32_t result, uint32_t src, size_t data_size ){
@@ -279,7 +279,8 @@ uint32_t alu_mod(uint64_t src, uint64_t dest)
 //#else
 	//printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
 	//assert(0);
-	return 0;
+	uint32_t res=dest%src;
+	return res;
 //#endif
 }
 
