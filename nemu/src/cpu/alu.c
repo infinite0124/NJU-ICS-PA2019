@@ -1,4 +1,6 @@
 #include "cpu/cpu.h"
+#define NEMU_REF_ALU 1
+
 // CF contains information relevant to unsigned integers
 void set_CF_add(uint32_t result, uint32_t src, size_t data_size ){
 	result =sign_ext (result & (0xFFFFFFFF >> (32-data_size )), data_size);
