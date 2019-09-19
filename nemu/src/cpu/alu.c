@@ -389,13 +389,15 @@ uint32_t alu_shr(uint32_t src, uint32_t dest, size_t data_size)
 #else
 	//printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
 	//assert(0);
+	uint32_t temp=0xFFFFFFFF;
+	temp=temp>>(32-data_size);
+	dest=dest&temp;
 	uint32_t res=dest>>src;
 	set_CF_shr(src,dest,data_size);
 	set_PF(res);
 	set_ZF(res,data_size);
 	set_SF(res,data_size);
-	printf(res);
-	return res&(0xFFFFFFFF>>(32-data_size));
+	return res;
 #endif
 }
 
