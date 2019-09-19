@@ -409,11 +409,15 @@ uint32_t alu_sar(uint32_t src, uint32_t dest, size_t data_size)
 	//printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
 	//assert(0);
 	uint32_t t=dest>>(data_size-1);
+	uint32_t res=dest>>src;
 	if(t&0x00000001)
 	{
 		uint32_t temp=0xFFFFFFFF;
 		temp>>=(data_size-src);
 		temp<<=(data_size-src);
+		uint32_t temp2=0xFFFFFFFF;
+		temp2>>=(32-data_size);
+		temp=temp&temp2;
 		return temp|res;
 	}
 	else
