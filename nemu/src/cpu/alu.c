@@ -72,7 +72,7 @@ void set_CF_shr(uint32_t src,uint32_t dest,size_t data_size)
 {
 	uint32_t temp=dest;
 	temp=temp>>(src-1);
-	if(temp&0x00000001)
+	if(temp & 0x00000001)
 		cpu.eflags.CF=1;
 	else
 		cpu.eflags.CF=0;
@@ -409,8 +409,9 @@ uint32_t alu_sar(uint32_t src, uint32_t dest, size_t data_size)
 #else
 	//printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
 	//assert(0);
+	uint32_t d=dest,s=src;
 	uint32_t res=(int)dest>>(int)src;
-	cpu.eflags.CF=sign((int)res);
+	set_CF_shr(s,d,data_size);
 	set_PF(res);
 	set_ZF(res,data_size);
 	set_SF(res,data_size);
