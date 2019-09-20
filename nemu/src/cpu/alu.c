@@ -410,7 +410,7 @@ uint32_t alu_sar(uint32_t src, uint32_t dest, size_t data_size)
 	//assert(0);
 	uint32_t t1=dest>>(data_size-1);//get sign
 	uint32_t res=dest>>src;
-	if(t1&0x00000001)
+	if(t1&0x00000001==1)
 	{
 		printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
 		uint32_t t2=0xFFFFFFFF;//0+1+0
