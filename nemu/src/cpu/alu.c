@@ -406,23 +406,27 @@ uint32_t alu_sar(uint32_t src, uint32_t dest, size_t data_size)
 #ifdef NEMU_REF_ALU
 	return __ref_alu_sar(src, dest, data_size);
 #else
-	//printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
+	printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
 	//assert(0);
-	uint32_t t=dest>>(src-1);
+	uint32_t t1=dest>>(data_size-1);//get sign
 	uint32_t res=dest>>src;
-	if(t&0x00000001)
+	if(t1&0x00000001)
 	{
-		uint32_t temp=0xFFFFFFFF;
-		temp>>=(data_size-src);
-		temp<<=(data_size-src);
-		uint32_t temp2=0xFFFFFFFF;
-		temp2>>=(32-data_size);
-		temp=temp&temp2;
-		return temp|res;
+		uint32_t t2=0xFFFFFFFF;//0+1+0
+		t2>>=src;
+		t2<<=src;//clear res rigion
+		t2=t2&res;//uncertain+1+data_size
+		t2<<=(32-data_size);
+		t2>>=(32-data_size);//0+1+data_size
+		uint32_t t3=dest;//high_rigion+0+0
+		t3>>=data_size;
+		t3<<=data_size;
+		return t2|t3;
 	}
 	else
 	{
-		return alu_shr(src,dest,data_size);
+		printf("hi");
+		return alu_shr(res,dest,data_size);
 	}
 	
 #endif
