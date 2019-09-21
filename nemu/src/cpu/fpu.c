@@ -14,6 +14,7 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 
 	if ((sig_grs >> (23 + 3)) > 1 || exp < 0)
 	{
+		uint32_t sticky=0;
 		// normalize toward right
 		while ((((sig_grs >> (23 + 3)) > 1) && exp < 0xff) // condition 1
 			   ||										   // or
@@ -24,7 +25,9 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 			/* TODO: shift right, pay attention to sticky bit*/
 			//printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
 			//assert(0);
+			sticky=sticky|(sig_grs&0x1);
 			sig_grs>>=1;
+			sig_grs|=sticky;
 			exp++;
 		}
 
@@ -156,10 +159,9 @@ uint32_t internal_float_add(uint32_t b, uint32_t a)
 	//printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
 	//assert(0);
 	//assert(shift >= 0);
-	if(fa.exponent>fb.exponent)
-		shift= (fb.exponent == 0 ? fb.exponent + 1 : fb.exponent)-(fa.exponent == 0 ? fa.exponent + 1 :fa.exponent);
-	else
-		shift= (fa.exponent == 0 ? fa.exponent + 1 : fa.exponent)-(fb.exponent == 0 ? fb.exponent + 1 :fb.exponent);
+	
+	shift= (fb.exponent == 0 ? fb.exponent + 1 : fb.exponent)-(fa.exponent == 0 ? fa.exponent + 1 :fa.exponent);
+	//shift= (fa.exponent == 0 ? fa.exponent + 1 : fa.exponent)-(fb.exponent == 0 ? fb.exponent + 1 :fb.exponent);
 	sig_a = (sig_a << 3); // guard, round, sticky
 	sig_b = (sig_b << 3);
 
