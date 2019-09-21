@@ -22,8 +22,10 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 		{
 
 			/* TODO: shift right, pay attention to sticky bit*/
-			printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-			assert(0);
+			//printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
+			//assert(0);
+			sig_grs>>=1;
+			exp++;
 		}
 
 		if (exp >= 0xff)
@@ -151,10 +153,13 @@ uint32_t internal_float_add(uint32_t b, uint32_t a)
 	uint32_t shift = 0;
 
 	/* TODO: shift = ? */
-	printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-	assert(0);
-	assert(shift >= 0);
-
+	//printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
+	//assert(0);
+	//assert(shift >= 0);
+	if(fa.exponent>fb.exponent)
+		shift= (fb.exponent == 0 ? fb.exponent + 1 : fb.exponent)-(fa.exponent == 0 ? fa.exponent + 1 :fa.exponent);
+	else
+		shift= (fa.exponent == 0 ? fa.exponent + 1 : fa.exponent)-(fb.exponent == 0 ? fb.exponent + 1 :fb.exponent);
 	sig_a = (sig_a << 3); // guard, round, sticky
 	sig_b = (sig_b << 3);
 
@@ -395,6 +400,7 @@ void fpu_add(uint32_t val)
 	fpu.regStack[fpu.status.top].val = *d;
 	*/
 	fpu.regStack[fpu.status.top].val = internal_float_add(val, fpu.regStack[fpu.status.top].val);
+
 }
 
 void fpu_add_idx(uint32_t idx, uint32_t store_idx)
