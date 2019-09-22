@@ -48,9 +48,9 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 			//assert(0);
 			sticky=sig_grs&0x1;
 			sig_grs>>=1;
-			if(sig_grs >> (23 + 3) <= 1 &&sig_grs > 0)
-				sig_grs>>=1;
-			else
+			//if(sig_grs >> (23 + 3) <= 1 &&sig_grs > 0)
+				//sig_grs>>=1;
+			//else
 				sig_grs=sig_grs|sticky;
 		}
 		if (exp < 0)
@@ -338,8 +338,8 @@ uint32_t internal_float_mul(uint32_t b, uint32_t a)
 	/* TODO: exp_res = ? leave space for GRS bits. */
 	//printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
 	exp_res=fa.exponent-127+fb.exponent-20;
-	if((fa.exponent==1)&&(fb.exponent==1))
-		exp_res=0;
+	//if((fa.exponent==1)&&(fb.exponent==1))
+		//exp_res=0;
 	printf("exp_res=%x\n",exp_res);
 	//assert(0);
 	return internal_normalize(f.sign, exp_res, sig_res);
