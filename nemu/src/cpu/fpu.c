@@ -347,7 +347,7 @@ uint32_t internal_float_mul(uint32_t b, uint32_t a)
 		fa.exponent++;
 	if (fb.exponent == 0)
 		fb.exponent++;
-	printf("fa.ex=%x,fb.ex=%x\n",fa.exponent,fb.exponent);
+	//printf("fa.ex=%x,fb.ex=%x\n",fa.exponent,fb.exponent);
 	sig_res = sig_a * sig_b; // 24b * 24b
 	uint32_t exp_res = 0;
 
@@ -356,8 +356,8 @@ uint32_t internal_float_mul(uint32_t b, uint32_t a)
 	exp_res=fa.exponent-127+fb.exponent-20;
 	//if((fa.exponent==1)&&(fb.exponent==1))
 		//exp_res=0;
-	printf("exp_res=%x\n",exp_res);
-	printf("sig_res=%llx\n",sig_res);
+	//printf("exp_res=%x\n",exp_res);
+	//printf("sig_res=%llx\n",sig_res);
 	//assert(0);
 	return internal_normalize(f.sign, exp_res, sig_res);
 }
