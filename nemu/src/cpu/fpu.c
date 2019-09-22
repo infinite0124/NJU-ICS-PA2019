@@ -342,6 +342,7 @@ uint32_t internal_float_mul(uint32_t b, uint32_t a)
 	//if((fa.exponent==1)&&(fb.exponent==1))
 		//exp_res=0;
 	printf("exp_res=%x\n",exp_res);
+	printf("sig_res=%x\n",sig_res);
 	//assert(0);
 	return internal_normalize(f.sign, exp_res, sig_res);
 }
