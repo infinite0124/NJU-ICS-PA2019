@@ -89,8 +89,21 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 	}
 	else if(exp<0)
 	{
-		
+		while((sig_grs >> (23 + 3))>1)
+		{
+			sig_grs>>=1;
+			exp++;
+		}
+		if(exp==0&&sig_grs>0)
+		{
+			sig_grs>>=1;
+		}
+		else if(sig_grs<=4&&exp<0)
+		{
+			overflow=true;
+		}
 	}
+
 	if (!overflow)
 	{
 		/* TODO: round up and remove the GRS bits */
