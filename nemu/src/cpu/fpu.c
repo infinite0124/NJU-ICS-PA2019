@@ -161,6 +161,7 @@ uint32_t internal_float_add(uint32_t b, uint32_t a)
 	}
 	if (a == P_ZERO_F || a == N_ZERO_F)
 	{
+		printf("b==%x",b);
 		return b;
 	}
 	if (b == P_ZERO_F || b == N_ZERO_F)
