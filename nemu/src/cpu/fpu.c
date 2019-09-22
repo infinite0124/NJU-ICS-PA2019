@@ -195,7 +195,7 @@ uint32_t internal_float_add(uint32_t b, uint32_t a)
 	sig_b = fb.fraction;
 	if (fb.exponent != 0)
 		sig_b |= 0x800000; // the hidden 1
-	printf("sig_a=%x,sig_b=%x\n",sig_a,sig_b);
+	//printf("sig_a=%x,sig_b=%x\n",sig_a,sig_b);
 	// alignment shift for fa
 
 	/* TODO: shift = ? */
@@ -217,7 +217,7 @@ uint32_t internal_float_add(uint32_t b, uint32_t a)
 		sig_a |= sticky;
 		shift--;
 	}
-	printf("sig_a=%x,sig_b=%x\n",sig_a,sig_b);
+	//printf("sig_a=%x,sig_b=%x\n",sig_a,sig_b);
 
 	// fraction add
 	if (fa.sign)
@@ -228,7 +228,7 @@ uint32_t internal_float_add(uint32_t b, uint32_t a)
 	{
 		sig_b *= -1;
 	}
-	printf("sig_a=%x,sig_b=%x\n",sig_a,sig_b);
+	//printf("sig_a=%x,sig_b=%x\n",sig_a,sig_b);
 
 	sig_res = sig_a + sig_b;
 	
@@ -243,7 +243,7 @@ uint32_t internal_float_add(uint32_t b, uint32_t a)
 	}
 
 	uint32_t exp_res = fb.exponent;
-	printf("sig_res=%x\n",sig_res);
+	//printf("sig_res=%x\n",sig_res);
 	return internal_normalize(f.sign, exp_res, sig_res);
 }
 
