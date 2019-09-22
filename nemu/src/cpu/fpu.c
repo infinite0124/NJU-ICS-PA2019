@@ -62,6 +62,7 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 	else if (((sig_grs >> (23 + 3)) == 0) && exp > 0)
 	{
 		// normalize toward left
+		uint32_t sticky=0;
 		while (((sig_grs >> (23 + 3)) == 0) && exp > 0)
 		{
 			/* TODO: shift left */
@@ -111,7 +112,7 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 		else
 		{
 			sig_grs>>=3;
-			if(sig_grs&0x1==0x1)
+			if((sig_grs&0x1)==0x1)
 				sig_grs+=1;
 			if((sig_grs>>23)>1)
 			{
@@ -193,15 +194,13 @@ uint32_t internal_float_add(uint32_t b, uint32_t a)
 	sig_b = fb.fraction;
 	if (fb.exponent != 0)
 		sig_b |= 0x800000; // the hidden 1
-	if(fa)
 	// alignment shift for fa
-	uint32_t shift = 0;
 
 	/* TODO: shift = ? */
 	//printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
 	//assert(0);
 	//assert(shift >= 0);
-	
+	int shift = 0;
 	shift= (fb.exponent == 0 ? fb.exponent + 1 : fb.exponent)-(fa.exponent == 0 ? fa.exponent + 1 :fa.exponent);
 	//shift= (fa.exponent == 0 ? fa.exponent + 1 : fa.exponent)-(fb.exponent == 0 ? fb.exponent + 1 :fb.exponent);
 	sig_a = (sig_a << 3); // guard, round, sticky
