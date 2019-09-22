@@ -161,7 +161,7 @@ uint32_t internal_float_add(uint32_t b, uint32_t a)
 	}
 	if (a == P_ZERO_F || a == N_ZERO_F)
 	{
-		printf("b==%x",b);
+		//printf("b==%x",b);
 		return b;
 	}
 	if (b == P_ZERO_F || b == N_ZERO_F)
@@ -195,6 +195,7 @@ uint32_t internal_float_add(uint32_t b, uint32_t a)
 	sig_b = fb.fraction;
 	if (fb.exponent != 0)
 		sig_b |= 0x800000; // the hidden 1
+	
 	// alignment shift for fa
 
 	/* TODO: shift = ? */
@@ -239,6 +240,7 @@ uint32_t internal_float_add(uint32_t b, uint32_t a)
 	}
 
 	uint32_t exp_res = fb.exponent;
+	printf("sig_res=%x",sig_res);
 	return internal_normalize(f.sign, exp_res, sig_res);
 }
 
