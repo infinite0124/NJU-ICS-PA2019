@@ -195,8 +195,7 @@ uint32_t internal_float_add(uint32_t b, uint32_t a)
 	sig_b = fb.fraction;
 	if (fb.exponent != 0)
 		sig_b |= 0x800000; // the hidden 1
-	printf("sig_a=,%x",sig_a);
-	printf("sig_b=")
+	printf("sig_a=,%x","sig_b=,%x/n",sig_a,sig_b);
 	// alignment shift for fa
 
 	/* TODO: shift = ? */
@@ -208,6 +207,7 @@ uint32_t internal_float_add(uint32_t b, uint32_t a)
 	//shift= (fa.exponent == 0 ? fa.exponent + 1 : fa.exponent)-(fb.exponent == 0 ? fb.exponent + 1 :fb.exponent);
 	sig_a = (sig_a << 3); // guard, round, sticky
 	sig_b = (sig_b << 3);
+	
 
 	uint32_t sticky = 0;
 	while (shift > 0)
@@ -217,6 +217,7 @@ uint32_t internal_float_add(uint32_t b, uint32_t a)
 		sig_a |= sticky;
 		shift--;
 	}
+	printf("sig_a=,%x","sig_b=,%x/n",sig_a,sig_b);
 
 	// fraction add
 	if (fa.sign)
