@@ -88,6 +88,9 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 		exp++;
 	}
 	else if(exp<0)
+	{
+		
+	}
 	if (!overflow)
 	{
 		/* TODO: round up and remove the GRS bits */
@@ -228,7 +231,7 @@ uint32_t internal_float_add(uint32_t b, uint32_t a)
 	{
 		sig_b *= -1;
 	}
-	//printf("sig_a=%x,sig_b=%x\n",sig_a,sig_b);
+	printf("sig_a=%x,sig_b=%x\n",sig_a,sig_b);
 
 	sig_res = sig_a + sig_b;
 	
@@ -243,7 +246,7 @@ uint32_t internal_float_add(uint32_t b, uint32_t a)
 	}
 
 	uint32_t exp_res = fb.exponent;
-	//printf("sig_res=%x\n",sig_res);
+	printf("sig_res=%x\n",sig_res);
 	return internal_normalize(f.sign, exp_res, sig_res);
 }
 
