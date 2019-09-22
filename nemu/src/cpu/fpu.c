@@ -87,7 +87,7 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 		// two denormals result in a normal
 		exp++;
 	}
-
+	else if(exp<0)
 	if (!overflow)
 	{
 		/* TODO: round up and remove the GRS bits */
