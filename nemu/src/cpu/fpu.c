@@ -58,7 +58,6 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 			/* TODO: assign the number to zero */
 			//printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
 			//assert(0);
-			exp=0;
 			sig_grs=0;
 			overflow = true;
 		}
