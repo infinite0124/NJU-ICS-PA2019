@@ -34,8 +34,9 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 		if (exp >= 0xff)
 		{
 			/* TODO: assign the number to infinity */
-			printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-			assert(0);
+			//printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
+			//assert(0);
+			sig_grs=0;
 			overflow = true;
 		}
 		if (exp == 0)
@@ -43,14 +44,18 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 			// we have a denormal here, the exponent is 0, but means 2^-126,
 			// as a result, the significand should shift right once more
 			/* TODO: shift right, pay attention to sticky bit*/
-			printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-			assert(0);
+			//printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
+			//assert(0);
+			sticky=sig_grs&0x1;
+			sig_grs>>=1;
+			sig_grs=sig_grs|sticky;
 		}
 		if (exp < 0)
 		{
 			/* TODO: assign the number to zero */
-			printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-			assert(0);
+			//printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
+			//assert(0);
+			sig_grs=0;
 			overflow = true;
 		}
 	}
@@ -60,15 +65,20 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 		while (((sig_grs >> (23 + 3)) == 0) && exp > 0)
 		{
 			/* TODO: shift left */
-			printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-			assert(0);
+			//printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
+			//assert(0);
+			sig_grs<<=1;
+			exp--;
 		}
 		if (exp == 0)
 		{
 			// denormal
 			/* TODO: shift right, pay attention to sticky bit*/
-			printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-			assert(0);
+			//printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
+			//assert(0);
+			sticky=sig_grs&0x1;
+			sig_grs>>=1;
+			sig_grs=sig_grs&sticky;
 		}
 	}
 	else if (exp == 0 && sig_grs >> (23 + 3) == 1)
@@ -80,8 +90,40 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 	if (!overflow)
 	{
 		/* TODO: round up and remove the GRS bits */
-		printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-		assert(0);
+		//printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
+		//assert(0);
+		uint32_t grs=sig_grs&0x7;
+		if(grs>0x4)
+		{
+			sig_grs>>=3;
+			sig_grs+=1;
+			if((sig_grs>>23)>1)
+			{
+				sig_grs>>=1;
+				exp++;
+				if(exp>=0xFF)
+					overflow=true;
+			}
+			
+		}
+		else if(grs<0x4)
+			sig_grs>>=3;
+		else
+		{
+			sig_grs>>=3;
+			if(sig_grs&0x1==0x1)
+				sig_grs+=1;
+			if((sig_grs>>23)>1)
+			{
+                                  sig_grs>>=1;
+                                  exp++;
+                                  if(exp>=0xFF)
+                                          overflow=true;
+			}
+		
+		}
+		sig_grs=sig_grs&0x7FFFFF;
+
 	}
 
 	FLOAT f;
@@ -151,7 +193,7 @@ uint32_t internal_float_add(uint32_t b, uint32_t a)
 	sig_b = fb.fraction;
 	if (fb.exponent != 0)
 		sig_b |= 0x800000; // the hidden 1
-
+	if(fa)
 	// alignment shift for fa
 	uint32_t shift = 0;
 
