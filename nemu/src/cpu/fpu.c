@@ -80,6 +80,8 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 			sticky=sig_grs&0x1;
 			sig_grs>>=1;
 			sig_grs=sig_grs|sticky;
+			if(sig_grs >> (23 + 3) <= 1 &&sig_grs > 0)
+				sig_grs>>=1;
 		}
 	}
 	else if (exp == 0 && sig_grs >> (23 + 3) == 1)
