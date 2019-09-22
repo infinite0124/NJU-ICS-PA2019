@@ -195,7 +195,8 @@ uint32_t internal_float_add(uint32_t b, uint32_t a)
 	sig_b = fb.fraction;
 	if (fb.exponent != 0)
 		sig_b |= 0x800000; // the hidden 1
-	
+	printf("sig_a=,%x",sig_a);
+	printf("sig_b=")
 	// alignment shift for fa
 
 	/* TODO: shift = ? */
