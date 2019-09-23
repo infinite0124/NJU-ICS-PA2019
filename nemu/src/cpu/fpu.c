@@ -39,7 +39,7 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 			exp=0xff;
 			sig_grs=0;
 			overflow = true;
-			assert(0);
+			//assert(0);
 		}
 		if (exp == 0)
 		{
@@ -60,6 +60,7 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 			exp=0;
 			sig_grs=0;
 			overflow = true;
+			assert(0);
 		}
 	}
 	else if (((sig_grs >> (23 + 3)) == 0) && exp > 0)
