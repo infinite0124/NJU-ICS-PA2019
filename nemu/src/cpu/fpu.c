@@ -39,6 +39,7 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 			exp=0xff;
 			sig_grs=0;
 			overflow = true;
+			assert(0);
 		}
 		if (exp == 0)
 		{
