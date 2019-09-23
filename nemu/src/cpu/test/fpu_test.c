@@ -143,7 +143,7 @@ void fpu_test_mul()
 			a.fval = input[i];
 			b.fval = input[j];
 			res.fval = a.fval * b.fval;
-			printf("float mul a = %f, b = %f, ua = %x, ub = %x, res = %x, res = %f\n", a.fval, b.fval, a.val, b.val, res.val, res.fval);
+			//printf("float mul a = %f, b = %f, ua = %x, ub = %x, res = %x, res = %f\n", a.fval, b.fval, a.val, b.val, res.val, res.fval);
 			res_fpu.val = internal_float_mul(b.val, a.val);
 			//if(res.val!=res_fpu.val)
 			//{printf("float mul a = %f, b = %f, ua = %x, ub = %x, res = %x, res_fpu = %x, res = %f, res_fpu = %f\n", a.fval, b.fval, a.val, b.val, res.val, res_fpu.val, res.fval, res_fpu.fval);
