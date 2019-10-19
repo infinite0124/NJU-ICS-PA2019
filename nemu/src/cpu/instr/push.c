@@ -1,15 +1,18 @@
 #include "cpu/instr.h"
 
-static void instr_execute_2op()
+static void instr_execute_1op()
 {
-	opr_src.type=OPR_REG;
-	opr_src.data_size=data_size;
-	opr_dest.type
+	operand_read(&opr_src);
 	if(data_size==16)
 	{
-		
+	 	cpu.gpr[4].val-=2;
+		//opr_src.val;
 	}	
-	opr_dest
+	else
+	{
+		cpu.gpr[4].val-=4;
+		
+	}
 }
 
-make_instr_impl_2op(push,r,r,v)
+make_instr_impl_1op(push,r,v)
