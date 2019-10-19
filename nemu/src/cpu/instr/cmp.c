@@ -3,7 +3,7 @@
 static void instr_execute_2op()
 {
 	operand_read(&opr_src);
-	opr_dest.val-=sign_ext(opr_src.val);
+	opr_dest.val-=sign_ext(opr_src.val,32);
 	operand_write(&opr_dest);
 }
 
