@@ -2,7 +2,6 @@
 
 static void instr_execute_1op()
 {
-	operand_read(&opr_src);
 	if(data_size==16)
 	{
 	 	cpu.gpr[4].val-=2;
