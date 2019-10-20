@@ -55,6 +55,6 @@ make_instr_func(jle)
 	imm.val=instr_fetch(eip+1,1);
 	if((cpu.eflags.SF!=cpu.eflags.OF)||(cpu.eflags.ZF==0))
 		cpu.eip+=imm.val;
-	printf_asm_1("jle","",2,&imm);
+	print_asm_1("jle","",2,&imm);
 	return len;
 }
