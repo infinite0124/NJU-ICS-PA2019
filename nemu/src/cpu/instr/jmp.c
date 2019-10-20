@@ -21,19 +21,16 @@ make_instr_func(jmp_near)
 
 make_instr_func(jmp_rel)
 {
-	int len=1;
+	if(opcode==0xeb)
+		data_size=8;
 	OPERAND imm;
 	imm.type=OPR_IMM;
-	if(opcode==0xe8)
-	{	
-		imm.data_size=8;
-		len=2;
-	}
+	imm.data_size=data_size;
 	imm.addr=eip+1;
 	operand_read(&imm);
 	cpu.eip+=imm.val;
-	printf("eip=%x\n",cpu.eip);
-	return len;
+	//printf("eip=%x\n",cpu.eip);
+	return 1+data_size/8;
 }
 
 make_instr_func(je)
