@@ -18,3 +18,15 @@ make_instr_func(jmp_near)
 
         return 1 + data_size / 8;
 }
+
+make_instr_func(jz)
+{
+	int len=2;
+	uint8_t imm=instr_fetch(eip+1,1);
+	if(cpu.eflags.ZF)
+	{
+		cpu.eip=imm;
+		len=0;
+	}	
+	return len;
+}
