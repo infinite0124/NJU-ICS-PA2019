@@ -33,7 +33,7 @@ make_instr_func(jz)
 make_instr_func(jg)
 {
 	int len=2;
-	uint8_t imm=instr_fetch(eip+1);
+	uint8_t imm=instr_fetch(eip+1,1);
 	if((cpu.eflags.SF==cpu.eflags.OF)&&(cpu.eflags.ZF==0))
 		cpu.eip+=imm;
 	return len;
