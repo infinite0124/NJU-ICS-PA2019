@@ -23,7 +23,7 @@ make_instr_func(je)
 {
 	int len=2;
 	OPERAND imm;
-	imm.type=OPER_IMM;
+	imm.type=OPR_IMM;
 	imm.data_size=8;
 	imm.addr=cpu.eip+8;
 	operand_read(&imm);
