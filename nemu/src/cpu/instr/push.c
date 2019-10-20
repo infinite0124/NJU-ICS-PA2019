@@ -12,7 +12,7 @@
 
 make_instr_impl_1op(push,r,v)*/
 
-int push(uint32_t eip, uint8_t opcode)
+int push_gr(uint32_t eip, uint8_t opcode)
 {
 	int len=1;
 	OPERAND r,mem;
@@ -29,4 +29,15 @@ int push(uint32_t eip, uint8_t opcode)
 	return len;
 }
 
-
+int push_eip()
+{
+	opr_src.type=OPR_REG;
+	opr_src.data_size=data_size;
+	opr_src.val=cpu.eip;
+	cpu.esp-=data_size;
+	opr_dest.type=OPR_MEM;
+	opr_dest.addr=cpu.esp;
+	opr_deat.data_size=data_size;
+	opr_dest.val=opr_src.val;
+	operand_write(&opr_dest);
+}
