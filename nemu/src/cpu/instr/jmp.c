@@ -22,17 +22,18 @@ make_instr_func(jmp_near)
 make_instr_func(je)
 {
 	int len=2;
-	OPERAND imm;
-	imm.type=OPR_IMM;
-	imm.data_size=8;
-	imm.addr=cpu.eip+8;
-	operand_read(&imm);
-	//uint8_t imm=instr_fetch(eip+1,1);
+	//OPERAND imm;
+	//imm.type=OPR_IMM;
+	//imm.data_size=8;
+	//imm.addr=cpu.eip+8;
+	//operand_read(&imm);
+	uint8_t imm=instr_fetch(eip+1,1);
 	if(cpu.eflags.ZF)
 	{
 		cpu.eip+=imm.val;
 	}	
-	print_asm_1("je"," ",2,&imm);
+	//print_asm_1("je"," ",2,&imm);
+	printf("eip=%x\n",cpu.eip);
 	return len;
 }
 
