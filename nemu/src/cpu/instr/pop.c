@@ -2,13 +2,12 @@
 
 int pop()
 {
-	OPERAND imm;
-	imm.type=OPR_REG;
-	imm.data_size=data_size;
-	imm.addr=cpu.esp;
+	opr_src=mem;
+	mem.data_size=data_size;
+	mem.addr=cpu.esp;
 	printf("esp=%x\n",cpu.esp);
-	operand_read(&imm);
+	operand_read(&mem);
 	cpu.esp+=data_size;
-	printf("imm.val=%x\n",imm.val);
-	return imm.val;
+	printf("mem.val=%x\n",mem.val);
+	return mem.val;
 }
