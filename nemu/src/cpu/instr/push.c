@@ -29,7 +29,7 @@ int push_gr(uint32_t eip, uint8_t opcode)
 	return len;
 }
 
-int push_eip()
+void push_eip()
 {
 	opr_src.type=OPR_REG;
 	opr_src.data_size=data_size;
