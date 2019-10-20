@@ -18,10 +18,12 @@ int push(uint32_t eip, uint8_t opcode)
 	OPERAND r,mem;
 	r.type=OPR_REG;
 	r.addr=opcode&0x7;
+	r.data_size=data_size;
 	r.val=cpu.gpr[r.addr]._32;
 	cpu.esp-=data_size;
 	mem.type=OPR_MEM;
 	mem.addr=cpu.esp;
+	mem.data_size=data_size;
 	mem.val=r.val;
 	operand_write(&mem);
 	return len;
