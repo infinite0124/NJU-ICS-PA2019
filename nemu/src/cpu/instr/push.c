@@ -29,7 +29,7 @@ int push_gr(uint32_t eip, uint8_t opcode)
 	return len;
 }
 
-void push_eip()
+int push_eip()
 {
 	opr_src.type=OPR_REG;
 	opr_src.data_size=data_size;
@@ -40,4 +40,5 @@ void push_eip()
 	opr_dest.data_size=data_size;
 	opr_dest.val=opr_src.val;
 	operand_write(&opr_dest);
+	return 1;
 }
