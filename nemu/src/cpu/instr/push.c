@@ -31,6 +31,7 @@ int push_gr(uint32_t eip, uint8_t opcode)
 
 int push_eip()
 {
+	//printf("data_size=%x\n",data_size);
 	opr_src.type=OPR_REG;
 	opr_src.data_size=data_size;
 	opr_src.val=cpu.eip;
