@@ -46,3 +46,15 @@ make_instr_func(jg)
 	return len;
 }
 
+make_instr_func(jle)
+{
+	int len=2;
+	OPERAND imm;
+	imm.type=OPR_IMM;
+	imm.data_size=8;
+	imm.val=instr_fetch(eip+1,1);
+	if((cpu.eflags.SF!=cpu.eflags.OF)||(cpu.eflags.ZF==0))
+		cpu.eip+=imm.val;
+	printf_asm_1("jle","",2,&imm);
+	return len;
+}
