@@ -24,6 +24,7 @@ int push(uint32_t eip, uint8_t opcode)
 	mem.addr=cpu.esp;
 	mem.val=r.val;
 	operand_write(&mem);
+	print_asm(1);
 	return len;
 }
 
