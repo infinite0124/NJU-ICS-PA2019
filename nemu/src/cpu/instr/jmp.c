@@ -75,7 +75,7 @@ make_instr_func(jle)
 	uint8_t imm=instr_fetch(eip+1,1);
 	if((cpu.eflags.SF!=cpu.eflags.OF)||(cpu.eflags.ZF!=0))
 		cpu.eip+=sign_ext(imm,32);
-	//printf("jle	%x\n",imm);
+	printf("jle	%x\n",imm);
 	//print_asm_1("jle","",2,&imm);
 	return len;
 }
