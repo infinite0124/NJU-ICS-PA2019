@@ -7,5 +7,5 @@ int ret_near(uint32_t eip,uint8_t opcode)
 	if(data_size==16)
 		cpu.eip&=0x0000ffff;
 	printf("eip=%x\n",cpu.eip);
-	return len;
+	return 0;
 }
