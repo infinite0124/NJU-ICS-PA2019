@@ -25,8 +25,7 @@ make_instr_func(jz)
 	uint8_t imm=instr_fetch(eip+1,1);
 	if(cpu.eflags.ZF)
 	{
-		cpu.eip=imm;
-		len=0;
+		cpu.eip+=imm;
 	}	
 	return len;
 }
