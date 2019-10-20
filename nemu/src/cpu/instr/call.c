@@ -9,6 +9,7 @@ int call_rel(uint32_t eip,uint8_t opcode)
 	printf("original_eip=%x\n",cpu.eip);
 	printf("imm=%x\n",imm);
 	len+=data_size/8;
+	printf("len=%x\n",len);
 	cpu.eip+=8*len;
 	push_eip();
 	cpu.eip=cpu.eip+imm;
