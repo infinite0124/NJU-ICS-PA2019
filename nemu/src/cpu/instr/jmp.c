@@ -19,14 +19,20 @@ make_instr_func(jmp_near)
         return 1 + data_size / 8;
 }
 
-make_instr_func(jz)
+make_instr_func(je)
 {
 	int len=2;
-	uint8_t imm=instr_fetch(eip+1,1);
+	OPERAND imm;
+	imm.type=OPER_IMM;
+	imm.data_size=8;
+	imm.addr=cpu.eip+8;
+	operand_read(&imm);
+	//uint8_t imm=instr_fetch(eip+1,1);
 	if(cpu.eflags.ZF)
 	{
-		cpu.eip+=imm;
+		cpu.eip+=imm.val;
 	}	
+	print_asm_0("je"," ",2,&imm);
 	return len;
 }
 
