@@ -1,1 +1,1 @@
-make_instr_func(nemu_trap)
+//make_instr_func(nemu_trap)
