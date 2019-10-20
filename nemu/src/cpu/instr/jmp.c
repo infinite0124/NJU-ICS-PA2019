@@ -19,9 +19,10 @@ make_instr_func(jmp_near)
         return 1 + data_size / 8;
 }
 
-
+make_instr_func(jmp_rel)
 {
-	int len=1;
+	if(opcode=="eb")
+		data_size=8;
 	OPERAND imm;
 	imm.type=OPR_IMM;
 	imm.data_size=data_size;
