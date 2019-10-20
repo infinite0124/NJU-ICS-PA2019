@@ -6,6 +6,6 @@ int ret_near()
 	cpu.eip=pop();
 	if(data_size==16)
 		cpu.eip&=0x0000ffff;
-	printf("eip=%x\n",eip);
+	printf("eip=%x\n",cpu.eip);
 	return len;
 }
