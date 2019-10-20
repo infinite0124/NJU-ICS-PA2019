@@ -30,7 +30,7 @@ make_instr_func(je)
 	uint8_t imm=instr_fetch(eip+1,1);
 	if(cpu.eflags.ZF)
 	{
-		cpu.eip+=imm.val;
+		cpu.eip+=imm;
 	}	
 	//print_asm_1("je"," ",2,&imm);
 	printf("eip=%x\n",cpu.eip);
