@@ -32,7 +32,7 @@ make_instr_func(je)
 	{
 		cpu.eip+=imm.val;
 	}	
-	print_asm_0("je"," ",2,&imm);
+	print_asm_1("je"," ",2,&imm);
 	return len;
 }
 
