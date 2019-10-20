@@ -8,10 +8,10 @@ int call_rel(uint32_t eip,uint8_t opcode)
 	uint32_t imm=instr_fetch(eip+1,data_size/8);
 	printf("original_eip=%x\n",cpu.eip);
 	printf("imm=%x\n",imm);
-	cpu.eip+=imm;
+	len+=data_size/8;
+	cpu.eip=cpu.eip+imm;
 	if(data_size==16)
 		cpu.eip=cpu.eip&0x0000ffff;
 	printf("eip=%x\n",cpu.eip);
-	len+=data_size;
 	return len;
 }
