@@ -19,6 +19,19 @@ make_instr_func(jmp_near)
         return 1 + data_size / 8;
 }
 
+
+{
+	int len=1;
+	OPERAND imm;
+	imm.type=OPR_IMM;
+	imm.data_size=data_size;
+	imm.addr=eip+1;
+	operand_read(&imm);
+	cpu.eip+=imm.val;
+	printf("eip=%x\n",cpu.eip);
+	return 1+data_size/8;
+}
+
 make_instr_func(je)
 {
 	int len=2;
