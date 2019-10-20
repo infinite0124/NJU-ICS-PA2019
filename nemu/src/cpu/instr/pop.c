@@ -6,7 +6,7 @@ int pop()
 	imm.type=OPR_MEM;
 	imm.data_size=data_size;
 	imm.addr=cpu.esp;
-	oprand_wirte(&imm);
+	operand_wirte(&imm);
 	cpu.esp+=data_size;
 	return imm.val;
 }
