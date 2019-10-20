@@ -2,7 +2,7 @@
 
 int pop()
 {
-	opr_src=OPR_IMM;
+	opr_src.type=OPR_IMM;
 	opr_src.data_size=data_size;
 	opr_src.addr=cpu.esp;
 	printf("esp=%x\n",cpu.esp);
