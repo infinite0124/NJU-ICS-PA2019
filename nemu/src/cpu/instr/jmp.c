@@ -37,6 +37,14 @@ make_instr_func(je)
 	return len;
 }
 
+make_instr_func(jne)
+{
+	uint32_t imm=instr_fetch(eip+1);
+	if(!cpu.eflags.ZF)
+		cpu.eip+=imm;
+	return len;
+}
+
 make_instr_func(jg)
 {
 	int len=2;
