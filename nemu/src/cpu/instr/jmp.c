@@ -33,7 +33,7 @@ make_instr_func(je)
 		cpu.eip+=imm;
 	}	
 	//print_asm_1("je"," ",2,&imm);
-	printf("eip=%x\n",cpu.eip);
+	//printf("eip=%x\n",cpu.eip);
 	return len;
 }
 
@@ -52,7 +52,7 @@ make_instr_func(jle)
 	uint8_t imm=instr_fetch(eip+1,1);
 	if((cpu.eflags.SF!=cpu.eflags.OF)||(cpu.eflags.ZF!=0))
 		cpu.eip+=imm;
-	printf("jle	%x\n",imm);
+	//printf("jle	%x\n",imm);
 	//print_asm_1("jle","",2,&imm);
 	return len;
 }
