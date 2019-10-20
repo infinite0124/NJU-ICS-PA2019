@@ -14,6 +14,7 @@ make_instr_impl_1op(push,r,v)*/
 
 int push(uint32_t eip, uint8_t opcode)
 {
+	int len=1;
 	OPERAND r,mem;
 	r.type=OPR_REG;
 	r.addr=opcode&0x7;
@@ -23,6 +24,7 @@ int push(uint32_t eip, uint8_t opcode)
 	mem.addr=cpu.esp;
 	mem.val=r.val;
 	operand_write(&mem);
+	return len;
 }
 
 
