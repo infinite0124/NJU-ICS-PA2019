@@ -2,7 +2,7 @@
 
 static void instr_execute_2op()
 {
-	printf("eip=%x\n",cpu.eip);
+	//printf("eip=%x\n",cpu.eip);
 	operand_read(&opr_src);
 	operand_read(&opr_dest);
 	opr_dest.val=alu_add(opr_src.val,opr_dest.val,data_size);
