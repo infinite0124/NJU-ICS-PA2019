@@ -2,6 +2,7 @@
 
 static void instr_execute_2op() 
 {
+	printf("data_size=%x\n",data_size);
 	operand_read(&opr_src);
 	opr_dest.val = opr_src.val;
 	operand_write(&opr_dest);
