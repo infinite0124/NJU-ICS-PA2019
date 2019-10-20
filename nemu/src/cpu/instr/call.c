@@ -16,5 +16,6 @@ int call_rel(uint32_t eip,uint8_t opcode)
 	if(data_size==16)
 		cpu.eip=cpu.eip&0x0000ffff;
 //	printf("eip=%x\n",cpu.eip);
+	printf("%x         call  %x\n",opcode,eip);
 	return 0;
 }
