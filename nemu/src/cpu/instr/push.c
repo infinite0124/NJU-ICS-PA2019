@@ -26,7 +26,7 @@ int push_gr(uint32_t eip, uint8_t opcode)
 	mem.data_size=data_size;
 	mem.val=r.val;
 	operand_write(&mem);
-	print_asm_1("push","v",3,r);
+	//print_asm_1("push","v",3,r);
 	return len;
 }
 
