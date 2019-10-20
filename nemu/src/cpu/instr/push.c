@@ -37,7 +37,7 @@ int push_eip()
 	cpu.esp-=data_size;
 	opr_dest.type=OPR_MEM;
 	opr_dest.addr=cpu.esp;
-	opr_deat.data_size=data_size;
+	opr_dest.data_size=data_size;
 	opr_dest.val=opr_src.val;
 	operand_write(&opr_dest);
 }
