@@ -81,22 +81,15 @@ make_instr_func(jle)
 	return len;
 }
 
-/*make_instr_func(jmp_imm_v_be)
+make_instr_func(jbe)
 {
-	int32_t imm=instr_fetch(eip+1,4);
+	OPERAND imm;
+	imm.type=OPR_IMM;
+	imm.data_size=data_size;
+	imm.addr=eip+1;
+	operand_read(&imm);
 	if((cpu.eflags.SF!=cpu.eflags.CF)||(cpu.eflags.ZF!=0))
-		cpu.eip+=sign_ext(imm,32);
-	return 6;
-}*/
-static void instr_execute_1op_cc_pass()
-{
-	operand_read(&opr_src);
-	cpu.eip+=opr_src.val;
+		cpu.eip+=sign_ext(imm.val,data_size);
+	print_asm_1("jbe","",1+data_size/8,&imm);
+	return 1+data_size/8;
 }
-
-static void instr_execute_1op_cc_fail()
-{
-	;
-}
-
-make_instr_impl_1op_cc(jmp,imm,v,be)
