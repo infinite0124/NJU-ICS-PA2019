@@ -2,7 +2,7 @@
 
 static void instr_execute_2op()
 {
-	operand_read(&src);
+	operand_read(&opr_src);
 	dest.val=src.val;
 	operand_write(&dest);
 }
