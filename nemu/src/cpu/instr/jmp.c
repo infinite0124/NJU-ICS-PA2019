@@ -90,14 +90,13 @@ make_instr_func(jle)
 }*/
 static void instr_execute_1op_cc_pass()
 {
-	oprand_read(&opr_src);
+	operand_read(&opr_src);
 	cpu.eip+=opr_src.val;
-	return 1+data_size/8;
 }
 
 static void instr_execute_1op_cc_fail()
 {
-	return 1+data_size/8;
+	;
 }
 
 make_instr_impl_1op_cc(jmp,imm,v,be)
