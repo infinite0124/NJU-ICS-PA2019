@@ -91,5 +91,5 @@ make_instr_func(jbe)
 	if((cpu.eflags.SF!=cpu.eflags.CF)||(cpu.eflags.ZF!=0))
 		cpu.eip+=sign_ext(imm.val,data_size);
 	print_asm_1("jbe","",1+data_size/8,&imm);
-	return 1+data_size/8;
+	return 2+data_size/8;
 }
