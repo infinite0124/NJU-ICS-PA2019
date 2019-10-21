@@ -81,13 +81,13 @@ make_instr_func(jle)
 	return len;
 }
 
-make_instr_func(jmp_imm_v_be)
+/*make_instr_func(jmp_imm_v_be)
 {
 	int32_t imm=instr_fetch(eip+1,4);
 	if((cpu.eflags.SF!=cpu.eflags.CF)||(cpu.eflags.ZF!=0))
 		cpu.eip+=sign_ext(imm,32);
 	return 6;
-}
+}*/
 /*static void instr_execute_1op_cc_pass()
 {
 	oprand_read(&opr_src);
