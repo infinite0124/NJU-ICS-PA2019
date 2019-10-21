@@ -24,8 +24,7 @@ make_instr_func(jmp_rel)
 	OPERAND imm;
 	imm.type=OPR_IMM;
 	imm.data_size=data_size;
-	if(opcode==0xeb)
-		{imm.data_size=8;printf("a\n");
+	imm.data_size=8;
 	imm.addr=eip+1;
 	operand_read(&imm);
 	print_asm_1("jmp","",1+imm.data_size/8,&imm);
