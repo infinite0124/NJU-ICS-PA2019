@@ -76,7 +76,21 @@ make_instr_func(jle)
 	if((cpu.eflags.SF!=cpu.eflags.OF)||(cpu.eflags.ZF!=0))
 		cpu.eip+=sign_ext(imm,32);
 	//printf("jle	%x\n",imm);
-	//printf("eip=%x\n",cpu.eip);
+//printf("eip=%x\n",cpu.eip);
 	//print_asm_1("jle","",2,&imm);
 	return len;
 }
+
+static void instr_execute_1op_cc_pass()
+{
+	oprand_read(&opr_src);
+	cpu.eip+=opr_src.val;
+	return 1+data_size/8;
+}
+
+static void instr_execute_1op_cc_fail()
+{
+	return 1+data_size/8;
+}
+
+make_instr_impl_1op_cc(jmp,imm,v,be)
