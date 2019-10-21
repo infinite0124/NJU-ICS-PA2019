@@ -3,8 +3,8 @@
 static void instr_execute_2op()
 {
 	operand_read(&opr_src);
-	dest.val=src.val;
-	operand_write(&dest);
+	opr_dest.val=opr_src.val;
+	operand_write(&opr_dest);
 }
 
 make_instr_impl_2op(lea,m,r,v)
