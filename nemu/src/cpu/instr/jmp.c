@@ -28,9 +28,9 @@ make_instr_func(jmp_rel)
 		imm.data_size=8;
 	imm.addr=eip+1;
 	operand_read(&imm);
-	print_asm_1("jmp","",1+data_size/8,&imm);
+	print_asm_1("jmp","",1+imm.data_size/8,&imm);
 	cpu.eip+=sign_ext(imm.val,data_size);
-	return 1+data_size/8;
+	return 1+imm.data_size/8;
 }
 
 make_instr_func(je)
