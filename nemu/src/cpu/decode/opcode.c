@@ -76,8 +76,8 @@ instr_func group_1_v_entry[8] =
     {add_i2rm_v, inv, inv, inv, inv, inv, inv, inv};
 
 /* 0x83 */
-instr_func group_1_bv_entry[8] =
-    {add_i2rm_bv, /*or_i2rm_v*/inv, /*adc_i2rm_v*/inv, /*sbb_i2rm_v*/inv,/* and_i2rm_v*/inv, sub_i2rm_bv, /*xor_i2rm_v*/inv, cmp_i2rm_bv};
+instr_func group_1_bv_entry[8] =i
+    {add_i2rm_bv, /*or_i2rm_v*/inv, /*adc_i2rm_v*/inv, /*sbb_i2rm_v*/inv,and_i2rm_v, sub_i2rm_bv, /*xor_i2rm_v*/inv, cmp_i2rm_bv};
 
 /* 0xc0 */
 instr_func group_2_b_entry[8] =
