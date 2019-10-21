@@ -81,7 +81,14 @@ make_instr_func(jle)
 	return len;
 }
 
-static void instr_execute_1op_cc_pass()
+make_instr_func(jmp_imm_v_be)
+{
+	int32_t imm=instr_fetch(eip+1,4);
+	if((cpu.eflags.SF!=cpu.eflags.CF)||(cpu.eflags.ZF!=0))
+		cpu.eip+=sign_ext(imm,32);
+	return 6;
+}
+/*static void instr_execute_1op_cc_pass()
 {
 	oprand_read(&opr_src);
 	cpu.eip+=opr_src.val;
@@ -93,4 +100,4 @@ static void instr_execute_1op_cc_fail()
 	return 1+data_size/8;
 }
 
-make_instr_impl_1op_cc(jmp,imm,v,be)
+make_instr_impl_1op_cc(jmp,imm,v,be)*/
