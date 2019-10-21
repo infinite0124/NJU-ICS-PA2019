@@ -3,7 +3,7 @@
 static void instr_execute_2op()
 {
 	operand_read(&opr_src);
-	opr_dest.val=opr_src.val;
+	opr_dest.val=opr_src.mem_addr.base+opr_src.mem_addr.scale*opr_src.mem_addr.base;
 	operand_write(&opr_dest);
 }
 
