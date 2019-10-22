@@ -3,9 +3,10 @@
 static void instr_execute_1op()
 {
 	operand_read(&opr_src);
-	printf("opr_src.val=%x\n",opr_src.val);
+	printf("opr_src.addr=%x\n",opr_src.addr);
 	opr_src.val=alu_add(0x1,opr_src.val,data_size);
 	operand_write(&opr_src);
+	printf("opr_src.addr=%x\n",opr_src.addr);
 	printf("opr_src.val=%x\n",opr_src.val);
 }
 
