@@ -2,6 +2,16 @@
 
 make_instr_func(leave)
 {
-	cpu.esp=cpu.ebp;
-	cpu.ebp=pop();
+	if(data_size==16)
+	{
+		cpu.esp_16=cpu.ebp_16;
+		cpu.ebp_16=pop();
+	}
+	else
+	{
+		cpu.esp_32=cpu.esp_32;		
+		cpu.ebp_32=pop();
+	
+	}
+	return 1;
 }
