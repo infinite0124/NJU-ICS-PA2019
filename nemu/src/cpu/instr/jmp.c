@@ -76,6 +76,7 @@ make_instr_func(jl)
 	imm.addr=eip+1;
 	operand_read(&imm);
 	int offset=sign_ext(imm.val,data_size);
+	printf("offset=%x\n",offset);
 	print_asm_1("jl","",2,&imm);
 	if(cpu.eflags.SF!=cpu.eflags.OF)
 		cpu.eip+=offset;
