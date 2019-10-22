@@ -75,9 +75,9 @@ make_instr_func(jl)
 	imm.type=OPR_IMM;
 	imm.addr=eip+1;
 	operand_read(&imm);
+	print_asm_1("jl","",2,&imm);
 	if(cpu.eflags.SF!=cpu.eflags.OF)
 		cpu.eip+=sign_ext(imm.val,data_size);
-	print_asm_1("jl","",1+data_size/8,&imm);
 	return 2;
 }
 make_instr_func(jle)
