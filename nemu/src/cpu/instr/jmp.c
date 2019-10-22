@@ -31,7 +31,7 @@ make_instr_func(jmp_rel)
 	int offset=sign_ext(t,data_size);
 	print_asm_1("jmp","",1+imm.data_size/8,&imm);
 	cpu.eip+=offset;
-	printf("esp=%x\n",cpu.eip+1+imm.data_size/8);
+	printf("jmp_rel:esp=%x\n",cpu.eip+1+imm.data_size/8);
 	return 1+imm.data_size/8;
 }
 
@@ -50,7 +50,7 @@ make_instr_func(je)
 	}	
 	//print_asm_1("je"," ",2,&imm);
 	//printf("eip=%x\n",cpu.eip);
-	printf("esp=%x\n",cpu.eip+len);
+	printf("je:esp=%x\n",cpu.eip+len);
 	return len;
 }
 
@@ -60,7 +60,7 @@ make_instr_func(jne)
 	int8_t imm=instr_fetch(eip+1,1);
 	if(!cpu.eflags.ZF)
 		cpu.eip+=sign_ext(imm,data_size);
-	printf("esp=%x\n",cpu.eip+len);
+	printf("jne:esp=%x\n",cpu.eip+len);
 	return len;
 }
 
@@ -70,7 +70,7 @@ make_instr_func(jg)
 	int8_t imm=instr_fetch(eip+1,1);
 	if((cpu.eflags.SF==cpu.eflags.OF)&&(cpu.eflags.ZF==0))
 		cpu.eip+=sign_ext(imm,data_size);
-	printf("esp=%x\n",cpu.eip+len);
+	printf("jg:esp=%x\n",cpu.eip+len);
 	return len;
 }
 
@@ -87,7 +87,7 @@ make_instr_func(jl)
 	print_asm_1("jl","",2,&imm);
 	if(cpu.eflags.SF!=cpu.eflags.OF)
 		cpu.eip+=offset;
-	printf("esp=%x\n",cpu.eip+2);
+	printf("jl:esp=%x\n",cpu.eip+2);
 	return 2;
 }
 make_instr_func(jle)
@@ -99,7 +99,7 @@ make_instr_func(jle)
 	//printf("jle	%x\n",imm);
 //printf("eip=%x\n",cpu.eip);
 	//print_asm_1("jle","",2,&imm);
-	printf("esp=%x\n",cpu.eip+len);
+	printf("jle:esp=%x\n",cpu.eip+len);
 	return len;
 }
 
@@ -113,7 +113,7 @@ make_instr_func(jbe)
 	if((cpu.eflags.SF!=cpu.eflags.CF)||(cpu.eflags.ZF!=0))
 		cpu.eip+=sign_ext(imm.val,data_size);
 	print_asm_1("jbe","",1+data_size/8,&imm);
-	printf("esp=%x\n",cpu.eip+2+data_size/8);
+	printf("jbe:esp=%x\n",cpu.eip+2+data_size/8);
 	return 2+data_size/8;
 }
 
@@ -129,6 +129,6 @@ make_instr_func(jbe_b)
 	print_asm_1("jbe","",2,&imm);
 	if((cpu.eflags.SF!=cpu.eflags.CF)||(cpu.eflags.ZF!=0))
 		cpu.eip+=offset;
-	printf("esp=%x\n",cpu.eip+2);
+	printf("jbe_b:esp=%x\n",cpu.eip+2);
 	return 2;
 }
