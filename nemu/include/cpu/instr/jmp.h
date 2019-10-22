@@ -9,4 +9,5 @@ make_instr_func(jg);
 make_instr_func(jle);
 make_instr_func(jbe);
 make_instr_func(jl);
+make_instr_func(jbe_b);
 #endif
