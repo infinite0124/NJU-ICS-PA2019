@@ -2,7 +2,8 @@
 
 static void instr_execute_2op()
 {
-	opr_dest.val=opr_src.mem_addr.base+opr_src.mem_addr.scale*opr_src.mem_addr.base;
+	printf("base=%x,scale=%x,index=%x\n",opr_src.mem_addr.base,opr_src.mem_addr.scale,opr_src.mem_addr.index);
+	opr_dest.val=opr_src.mem_addr.base+opr_src.mem_addr.scale*opr_src.mem_addr.index;
 	operand_write(&opr_dest);
 }
 
