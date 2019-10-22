@@ -116,3 +116,18 @@ make_instr_func(jbe)
 	printf("esp=%x\n",cpu.eip+2+data_size/8);
 	return 2+data_size/8;
 }
+
+make_instr_func(jbe_b)
+{
+	OPERAND IMM;
+	imm.type=OPR_IMM;
+	imm.data_size=8;
+	imm.addr=eip+1;
+	operand_read(&imm);
+	int8_t t=imm.val;
+	int offset=sign_ext(t,data_size);
+	print_asm_1("jbe","",2,&imm);
+	if((cpu.eflags.SF!=cpu.eflags.CF)||(cpu.eflags.ZF!=0))
+		cpu.eip+=offset;
+	return 2;
+}
