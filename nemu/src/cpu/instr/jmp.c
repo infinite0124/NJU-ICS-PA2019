@@ -77,7 +77,7 @@ make_instr_func(jl)
 	operand_read(&imm);
 	int8_t t=imm.val;
 	int offset=sign_ext(t,data_size);
-	printf("data_size=%x,offset=%x\n",data_size,offset);
+	//printf("data_size=%x,offset=%x\n",data_size,offset);
 	print_asm_1("jl","",2,&imm);
 	if(cpu.eflags.SF!=cpu.eflags.OF)
 		cpu.eip+=offset;
