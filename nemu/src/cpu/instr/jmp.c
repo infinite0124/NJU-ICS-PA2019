@@ -129,5 +129,6 @@ make_instr_func(jbe_b)
 	print_asm_1("jbe","",2,&imm);
 	if((cpu.eflags.SF!=cpu.eflags.CF)||(cpu.eflags.ZF!=0))
 		cpu.eip+=offset;
+	printf("esp=%x\n",cpu.eip+2);
 	return 2;
 }
