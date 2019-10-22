@@ -27,8 +27,10 @@ make_instr_func(jmp_rel)
 	imm.data_size=8;
 	imm.addr=eip+1;
 	operand_read(&imm);
+	int8_t t=imm.val;
+	int offset=sign_ext(t,data_size);
 	print_asm_1("jmp","",1+imm.data_size/8,&imm);
-	cpu.eip+=sign_ext(imm.val,data_size);
+	cpu.eip+=offset;
 	return 1+imm.data_size/8;
 }
 
@@ -40,7 +42,7 @@ make_instr_func(je)
 	//imm.data_size=8;
 	//imm.addr=cpu.eip+8;
 	//operand_read(&imm);
-	uint8_t imm=instr_fetch(eip+1,1);
+	int8_t imm=instr_fetch(eip+1,1);
 	if(cpu.eflags.ZF)
 	{
 		cpu.eip+=sign_ext(imm,data_size);
@@ -53,7 +55,7 @@ make_instr_func(je)
 make_instr_func(jne)
 {
 	int len=2;
-	uint8_t imm=instr_fetch(eip+1,1);
+	int8_t imm=instr_fetch(eip+1,1);
 	if(!cpu.eflags.ZF)
 		cpu.eip+=sign_ext(imm,data_size);
 	return len;
@@ -62,7 +64,7 @@ make_instr_func(jne)
 make_instr_func(jg)
 {
 	int len=2;
-	uint8_t imm=instr_fetch(eip+1,1);
+	int8_t imm=instr_fetch(eip+1,1);
 	if((cpu.eflags.SF==cpu.eflags.OF)&&(cpu.eflags.ZF==0))
 		cpu.eip+=sign_ext(imm,data_size);
 	return len;
