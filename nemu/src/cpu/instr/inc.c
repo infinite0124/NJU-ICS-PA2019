@@ -3,7 +3,7 @@
 static void instr_execute_1op()
 {
 	operand_read(&opr_src);
-	alu_add(opr_src.val,1,data_size);
+	opr_val=alu_add(1,opr_val,data_size);
 	operand_write(&opr_src);
 }
 
