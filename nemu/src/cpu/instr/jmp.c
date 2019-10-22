@@ -43,7 +43,7 @@ make_instr_func(je)
 	uint8_t imm=instr_fetch(eip+1,1);
 	if(cpu.eflags.ZF)
 	{
-		cpu.eip+=imm;
+		cpu.eip+=sign_ext(imm,data_size);
 	}	
 	//print_asm_1("je"," ",2,&imm);
 	//printf("eip=%x\n",cpu.eip);
@@ -55,7 +55,7 @@ make_instr_func(jne)
 	int len=2;
 	uint8_t imm=instr_fetch(eip+1,1);
 	if(!cpu.eflags.ZF)
-		cpu.eip+=imm;
+		cpu.eip+=sign_ext(imm,data_size);
 	return len;
 }
 
@@ -64,7 +64,7 @@ make_instr_func(jg)
 	int len=2;
 	uint8_t imm=instr_fetch(eip+1,1);
 	if((cpu.eflags.SF==cpu.eflags.OF)&&(cpu.eflags.ZF==0))
-		cpu.eip+=imm;
+		cpu.eip+=sign_ext(imm,data_size);
 	return len;
 }
 
