@@ -2,6 +2,7 @@
 
 static void instr_execute_1op()
 {
+	printf("data_size=%x\n",data_size);
 	cpu.esp-=sign_ext(data_size,32);
 	 printf("esp=%x\n",cpu.esp);
 	operand_read(&opr_src);
