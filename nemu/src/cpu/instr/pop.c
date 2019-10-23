@@ -8,7 +8,7 @@ int pop()
 	//printf("esp=%x\n",cpu.esp);
 	operand_read(&opr_src);
 	cpu.esp+=data_size;
-	//printf("opr_src.val=%x\n",opr_src.val);
+	printf("pop()=%x\n",opr_src.val);
 	return opr_src.val;
 }
 
