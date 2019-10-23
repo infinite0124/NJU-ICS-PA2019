@@ -8,4 +8,5 @@ static void instr_execute_2op()
 //	printf("ZF=%x\n",cpu.eflags.ZF);
 }
 
+make_instr_impl_2op(test,r,rm,b)
 make_instr_impl_2op(test,r,rm,v)
