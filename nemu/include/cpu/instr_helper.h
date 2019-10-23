@@ -212,7 +212,7 @@ void print_asm_3(char *instr, char *suffix, uint8_t len, OPERAND *opr_1, OPERAND
 	(cpu.eflags.SF==cpu.eflags.OF)&&(cpu.eflags.ZF==0)
 
 #define condition_ge \
-	(cpu.eflags.SF==cpu.eflags.OF)||(cpu.efalgs.ZF==1)
+	(cpu.eflags.SF==cpu.eflags.OF)||(cpu.eflags.ZF==1)
 
 #define condition_l \
 	(cpu.eflags.SF!=cpu.eflags.OF)&&(cpu.eflags.ZF==0)
