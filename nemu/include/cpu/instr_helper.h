@@ -173,16 +173,16 @@ void print_asm_3(char *instr, char *suffix, uint8_t len, OPERAND *opr_1, OPERAND
 	cpu.eflags.ZF==1 
 
 #define condition_a \
-	(cpu.eflags.SF==cpu.eflags.CF)&&(cpu.eflags.ZF==0)
+	(cpu.eflags.CF==0)&&(cpu.eflags.ZF==0)
 
 #define condition_ae \
-	(cpu.eflags.SF==cpu.eflags.CF)||(cpu.eflags.ZF==1)
+	(cpu.eflags.CF==0)||(cpu.eflags.ZF==1)
 
 #define condition_b \
-	(cpu.eflags.SF!=cpu.eflags.CF)&&(cpu.eflags.ZF==0)
+	(cpu.eflags.CF==1)&&(cpu.eflags.ZF==0)
 
 #define condition_be \
-	(cpu.eflags.SF!=cpu.eflags.CF)||(cpu.eflags.ZF==1)
+	(cpu.eflags.CF==1)||(cpu.eflags.ZF==1)
 
 #define condition_o \
 	cpu.eflags.OF==1
