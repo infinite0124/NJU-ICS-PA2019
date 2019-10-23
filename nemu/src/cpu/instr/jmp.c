@@ -87,7 +87,7 @@ make_instr_func(jl)
 	print_asm_1("jl","",2,&imm);
 	if(cpu.eflags.SF!=cpu.eflags.OF)
 		cpu.eip+=offset;
-	printf("jl:eip=%x\n",cpu.eip+2);
+	//printf("jl:eip=%x\n",cpu.eip+2);
 	return 2;
 }
 make_instr_func(jle)
@@ -99,7 +99,7 @@ make_instr_func(jle)
 	//printf("jle	%x\n",imm);
 //printf("eip=%x\n",cpu.eip);
 	//print_asm_1("jle","",2,&imm);
-	printf("jle:eip=%x\n",cpu.eip+len);
+	//printf("jle:eip=%x\n",cpu.eip+len);
 	return len;
 }
 
@@ -113,7 +113,7 @@ make_instr_func(jbe)
 	if((cpu.eflags.SF!=cpu.eflags.CF)||(cpu.eflags.ZF!=0))
 		cpu.eip+=sign_ext(imm.val,data_size);
 	print_asm_1("jbe","",1+data_size/8,&imm);
-	printf("jbe:eip=%x\n",cpu.eip+2+data_size/8);
+	//printf("jbe:eip=%x\n",cpu.eip+2+data_size/8);
 	return 2+data_size/8;
 }
 
@@ -129,6 +129,6 @@ make_instr_func(jbe_b)
 	print_asm_1("jbe","",2,&imm);
 	if((cpu.eflags.SF!=cpu.eflags.CF)||(cpu.eflags.ZF!=0))
 		cpu.eip+=offset;
-	printf("jbe_b:eip=%x\n",cpu.eip+2);
+	//printf("jbe_b:eip=%x\n",cpu.eip+2);
 	return 2;
 }
