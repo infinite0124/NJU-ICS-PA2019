@@ -3,6 +3,7 @@
 static void instr_execute_1op()
 {
 	//printf("data_size=%x\n",data_size);
+	printf("esp=%x\n",cpu.esp);
 	if(data_size==8)
 		cpu.esp-=8;
 	else if(data_size==16)
