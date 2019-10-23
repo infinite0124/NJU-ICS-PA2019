@@ -1,4 +1,4 @@
-#include "cpu/instr.h"
+/*#include "cpu/instr.h"
 //make_instr_func(jmp_short)
 make_instr_func(jmp_near)
 {
@@ -131,4 +131,4 @@ make_instr_func(jbe_b)
 		cpu.eip+=offset;
 	//printf("jbe_b:eip=%x\n",cpu.eip+2);
 	return 2;
-}
+}*/
