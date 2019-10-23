@@ -41,6 +41,10 @@ extern uint8_t data_size;
 #include "cpu/instr/dec.h"
 #include "cpu/instr/jcc.h"
 #include "cpu/instr/not.h"
+#include "cpu/instr/mul.h"
+#include "cpu/instr/imul.h"
+#include "cpu/instr/div.h"
+#include "cpu/instr/idiv.h"
 
 /* TODO: add more instructions here */
 
