@@ -1,4 +1,4 @@
-/*#include "cpu/instr.h"
+#include "cpu/instr.h"
 //make_instr_func(jmp_short)
 make_instr_func(jmp_near)
 {
@@ -35,7 +35,7 @@ make_instr_func(jmp_rel)
 	return 1+imm.data_size/8;
 }
 
-make_instr_func(je)
+/*make_instr_func(je)
 {
 	int len=2;
 	//OPERAND imm;
