@@ -8,6 +8,7 @@ static void instr_execute_1op()
 	opr_dest.data_size=data_size;
 	opr_dest.addr=cpu.esp;
 	opr_dest.val=opr_src.val;
+	printf("val=%x\n",opr_dest.val);
 	operand_write(&opr_dest);
 }
 
