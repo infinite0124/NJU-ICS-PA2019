@@ -2,8 +2,13 @@
 
 static void instr_execute_1op()
 {
-	printf("data_size=%x\n",data_size);
-	cpu.esp-=sign_ext(data_size,32);
+	//printf("data_size=%x\n",data_size);
+	if(data_size==8)
+		cpu.esp-=8;
+	else if(data_size==16)
+		cpu.esp-=16;
+	else
+		cpu.esp-=32;
 	 printf("esp=%x\n",cpu.esp);
 	operand_read(&opr_src);
 	opr_dest.type=OPR_MEM;
