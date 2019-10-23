@@ -17,6 +17,6 @@ make_instr_func(jnp_short_);
 make_instr_func(jl_short_);
 make_instr_func(jge_short_);
 make_instr_func(jg_short_);
-
+make_instr_func(jbe_near);
 
 #endif
