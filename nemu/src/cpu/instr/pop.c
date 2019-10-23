@@ -18,7 +18,7 @@ static void instr_execute_1op()
 	imm.type=OPR_IMM;
         imm.data_size=data_size;
         imm.addr=cpu.esp;
-       //printf("esp=%x\n",cpu.esp);
+       	printf("esp=%x\n",cpu.esp);
         operand_read(&imm);
         cpu.esp+=data_size;
 	opr_src.val=imm.val;
