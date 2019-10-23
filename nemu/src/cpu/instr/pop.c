@@ -23,6 +23,7 @@ static void instr_execute_1op()
         cpu.esp+=data_size;
 	opr_src.val=imm.val;
 	operand_write(&opr_src);
+	printf("reg=%x,val=%x\n",opr_src.addr,opr_src.val);
 }
 
 make_instr_impl_1op(pop,r,v)
