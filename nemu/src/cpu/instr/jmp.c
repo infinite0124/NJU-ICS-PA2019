@@ -19,7 +19,7 @@ make_instr_func(jmp_near)
         return 1 + data_size / 8;
 }
 
-make_instr_func(jmp_rel)
+make_instr_func(jmp_short)
 {
 	OPERAND imm;
 	imm.type=OPR_IMM;
