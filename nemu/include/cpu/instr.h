@@ -45,7 +45,7 @@ extern uint8_t data_size;
 #include "cpu/instr/imul.h"
 #include "cpu/instr/div.h"
 #include "cpu/instr/idiv.h"
-
+#include "cpu/instr/neg.h"
 /* TODO: add more instructions here */
 
 #endif
