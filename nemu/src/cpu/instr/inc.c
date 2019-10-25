@@ -12,4 +12,4 @@ static void instr_execute_1op()
 	//printf("opr_src.val=%x\n",opr_src.val);
 }
 
-make_instr_impl_1op(inc,rm,v);
+make_instr_impl_1op(inc,r,v);
