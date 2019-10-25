@@ -19,3 +19,8 @@ int call_near(uint32_t eip,uint8_t opcode)
 	//printf("%x         call  %x\n",opcode,eip);
 	return 0;
 }
+
+make_instr_func(call_near_indirect)
+{
+	
+}
