@@ -4,12 +4,7 @@ static void instr_execute_1op()
 {
 	//printf("data_size=%x\n",data_size);
 	printf("esp=%x\n",cpu.esp);
-	if(data_size==8)
-		cpu.esp-=8;
-	else if(data_size==16)
-		cpu.esp-=16;
-	else
-		cpu.esp-=32;
+	cpu.esp-=data_size/8;
 	 printf("esp=%x\n",cpu.esp);
 	operand_read(&opr_src);
 	opr_dest.type=OPR_MEM;
