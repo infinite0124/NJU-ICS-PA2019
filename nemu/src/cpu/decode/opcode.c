@@ -2,7 +2,7 @@
 
 instr_func opcode_entry[256] = {
     /* 0x00 - 0x03*/ add_r2rm_b, add_r2rm_v, add_rm2r_b, add_rm2r_v,
-    /* 0x04 - 0x07*/ add_i2a_b, add_i2a_v, inv, inv,
+    /* 0x04 - 0x07*/ add_i2a_b, __ref_add_i2a_v, inv, inv,
     /* 0x08 - 0x0b*/ or_r2rm_b, or_r2rm_v, or_rm2r_b, or_rm2r_v,
     /* 0x0c - 0x0f*/ or_i2a_b,or_i2a_v,inv,opcode_2_byte,
     /* 0x10 - 0x13*/ adc_r2rm_b, adc_r2rm_v, adc_rm2r_b, adc_rm2r_v,
@@ -17,7 +17,7 @@ instr_func opcode_entry[256] = {
     /* 0x34 - 0x37*/ xor_i2a_b, xor_i2a_v, inv, inv,
     /* 0x38 - 0x3b*/ cmp_r2rm_b, __ref_cmp_r2rm_v, cmp_rm2r_b, cmp_rm2r_v,
     /* 0x3c - 0x3f*/ cmp_i2a_b, cmp_i2a_v, inv, inv,
-    /* 0x40 - 0x43*/ inc_rm_v, inc_rm_v, inc_rm_v, inc_rm_v,
+    /* 0x40 - 0x43*/ inc_rm_v, inc_rm_v, __ref_inc_rm_v, inc_rm_v,
     /* 0x44 - 0x47*/ inc_rm_v, inc_rm_v, inc_rm_v, inc_rm_v,
     /* 0x48 - 0x4b*/ dec_r_v, inv, inv, inv,
     /* 0x4c - 0x4f*/ inv, inv, inv, inv,
@@ -32,7 +32,7 @@ instr_func opcode_entry[256] = {
     /* 0x70 - 0x73*/ jo_short_, jno_short_, jb_short_, jae_short_,
     /* 0x74 - 0x77*/ __ref_je_short_, jne_short_, jbe_short_, ja_short_,
     /* 0x78 - 0x7b*/ js_short_, jns_short_, jp_short_, jnp_short_,
-    /* 0x7c - 0x7f*/ jl_short_, jge_short_, jle_short_, jg_short_,
+    /* 0x7c - 0x7f*/ jl_short_, jge_short_, __ref_jle_short_, jg_short_,
     /* 0x80 - 0x83*/ group_1_b, group_1_v, nemu_trap, group_1_bv,
     /* 0x84 - 0x87*/ test_r2rm_b, test_r2rm_v, inv, inv,
     /* 0x88 - 0x8b*/ mov_r2rm_b, mov_r2rm_v, mov_rm2r_b, mov_rm2r_v,
