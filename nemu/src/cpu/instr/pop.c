@@ -20,7 +20,7 @@ static void instr_execute_1op()
         imm.addr=cpu.esp;
 //       	printf("esp=%x\n",cpu.esp);
         operand_read(&imm);
-        cpu.esp+=data_size;
+        cpu.esp+=data_size/8;
 	opr_src.val=imm.val;
 	operand_write(&opr_src);
 //	printf("reg=%x,val=%x\n",opr_src.addr,opr_src.val);
