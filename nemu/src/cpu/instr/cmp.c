@@ -5,8 +5,8 @@ static void instr_execute_2op()
 	operand_read(&opr_src);
 	operand_read(&opr_dest);
 	//printf("opr_src=%x,opr_dest=%x\n",opr_src.val,opr_dest.val);
-	int t=sign_ext(opr_src.val,data_size);
-	alu_sub(t,opr_dest.val,data_size);
+	int t=opr_src.val;
+	alu_sub(sign_ext(t,data_size),opr_dest.val,data_size);
 	
 	//operand_write(&opr_dest);
 }
