@@ -20,5 +20,5 @@ make_instr_func(ret_near_imm16)
 	operand_read(&imm);
 	cpu.esp+=imm.val;
 	print_asm_1("ret","",3,&imm);
-	return 3;
+	return 0;
 }
