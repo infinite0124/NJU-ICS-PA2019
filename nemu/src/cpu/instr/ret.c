@@ -9,3 +9,16 @@ int ret_near(uint32_t eip,uint8_t opcode)
 	//printf("eip=%x\n",cpu.eip);
 	return 0;
 }
+
+make_instr_func(ret_near_imm16)
+{
+	ret_near(eip,opcode);
+	OPERAND imm;
+	imm.type=OPR_IMM;
+	imm.addr=eip+1;
+	imm.data_size=16;
+	operand_read(&imm);
+	cpu.esp+=imm.val;
+	print_asm_1("ret","",3,&imm);
+	return 3;
+}
