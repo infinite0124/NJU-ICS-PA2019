@@ -1,15 +1,15 @@
 #include "cpu/instr.h"
 
 instr_func opcode_entry[256] = {
-    /* 0x00 - 0x03*/ add_r2rm_b, add_r2rm_v, add_rm2r_b, add_rm2r_v,
-    /* 0x04 - 0x07*/ add_i2a_b, __ref_add_i2a_v, inv, inv,
-    /* 0x08 - 0x0b*/ or_r2rm_b, or_r2rm_v, or_rm2r_b, or_rm2r_v,
-    /* 0x0c - 0x0f*/ or_i2a_b,or_i2a_v,inv,opcode_2_byte,
-    /* 0x10 - 0x13*/ adc_r2rm_b, adc_r2rm_v, adc_rm2r_b, adc_rm2r_v,
-    /* 0x14 - 0x17*/ adc_i2a_b, adc_i2a_v, inv, inv,
-    /* 0x18 - 0x1b*/ inv,inv,inv,inv,//sbb_r2rm_b, sbb_r2rm_v, sbb_rm2r_b, sbb_rm2r_v,
-    /* 0x1c - 0x1f*/ inv,inv,inv,inv,//sbb_i2a_b, sbb_i2a_v, inv, inv,
-    /* 0x20 - 0x23*/ and_r2rm_b, and_r2rm_v, and_rm2r_b, and_rm2r_v,
+    /* 0x00 - 0x03*/ __ref_add_r2rm_b, __ref_add_r2rm_v, __ref_add_rm2r_b, __ref_add_rm2r_v,
+    /* 0x04 - 0x07*/ __ref_add_i2a_b, __ref_add_i2a_v, inv, inv,
+    /* 0x08 - 0x0b*/ __ref_or_r2rm_b, __ref_or_r2rm_v, __ref_or_rm2r_b, __ref_or_rm2r_v,
+    /* 0x0c - 0x0f*/ __ref_or_i2a_b,__ref_or_i2a_v,inv,opcode_2_byte,
+    /* 0x10 - 0x13*/ __ref_adc_r2rm_b, __ref_adc_r2rm_v, __ref_adc_rm2r_b, __ref_adc_rm2r_v,
+    /* 0x14 - 0x17*/ __ref_adc_i2a_b, __ref_adc_i2a_v, inv, inv,
+    /* 0x18 - 0x1b*/ __ref_sbb_r2rm_b, __ref_sbb_r2rm_v, __ref_sbb_rm2r_b, __ref_sbb_rm2r_v,
+    /* 0x1c - 0x1f*/ __ref_sbb_i2a_b, __ref_sbb_i2a_v, inv, inv,
+    /* 0x20 - 0x23*/ __ref_and_r2rm_b, __ref_and_r2rm_v, and_rm2r_b, and_rm2r_v,
     /* 0x24 - 0x27*/ and_i2a_b, and_i2a_v, inv, inv,
     /* 0x28 - 0x2b*/ sub_r2rm_b, sub_r2rm_v, sub_rm2r_b, sub_rm2r_v,
     /* 0x2c - 0x2f*/ sub_i2a_b, sub_i2a_v, inv, inv,
@@ -105,15 +105,15 @@ instr_func group_2_cv_entry[8] =
 
 /* 0xf6 */
 instr_func group_3_b_entry[8] =
-    {inv, inv, inv, inv, inv, inv, inv, inv};
+    {__ref_test_i2rm_b, inv, __ref_not_rm_b, __ref_neg_rm_b, __ref_mul_rm2a_b, __ref_imul_rm2a_b, __ref_div_rm2a_b, __ref_idiv_rm2a_b};
 
 /* 0xf7 */
 instr_func group_3_v_entry[8] =
-    {test_i2rm_v, inv, not_rm_v, inv, mul_rm2a_v, imul_rm2a_v, div_rm2a_v, idiv_rm2a_v};
+    {__ref_test_i2rm_v, inv, __ref_not_rm_v, __ref_neg_rm_v, __ref_mul_rm2a_v, __ref_imul_rm2a_v, __ref_div_rm2a_v, __ref_idiv_rm2a_v};
 
 /* 0xff */
 instr_func group_5_indirect_entry[8] =
-    {inc_r_v, inv, inv, inv, inv, inv, __ref_push_rm_v, inv};
+    {__ref_inc_rm_v, __ref_dec_rm_v, __ref_call_near_indirect, inv, __ref_jmp_near_indirect, inv, __ref_push_rm_v, inv};
 
 instr_func group_7_entry[8] =
     {inv, inv, inv, inv, inv, inv, inv, inv};
@@ -159,7 +159,7 @@ instr_func opcode_2_byte_entry[256] = {
     /* 0x14 - 0x17*/ inv, inv, inv, inv,
     /* 0x18 - 0x1b*/ inv, inv, inv, inv,
     /* 0x1c - 0x1f*/ inv, inv, inv, inv,
-    /* 0x20 - 0x23*/ inv, inv, inv, inv,
+    /* 0x20 - 0x23*/ __ref_mov_c2r_l, inv, __ref_mov_r2c_l, inv,
     /* 0x24 - 0x27*/ inv, inv, inv, inv,
     /* 0x28 - 0x2b*/ inv, inv, inv, inv,
     /* 0x2c - 0x2f*/ inv, inv, inv, inv,
@@ -183,18 +183,18 @@ instr_func opcode_2_byte_entry[256] = {
     /* 0x74 - 0x77*/ inv, inv, inv, inv,
     /* 0x78 - 0x7b*/ inv, inv, inv, inv,
     /* 0x7c - 0x7f*/ inv, inv, inv, inv,
-    /* 0x80 - 0x83*/ inv, inv, inv, inv,
-    /* 0x84 - 0x87*/ inv, inv, jbe_near, inv,
-    /* 0x88 - 0x8b*/ inv, inv, inv, inv,
-    /* 0x8c - 0x8f*/ inv, inv, inv, inv,
-    /* 0x90 - 0x93*/ inv, inv, inv, inv,
-    /* 0x94 - 0x97*/ inv, inv, inv, inv,
-    /* 0x98 - 0x9b*/ inv, inv, inv, inv,
-    /* 0x9c - 0x9f*/ inv, inv, inv, inv,
+    /* 0x80 - 0x83*/ __ref_jo_near, __ref_jno_near, __ref_jb_near, __ref_jae_near,
+    /* 0x84 - 0x87*/ __ref_je_near, __ref_jne_near, __ref_jna_near, __ref_ja_near,
+    /* 0x88 - 0x8b*/ __ref_js_near, __ref_jns_near, __ref_jp_near, __ref_jnp_near,
+    /* 0x8c - 0x8f*/ __ref_jl_near, __ref_jge_near, __ref_jle_near, __ref_jg_near,
+    /* 0x90 - 0x93*/ __ref_seto_b, __ref_setno_b, __ref_setc_b, __ref_setae_b,
+    /* 0x94 - 0x97*/ __ref_sete_b, __ref_setne_b, __ref_setbe_b, __ref_seta_b,
+    /* 0x98 - 0x9b*/ __ref_sets_b, __ref_setns_b, __ref_setp_b, __ref_setnp_b,
+    /* 0x9c - 0x9f*/ __ref_setl_b, __ref_setge_b, __ref_setle_b, __ref_setg_b,
     /* 0xa0 - 0xa3*/ inv, inv, inv, bt_r2rm_v,
     /* 0xa4 - 0xa7*/ inv, inv, inv, inv,
     /* 0xa8 - 0xab*/ inv, inv, inv, inv,
-    /* 0xac - 0xaf*/ inv, inv, inv, inv,
+    /* 0xac - 0xaf*/ inv, inv, inv, __ref_imul_rm2r_v,
     /* 0xb0 - 0xb3*/ inv, inv, inv, inv,
     /* 0xb4 - 0xb7*/ inv, inv, mov_zrm82r_v, mov_zrm162r_l,
     /* 0xb8 - 0xbb*/ inv, inv, inv, inv,
