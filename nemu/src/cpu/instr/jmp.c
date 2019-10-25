@@ -35,6 +35,10 @@ make_instr_func(jmp_short)
 	return 1+imm.data_size/8;
 }
 
+make_instr_func(jmp_near_indirect)
+{
+	
+}
 /*make_instr_func(je)
 {
 	int len=2;
@@ -45,7 +49,8 @@ make_instr_func(jmp_short)
 	//operand_read(&imm);
 	int8_t imm=instr_fetch(eip+1,1);
 	if(cpu.eflags.ZF)
-	{
+
+{
 		cpu.eip+=sign_ext(imm,data_size);
 	}	
 	//print_asm_1("je"," ",2,&imm);
