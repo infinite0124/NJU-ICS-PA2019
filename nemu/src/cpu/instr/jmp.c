@@ -35,10 +35,10 @@ make_instr_func(jmp_short)
 	return 1+imm.data_size/8;
 }
 
-make_instr_func(jmp_near_indirect)
+/*make_instr_func(jmp_near_indirect)
 {
 	
-}
+}*/
 /*make_instr_func(je)
 {
 	int len=2;

@@ -20,7 +20,7 @@ int call_near(uint32_t eip,uint8_t opcode)
 	return 0;
 }
 
-make_instr_func(call_near_indirect)
+/*make_instr_func(call_near_indirect)
 {
 	
-}
+}*/
