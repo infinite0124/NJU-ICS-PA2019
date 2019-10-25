@@ -18,7 +18,7 @@ instr_func opcode_entry[256] = {
     /* 0x38 - 0x3b*/ cmp_r2rm_b, __ref_cmp_r2rm_v, cmp_rm2r_b, cmp_rm2r_v,
     /* 0x3c - 0x3f*/ cmp_i2a_b, cmp_i2a_v, inv, inv,
     /* 0x40 - 0x43*/ inc_r_v, inc_r_v, inc_r_v, inc_r_v,
-    /* 0x44 - 0x47*/ inc_r_v, inc_r_v, inc_r_v, inc_r_v,
+    /* 0x44 - 0x47*/ inc_r_v, inc_r_v, inc_r_v, __ref_inc_r_v,
     /* 0x48 - 0x4b*/ dec_r_v, inv, inv, inv,
     /* 0x4c - 0x4f*/ inv, inv, inv, inv,
     /* 0x50 - 0x53*/ push_r_v, push_r_v, push_r_v, push_r_v,
@@ -69,7 +69,7 @@ instr_func opcode_entry[256] = {
 
 /* 0x80 */
 instr_func group_1_b_entry[8] =
-    {inc_rm_v, inv, inv, inv, inv, inv, inv, inv};
+    {inc_r_v, inv, inv, inv, inv, inv, inv, inv};
 
 /* 0x81 */
 instr_func group_1_v_entry[8] =
