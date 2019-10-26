@@ -40,7 +40,7 @@ static void instr_execute_1op()
 	operand_read(&opr_src);
 	cpu.eip=opr_src.val&(0xffffffff>>(32-data_size));
 }
-make_instr_impl(jmp,rm,v)
+make_instr_impl_1op(jmp,rm,v)
 make_instr_func(jmp_near_indirect)
 {
 	jmp_rm_v(eip,opcode);
