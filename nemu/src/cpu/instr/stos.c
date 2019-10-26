@@ -35,7 +35,7 @@ make_instr_func(stos_v)
 	mdi.addr = cpu.gpr[REG_EDI]._32;
 
 	operand_read(&al);
-	mdi.val = al.val;
+  	mdi.val = al.val;
 	int incDec = 0;
 	incDec = cpu.eflags.DF == 0 ? data_size / 8 : -data_size / 8;
 	cpu.gpr[REG_EDI]._32 += incDec;
