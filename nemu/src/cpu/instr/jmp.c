@@ -43,6 +43,7 @@ static void instr_execute_1op()
 make_instr_func(jmp_near_indirect)
 {
 	jmp_rm_v(eip,opcode);
+	return 0;
 }
 make_instr_impl_1op(jmp,rm,v)
 
