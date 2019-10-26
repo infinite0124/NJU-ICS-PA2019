@@ -20,7 +20,14 @@ int call_near(uint32_t eip,uint8_t opcode)
 	return 0;
 }
 
-/*make_instr_func(call_near_indirect)
+static void instr_execute_1op()
 {
-	
-}*/
+	operand_read(&src);
+	eip=opr_src.val&(0xffffffff>>(32-data_size));
+}
+make_instr_impl_1op(call,rm,v)
+make_instr_func(call_near_indirect)
+{
+	call_rm_v(eip,opcode);
+	return 0;
+}
