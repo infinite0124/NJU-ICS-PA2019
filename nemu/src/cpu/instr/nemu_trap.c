@@ -36,4 +36,3 @@ make_instr_func(break_point)
 	nemu_state = NEMU_BREAK;
 	return 1;
 }
-
