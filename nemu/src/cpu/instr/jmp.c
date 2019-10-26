@@ -35,10 +35,17 @@ make_instr_func(jmp_short)
 	return 1+imm.data_size/8;
 }
 
-/*make_instr_func(jmp_near_indirect)
+static void instr_execute_1op()
 {
-	
-}*/
+	operand_read(&opr_src);
+	cpu.eip=opr_src.val&(0xffffffff>>(32-data_size));
+}
+make_instr_func(jmp_near_indirect)
+{
+	jmp_rm_v(eip,opcode);
+}
+make_instr_impl_1op(jmp,rm,v)
+
 /*make_instr_func(je)
 {
 	int len=2;
