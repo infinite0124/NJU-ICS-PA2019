@@ -34,8 +34,18 @@ static struct rule
 
 	{" +", NOTYPE}, // white space
 	{"\\+", '+'},
-};
+	{"-",'-'},
+	{"\\*",'*'},
+	{"\\$",'$'},
+	{"\\*",'*'},
+	{"/","/"},
+	{"\\(",'('},
+	{"\\)",')'},
 
+	{"[0-9]{1,10}", NUM}, // dec
+	{"0[xX][0-9a-fA-F]{1,8}",NUM},//hex
+	{"[0-1]{1,32}",NUM},//bin
+	{"a-z"}
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]))
 
 static regex_t re[NR_REGEX];
@@ -123,8 +133,8 @@ uint32_t expr(char *e, bool *success)
 		return 0;
 	}
 
-	printf("\nPlease implement expr at expr.c\n");
-	assert(0);
-
+	//printf("\nPlease implement expr at expr.c\n");
+	//assert(0);
+	//将这一段替换成对expr.c中 eval 函数的调用，在第一步词法分析结果的基础上进行语法分析和求值，并 return 运算结果
 	return 0;
 }
