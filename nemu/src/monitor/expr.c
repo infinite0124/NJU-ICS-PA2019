@@ -216,9 +216,21 @@ uint32_t eval (int p , int q , bool *success)
 		*success=true;
 		uint32_t val=0;
 		int i=0;
+		int temp=0;
+		//
+		if(tokens[p].type==NUM_H)
+			temp=16;
+		else if(tokens[p].type==NUM)
+			temp=10;
+		else
+		{
+			*success=false;
+			return 0;
+		}
+
 		while(tokens[p].str[i]!='\0')
 		{
-			val=10*val+tokens[p].str[i]-'0';
+			val=temp*val+tokens[p].str[i]-'0';
 			i++;
 		}
 		return val;
