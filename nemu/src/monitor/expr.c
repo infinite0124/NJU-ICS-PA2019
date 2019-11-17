@@ -13,11 +13,14 @@
 enum
 {
 	NOTYPE = 256,
-	EQ,
-	NUM,
-	REG,
-	SYMB
-
+	EQ,//???
+	NUM=128,
+	NUM_H,
+	REG=64,
+	SYMB=32,
+	MIN=16,
+	DEREF=8,
+	OPR=4//operation
 	/* TODO: Add more token types */
 
 };
@@ -34,18 +37,21 @@ static struct rule
 
 	{" +", NOTYPE}, // white space
 	{"\\+", '+'},
-	{"-",'-'},
+	{"\\-",'-'},
 	{"\\*",'*'},
-	{"\\$",'$'},
 	{"\\*",'*'},
-	{"/","/"},
+	{"\\/","/"},
 	{"\\(",'('},
 	{"\\)",')'},
 
 	{"[0-9]{1,10}", NUM}, // dec
-	{"0[xX][0-9a-fA-F]{1,8}",NUM},//hex
-	{"[0-1]{1,32}",NUM},//bin
-	{"a-z"}
+	{"0[xX][0-9a-fA-F]{1,8}",NUM_H},//hex
+	//{"[0-1]{1,32}",NUM},//bin
+	{"$e[a-d]x",REG},
+	{"$e[bs]p",REG},
+	{"$e[ds]i",REG},
+	{"[a-zA-Z][a-zA-Z0-9_]",SYMB},
+
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]))
 
 static regex_t re[NR_REGEX];
@@ -106,8 +112,23 @@ static bool make_token(char *e)
 
 				switch (rules[i].token_type)
 				{
-					case NUM:
-
+				case NUM:
+					int val=0;
+					for(int j=substr_start;j<substr_start+subtr_len;j++)
+						val=10*val+e[j]-'0';
+					strcpy(tokens[nr_token].str,substr_start,substr-len+1);
+					tokens[nr_token].type=NUM;
+					break;
+				case REG:
+					//
+				case SYMB:
+					//
+				case MIN:
+					//
+				case DEREF:
+					//
+				case OPR:
+					//
 				default:
 					tokens[nr_token].type = rules[i].token_type;
 					nr_token++;
@@ -127,34 +148,98 @@ static bool make_token(char *e)
 	return true;
 }
 
-uint32_t eval (int s , int e , bool *success)
+bool check_parentheses(int p,int q)
+{
+	if(tokens[p].type!='('||tokens[q].type!=')')
+		return false;
+	int flag=1;
+	int top=1;
+	for(int i=p+1;i<q-1;i++)
+	{
+		if(!top)
+			return false;
+		if(tokens[i].type=='(')
+			top++;
+		else if(tokens[i].type==')')
+			top--;
+	}
+	if(top==1)
+		return true;
+	else return false;
+
+}
+
+int domi_oper(int p,int q)
+{
+	int flag1=1,flag2=0;
+	for(int i=p;i<=q;i++)
+	{
+		if(tokens[i].type=='+'||tokens[i].type=='-')
+		{
+			flag2=1;
+			break;
+		}
+	}
+	for(int i=q;i>=p;i--)
+	{
+		if(tokes[i].type==')')
+			flag=1;
+		else if(tokens[i].type=='(')
+			flag=0;
+		if(flag)
+		{
+			if(flag2)
+			{	
+				if(tokens[i].type=='+'||tokens[i].type=='-')
+					return i;
+			}
+			else
+			{
+				if(tokens[i].type=='*'||tokens[i].type=='/')
+					return i;
+			}
+		
+		}
+	}
+}
+
+uint32_t eval (int p , int q , bool *success)
 {
 	if(p > q) {
 	/* Bad expression*/
-		
+		*success=false;
+		return 0;
 	}
 	else if(p == q) {
 	/* Single
 	* For now this token should be a number.
-	* Return the value of the
+	* Return the value of the number
 	*/
+		*success=true;
+		int val=0;
+		for(int i=0;i<tokens[p].str.size();i++)
+			val=10*val+tokens[p].str[i]-'0';
+		return val;
+	}
 	else if(check_parentheses(p, q) == true) {
 	/* The expression is surrounded by a matched pair of parentheses.
 	* If that is the case, just throw away the parentheses*/
-	return eval(p + 1, q-1);
+		return eval(p + 1, q-1);
 	}
 	else {
-		op = the position of dominant operator in t he token expression;
+		op = domi_oper(p,q);
 		val1 = eval(p, op - 1);
 		val2 = eval(op + 1, q);
 		switch(op_type) {
 			case '+': return val1 + val2;
-			case '-': /* ... */
-			case '*': /* ... */
-			case '/': /* ... */
+			case '-': return val1-val2;
+			case '*': return val1*val2;
+			case '/': return val1/val2;
 			default: assert(0);
 		}
+	}
 }
+
 uint32_t expr(char *e, bool *success)
 {
 	if (!make_token(e))
@@ -165,10 +250,15 @@ uint32_t expr(char *e, bool *success)
 
 	//printf("\nPlease implement expr at expr.c\n");
 	//assert(0);
-	for(i = 0; i < nr_token; i ++) {
-		if(tokens[i].type == '*' && (i == 0 || tokens[i-1].type == certain type) ) {
+	for(int i = 0; i < nr_token; i ++) {
+		if(tokens[i].type == '*' && (i == 0 || tokens[i-1].type == SYM) ) {
 			tokens[i].type = DEREF;
 		}
+		else if(tokens[i].type=='-'&&(i==0||tokens[i-1].type==SYM))
+		{
+			tokens[i].type=MIN;
+		}
 	}
+
 	return eval(0,nr_token,success);	
 }
