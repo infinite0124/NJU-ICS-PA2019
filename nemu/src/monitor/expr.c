@@ -51,7 +51,7 @@ static struct rule
 	{"$e[bs]p",REG},
 	{"$e[ds]i",REG},
 	{"[a-zA-Z][a-zA-Z0-9_]",SYMB}
-}
+};
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]))
 
@@ -252,10 +252,10 @@ uint32_t expr(char *e, bool *success)
 	//printf("\nPlease implement expr at expr.c\n");
 	//assert(0);
 	for(int i = 0; i < nr_token; i ++) {
-		if(tokens[i].type == '*' && (i == 0 || tokens[i-1].type == SYM) ) {
+		if(tokens[i].type == '*' && (i == 0 || tokens[i-1].type == SYMB) ) {
 			tokens[i].type = DEREF;
 		}
-		else if(tokens[i].type=='-'&&(i==0||tokens[i-1].type==SYM))
+		else if(tokens[i].type=='-'&&(i==0||tokens[i-1].type==SYMB))
 		{
 			tokens[i].type=MIN;
 		}
