@@ -198,6 +198,7 @@ int domi_oper(int p,int q)
 		
 		}
 	}
+	return p;//??
 }
 
 uint32_t eval (int p , int q , bool *success)
