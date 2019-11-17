@@ -229,8 +229,9 @@ uint32_t eval (int p , int q , bool *success)
 	}
 	else {
 		int op = domi_oper(p,q);
-		int val1 = eval(p, op - 1);
-		int val2 = eval(op + 1, q);
+		int val1 = eval(p, op - 1,success);
+		int val2 = eval(op + 1, q,success);
+		int op_type=tokens[op].type;
 		switch(op_type) {
 			case '+': return val1 + val2;
 			case '-': return val1-val2;
