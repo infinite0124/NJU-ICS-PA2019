@@ -114,22 +114,19 @@ static bool make_token(char *e)
 				switch (rules[i].token_type)
 				{
 				case NUM:
-					int val=0;
-					for(int j=substr_start;j<substr_start+subtr_len;j++)
-						val=10*val+e[j]-'0';
 					strcpy(tokens[nr_token].str,substr_start,substr-len+1);
 					tokens[nr_token].type=NUM;
 					break;
 				case REG:
-					//
+					;//
 				case SYMB:
-					//
+					;//
 				case MIN:
-					//
+					;//
 				case DEREF:
-					//
+					;//
 				case OPR:
-					//
+					;//
 				default:
 					tokens[nr_token].type = rules[i].token_type;
 					nr_token++;
@@ -217,7 +214,7 @@ uint32_t eval (int p , int q , bool *success)
 	* Return the value of the number
 	*/
 		*success=true;
-		int val=0;
+		uint32_t val=0;
 		for(int i=0;i<tokens[p].str.size();i++)
 			val=10*val+tokens[p].str[i]-'0';
 		return val;
