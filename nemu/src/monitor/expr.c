@@ -13,9 +13,9 @@
 enum
 {
 	NOTYPE = 256,
-	EQ,//???
+	EQ=1,//???
 	NUM=128,
-	NUM_H,
+	NUM_H=2,
 	REG=64,
 	SYMB=32,
 	MIN=16,
@@ -40,7 +40,7 @@ static struct rule
 	{"\\-",'-'},
 	{"\\*",'*'},
 	{"\\*",'*'},
-	{"\\/","/"},
+	{"/",'/'},
 	{"\\(",'('},
 	{"\\)",')'},
 
@@ -50,7 +50,8 @@ static struct rule
 	{"$e[a-d]x",REG},
 	{"$e[bs]p",REG},
 	{"$e[ds]i",REG},
-	{"[a-zA-Z][a-zA-Z0-9_]",SYMB},
+	{"[a-zA-Z][a-zA-Z0-9_]",SYMB}
+}
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]))
 
