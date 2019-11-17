@@ -106,6 +106,8 @@ static bool make_token(char *e)
 
 				switch (rules[i].token_type)
 				{
+					case NUM:
+
 				default:
 					tokens[nr_token].type = rules[i].token_type;
 					nr_token++;
@@ -125,6 +127,34 @@ static bool make_token(char *e)
 	return true;
 }
 
+uint32_t eval (int s , int e , bool *success)
+{
+	if(p > q) {
+	/* Bad expression*/
+		
+	}
+	else if(p == q) {
+	/* Single
+	* For now this token should be a number.
+	* Return the value of the
+	*/
+	else if(check_parentheses(p, q) == true) {
+	/* The expression is surrounded by a matched pair of parentheses.
+	* If that is the case, just throw away the parentheses*/
+	return eval(p + 1, q-1);
+	}
+	else {
+		op = the position of dominant operator in t he token expression;
+		val1 = eval(p, op - 1);
+		val2 = eval(op + 1, q);
+		switch(op_type) {
+			case '+': return val1 + val2;
+			case '-': /* ... */
+			case '*': /* ... */
+			case '/': /* ... */
+			default: assert(0);
+		}
+}
 uint32_t expr(char *e, bool *success)
 {
 	if (!make_token(e))
@@ -135,6 +165,10 @@ uint32_t expr(char *e, bool *success)
 
 	//printf("\nPlease implement expr at expr.c\n");
 	//assert(0);
-	//将这一段替换成对expr.c中 eval 函数的调用，在第一步词法分析结果的基础上进行语法分析和求值，并 return 运算结果
-	return 0;
+	for(i = 0; i < nr_token; i ++) {
+		if(tokens[i].type == '*' && (i == 0 || tokens[i-1].type == certain type) ) {
+			tokens[i].type = DEREF;
+		}
+	}
+	return eval(0,nr_token,success);	
 }
