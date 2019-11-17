@@ -114,7 +114,7 @@ static bool make_token(char *e)
 				switch (rules[i].token_type)
 				{
 				case NUM:
-					strcpy(tokens[nr_token].str,substr_start,substr_len+1);
+					strncpy(tokens[nr_token].str,substr_start,substr_len+1);
 					tokens[nr_token].type=NUM;
 					break;
 				case REG:
@@ -179,7 +179,7 @@ int domi_oper(int p,int q)
 	}
 	for(int i=q;i>=p;i--)
 	{
-		if(tokes[i].type==')')
+		if(tokens[i].type==')')
 			flag1=1;
 		else if(tokens[i].type=='(')
 			flag1=0;
@@ -214,8 +214,12 @@ uint32_t eval (int p , int q , bool *success)
 	*/
 		*success=true;
 		uint32_t val=0;
-		for(int i=0;i<tokens[p].str.size();i++)
+		int i=0;
+		while(tokens[p].str[i]!='\0')
+		{
 			val=10*val+tokens[p].str[i]-'0';
+			i++;
+		}
 		return val;
 	}
 	else if(check_parentheses(p, q) == true) {
@@ -224,9 +228,9 @@ uint32_t eval (int p , int q , bool *success)
 		return eval(p + 1, q-1,success);
 	}
 	else {
-		op = domi_oper(p,q);
-		val1 = eval(p, op - 1);
-		val2 = eval(op + 1, q);
+		int op = domi_oper(p,q);
+		int val1 = eval(p, op - 1);
+		int val2 = eval(op + 1, q);
 		switch(op_type) {
 			case '+': return val1 + val2;
 			case '-': return val1-val2;
