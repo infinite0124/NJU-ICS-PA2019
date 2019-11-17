@@ -114,7 +114,7 @@ static bool make_token(char *e)
 				switch (rules[i].token_type)
 				{
 				case NUM:
-					strcpy(tokens[nr_token].str,substr_start,substr-len+1);
+					strcpy(tokens[nr_token].str,substr_start,substr_len+1);
 					tokens[nr_token].type=NUM;
 					break;
 				case REG:
@@ -150,7 +150,6 @@ bool check_parentheses(int p,int q)
 {
 	if(tokens[p].type!='('||tokens[q].type!=')')
 		return false;
-	int flag=1;
 	int top=1;
 	for(int i=p+1;i<q-1;i++)
 	{
@@ -181,10 +180,10 @@ int domi_oper(int p,int q)
 	for(int i=q;i>=p;i--)
 	{
 		if(tokes[i].type==')')
-			flag=1;
+			flag1=1;
 		else if(tokens[i].type=='(')
-			flag=0;
-		if(flag)
+			flag1=0;
+		if(flag1)
 		{
 			if(flag2)
 			{	
@@ -222,7 +221,7 @@ uint32_t eval (int p , int q , bool *success)
 	else if(check_parentheses(p, q) == true) {
 	/* The expression is surrounded by a matched pair of parentheses.
 	* If that is the case, just throw away the parentheses*/
-		return eval(p + 1, q-1);
+		return eval(p + 1, q-1,success);
 	}
 	else {
 		op = domi_oper(p,q);
