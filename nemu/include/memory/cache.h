@@ -1,8 +1,8 @@
 struct Cacheline
 {
-	int valid;
-	int mark[];
-	int data[];
+	bool valid;
+	 mark[];
+	 data[64][8];
 };
 
 init_cache();
