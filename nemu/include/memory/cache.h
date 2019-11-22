@@ -1,8 +1,8 @@
 struct Cacheline
 {
-	bool valid;
-	uint mark;
-	uint8_t data[64];
+	bool valid;//1
+	uint32_t mark;//23
+	uint8_t data[64];//64*8
 };
 
 init_cache();
