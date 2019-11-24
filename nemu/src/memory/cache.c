@@ -4,6 +4,7 @@
 #include "memory/memory.h"
 #include "nemu.h"
 #include <time.h>
+#include <stdlib.h>
 
 Cacheline cache[1024];
 
