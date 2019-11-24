@@ -20,7 +20,7 @@ uint32_t cache_read (paddr_t paddr , size_t len , Cacheline *cache)
 	int sign=(paddr&0xffffe000)>>13;//19
 	int addr=paddr&0x0000003f;//6
 	uint32_t ret=0;
-	printf("paddr=%x,gr_num=%x,sign=%x,addr=%x\n",paddr,gr_num,sign,addr);
+	//printf("paddr=%x,gr_num=%x,sign=%x,addr=%x\n",paddr,gr_num,sign,addr);
 	for(int pos=gr_num*8;pos<gr_num*8+8;pos++)
 	{
 		if(cache[pos].valid&&(cache[pos].mark==sign))//hit
@@ -40,7 +40,7 @@ uint32_t cache_read (paddr_t paddr , size_t len , Cacheline *cache)
 	}
 	//read from memory
 	memcpy(&ret,hw_mem+paddr,len);
-	printf("ret=%x\n",ret);
+	//printf("ret=%x\n",ret);
 	//find an empty place
 	for(int pos=gr_num*8;pos<gr_num*8+8;pos++)
 	{
