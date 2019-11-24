@@ -29,20 +29,20 @@ uint32_t cache_read (paddr_t paddr , size_t len , Cacheline *cache)
 			uint32_t ans=0;
 			memcpy(&ans,hw_mem+paddr,len);
 		//	printf("ans=%x,ret=%x\n",ans,ret);
-			if(ans!=ret)
+			/*if(ans!=ret)
 			{
 				printf("addr=%x,ans=%x,ret=%x\n",addr,ans,ret);
 
 				for(int i=0;i<64;i++)
 					printf("%x,",cache[pos].data[i]);
 				printf("\n");
-			}
+			}*/
 			return ret;
 		}
 	}
 	//read from memory
 	memcpy(&ret,hw_mem+paddr,len);
-	printf("addr=%x,len=%x,ret=%x\n",addr,len,ret);
+	//printf("addr=%x,len=%x,ret=%x\n",addr,len,ret);
 	//find an empty place
 	for(int pos=gr_num*8;pos<gr_num*8+8;pos++)
 	{
@@ -50,9 +50,9 @@ uint32_t cache_read (paddr_t paddr , size_t len , Cacheline *cache)
 		{
 			
 			memcpy(cache[pos].data,hw_mem+(paddr&0xffffffc0),64);
-			for(int i=0;i<64;i++)
-				printf("%x, ",cache[pos].data[i]);
-			printf("\n");
+			//for(int i=0;i<64;i++)
+			//	printf("%x, ",cache[pos].data[i]);
+			//printf("\n");
 			cache[pos].valid=1;
 			cache[pos].mark=sign;
 			return ret;
@@ -69,5 +69,15 @@ uint32_t cache_read (paddr_t paddr , size_t len , Cacheline *cache)
 
 void cache_write (paddr_t paddr , size_t len , uint32_t data, Cacheline *cache)
 {
+	memcpy(hw_mem+paddr,&data,len);
+	int gr_num=(paddr&0x00001fc0)>>6;//7
+        int sign=(paddr&0xffffe000)>>13;//19
+        int addr=paddr&0x0000003f;//6
 	
+	for(int pos=gr_num*8;pos<gr_num*8+8;i++)
+	{
+		if(cache[pos].valid&&cache[pos].mark==sign)
+			memcpy(cache[pos].data,&data,len);
+	}
+
 }
