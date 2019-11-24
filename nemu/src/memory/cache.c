@@ -35,7 +35,7 @@ uint32_t cache_read (paddr_t paddr , size_t len , Cacheline *cache)
 	{
 		if(!cache[pos].valid)
 		{
-			memcpy(cache[pos].data,hw_mem+paddr,64);
+			memcpy(cache[pos].data,hw_mem+paddr&0xffffffc0,64);
 			cache[pos].valid=1;
 			cache[pos].mark=sign;
 			return ret;
@@ -46,7 +46,7 @@ uint32_t cache_read (paddr_t paddr , size_t len , Cacheline *cache)
 	int pos=gr_num*8+rand()%8;
 	cache[pos].valid=1;
 	cache[pos].mark=sign;
-	memcpy(cache[pos].data,hw_mem+paddr,64);
+	memcpy(cache[pos].data,hw_mem+paddr&0xffffffc0,64);
 	return ret;
 }
 
