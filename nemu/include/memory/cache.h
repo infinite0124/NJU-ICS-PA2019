@@ -2,7 +2,7 @@
 #include "memory.h"
 #include "memory/memory.h"
 
-struct Cacheline
+typedef struct Cacheline
 {
 	bool valid;//1
 	uint32_t mark;//26-7=19
