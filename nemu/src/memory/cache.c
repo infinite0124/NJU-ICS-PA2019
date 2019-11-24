@@ -31,10 +31,11 @@ uint32_t cache_read (paddr_t paddr , size_t len , Cacheline *cache)
 		//	printf("ans=%x,ret=%x\n",ans,ret);
 			if(ans!=ret)
 			{
-				printf("addr=%x,ans=%x,ret=%x\n",addr,ans,ret);
-
+				printf("paddr=%x,addr=%x,ans=%x,ret=%x\n",paddr,addr,ans,ret);
+				memcpy(cache[pos].data,hw_mem+(paddr&0xffffffc0),64);
 				for(int i=0;i<64;i++)
 					printf("%x,",cache[pos].data[i]);
+
 				printf("\n");
 			}
 			return ret;
