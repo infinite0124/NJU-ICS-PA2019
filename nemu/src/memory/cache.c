@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include "memory/memory.h"
 #include "nemu.h"
-#include "time.h"
+#include <time.h>
 
 Cacheline cache[1024];
 
