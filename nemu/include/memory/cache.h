@@ -1,3 +1,7 @@
+#include "numu.h"
+#include "memory.h"
+#include "memory/memory.h"
+
 struct Cacheline
 {
 	bool valid;//1
