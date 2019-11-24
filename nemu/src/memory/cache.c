@@ -25,7 +25,15 @@ uint32_t cache_read (paddr_t paddr , size_t len , Cacheline *cache)
 	{
 		if(cache[pos].valid&&(cache[pos].mark==sign))//hit
 		{
+	
 			memcpy(&ret,cache[pos].data+addr,len);
+			int extend=addr+len-64;
+			if(extend>0)
+			{
+				uint32_t next=(sign<<13)|((gr_num+1)<<6);
+				uint32_t res=cache_read(next,extend,cache);
+				ret=res<<(8*(64-addr))+ret;
+			}
 			uint32_t ans=0;
 			memcpy(&ans,hw_mem+paddr,len);
 		//	printf("ans=%x,ret=%x\n",ans,ret);
