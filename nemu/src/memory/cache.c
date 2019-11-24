@@ -36,7 +36,7 @@ uint32_t cache_read (paddr_t paddr , size_t len , Cacheline *cache)
 		if(!cache[pos].valid)
 		{
 			memcpy(cache[pos].data,hw_mem+paddr,64);
-			cache[pos].valid=1;
+	//		cache[pos].valid=1;
 			cache[pos].mark=sign;
 			return ret;
 		}
@@ -44,7 +44,7 @@ uint32_t cache_read (paddr_t paddr , size_t len , Cacheline *cache)
 	//the group is full
 	srand((unsigned)time(NULL));
 	int pos=gr_num*8+rand()%8;
-	cache[pos].valid=1;
+	//cache[pos].valid=1;
 	cache[pos].mark=sign;
 	memcpy(cache[pos].data,hw_mem+paddr,64);
 	return ret;
@@ -52,5 +52,5 @@ uint32_t cache_read (paddr_t paddr , size_t len , Cacheline *cache)
 
 void cache_write (paddr_t paddr , size_t len , uint32_t data, Cacheline *cache)
 {
-
+	
 }
