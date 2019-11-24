@@ -29,20 +29,20 @@ uint32_t cache_read (paddr_t paddr , size_t len , Cacheline *cache)
 			uint32_t ans=0;
 			memcpy(&ans,hw_mem+paddr,len);
 		//	printf("ans=%x,ret=%x\n",ans,ret);
-			if(ans!=ret)
+	/*		if(ans!=ret)
 			{
 				printf("ans=%x,ret=%x\n",ans,ret);
 
 				for(int i=0;i<64;i++)
 					printf("%x,",cache[pos].data[i]);
 				printf("\n");
-			}
+			}*/
 			return ret;
 		}
 	}
 	//read from memory
 	memcpy(&ret,hw_mem+paddr,len);
-	printf("ret=%x\n",ret);
+	printf("addr=%x,len=%x,ret=%x\n",hw_mem+paddr,len,ret);
 	//find an empty place
 	for(int pos=gr_num*8;pos<gr_num*8+8;pos++)
 	{
