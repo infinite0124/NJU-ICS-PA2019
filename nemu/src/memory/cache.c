@@ -42,7 +42,7 @@ uint32_t cache_read (paddr_t paddr , size_t len , Cacheline *cache)
 	}
 	//read from memory
 	memcpy(&ret,hw_mem+paddr,len);
-	//printf("ret=%x\n",ret);
+	printf("ret=%x\n",ret);
 	//find an empty place
 	for(int pos=gr_num*8;pos<gr_num*8+8;pos++)
 	{
