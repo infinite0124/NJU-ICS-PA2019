@@ -72,9 +72,8 @@ void cache_write (paddr_t paddr , size_t len , uint32_t data, Cacheline *cache)
 	memcpy(hw_mem+paddr,&data,len);
 	int gr_num=(paddr&0x00001fc0)>>6;//7
         int sign=(paddr&0xffffe000)>>13;//19
-        int addr=paddr&0x0000003f;//6
 	
-	for(int pos=gr_num*8;pos<gr_num*8+8;i++)
+	for(int pos=gr_num*8;pos<gr_num*8+8;pos++)
 	{
 		if(cache[pos].valid&&cache[pos].mark==sign)
 			memcpy(cache[pos].data,&data,len);
