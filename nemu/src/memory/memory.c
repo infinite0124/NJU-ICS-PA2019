@@ -7,6 +7,7 @@
 #include "memory/cache.h"
 
 uint8_t hw_mem[MEM_SIZE_B];
+Cacheline cache[1024];
 
 uint32_t hw_mem_read(paddr_t paddr, size_t len)
 {
