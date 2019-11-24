@@ -1,4 +1,4 @@
-#include "numu.h"
+#include "nemu.h"
 #include "memory.h"
 #include "memory/memory.h"
 
