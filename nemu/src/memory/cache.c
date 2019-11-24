@@ -88,7 +88,7 @@ void cache_write (paddr_t paddr , size_t len , uint32_t data, Cacheline *cache)
 	for(int pos=gr_num*8;pos<gr_num*8+8;pos++)
 	{
 		if(cache[pos].valid&&cache[pos].mark==sign)
-			memcpy(cache[pos].data,hw_mem+(paddr&0xffffffc0),len);
+			memcpy(cache[pos].data,hw_mem+(paddr&0xffffffc0),64);
 	}
 
 }
