@@ -38,6 +38,7 @@ uint32_t cache_read (paddr_t paddr , size_t len , Cacheline *cache)
 
 				printf("\n");
 			}
+			ret=ans;
 			return ret;
 		}
 	}
