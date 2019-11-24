@@ -25,6 +25,7 @@ uint32_t cache_read (paddr_t paddr , size_t len , Cacheline *cache)
 	{
 		if(cache[pos].valid&&(cache[pos].mark==sign))//hit
 		{
+			count1++;
 			memcpy(&ret,cache[pos].data+addr,len);
 			int extend=addr+len-64;
 			if(extend>0)//two lines
@@ -36,6 +37,7 @@ uint32_t cache_read (paddr_t paddr , size_t len , Cacheline *cache)
 			return ret;
 		}
 	}
+	count2++;
 	//read from memory
 	memcpy(&ret,hw_mem+paddr,len);
 	//find an empty place
