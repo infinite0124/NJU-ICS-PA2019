@@ -32,7 +32,7 @@ uint32_t cache_read (paddr_t paddr , size_t len , Cacheline *cache)
 			{
 				uint32_t next=(sign<<13)|((gr_num+1)<<6);
 				uint32_t res=cache_read(next,extend,cache);
-				printf("extend=%x,res=%x\n",extend,res<<(8*(64-addr));
+				printf("extend=%x,res=%x\n",extend,res<<(8*(64-addr)));
 				ret+=res<<(8*(64-addr));
 			}
 			uint32_t ans=0;
