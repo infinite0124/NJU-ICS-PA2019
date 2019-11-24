@@ -39,7 +39,7 @@ uint32_t cache_read (paddr_t paddr , size_t len , Cacheline *cache)
 		{
 			memcpy(cache[pos].data,hw_mem+(paddr&0xffffffc0),64);
 			for(int i=0;i<64;i++)
-				printf("%x, ",cache[pos].data[i])
+				printf("%x, ",cache[pos].data[i]);
 			printf("\n");
 			cache[pos].valid=1;
 			cache[pos].mark=sign;
