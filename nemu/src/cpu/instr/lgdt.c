@@ -28,8 +28,8 @@ make_instr_func(lgdt)
 	
 	OPERAND test;
 	test.type=OPR_IMM;
-	test.data_size=32;
-	test.addr=eip+3;
+	test.data_size=64;
+	test.addr=eip+2;
 	operand_read(&test);
 	printf("test=%x\n",test.val);
 
