@@ -33,6 +33,6 @@ make_instr_func(lgdt)
 	operand_read(&test);
 	printf("test=%x\n",test.val);
 
-	return 5;
+	return 6;
 
 }
