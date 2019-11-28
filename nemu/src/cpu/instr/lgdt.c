@@ -2,9 +2,8 @@
 
 make_instr_func(lgdt)
 {
-	printf("enter\n");
 	OPERAND start;
-	start.type=OPR_IMM;
+	start.type=OPR_MEM;
 	start.data_size=4;
 	start.addr=eip+1;
 	operand_read(&start);
