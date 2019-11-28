@@ -23,6 +23,6 @@ make_instr_func(lgdt)
 	cpu.gdtr.limit=limit.val;
 	cpu.gdtr.base=base.val;
 
-	return 3;
+	return 4;
 
 }
