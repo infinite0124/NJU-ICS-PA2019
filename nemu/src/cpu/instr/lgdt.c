@@ -9,7 +9,7 @@ make_instr_func(lgdt)
 	operand_read(&start);
 	printf("addr=%x\n",start.val);
 
-	OPERAND limit;
+/*	OPERAND limit;
 	limit.type=OPR_IMM;
 	limit.data_size=2;
 	limit.addr=start.val;
@@ -24,8 +24,8 @@ make_instr_func(lgdt)
 	printf("base=%x\n",base.val);
 
 	cpu.gdtr.limit=limit.val;
-	cpu.gdtr.base=base.val;
+	cpu.gdtr.base=base.val;*/
 
-	return 6;
+	return 7;
 
 }
