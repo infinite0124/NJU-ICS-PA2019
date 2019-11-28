@@ -7,7 +7,7 @@ make_instr_func(lgdt)
 	start.data_size=4;
 	start.addr=eip+1;
 	//operand_read(&start);
-	//printf("addr=%x\n",start.val);
+	printf("addr=%x\n",start.addr);
 
 	/*OPERAND limit;
 	limit.type=OPR_IMM;
