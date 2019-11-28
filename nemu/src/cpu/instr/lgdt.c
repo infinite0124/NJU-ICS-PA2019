@@ -19,7 +19,7 @@ make_instr_func(lgdt)
 	OPERAND base;
 	base.type=OPR_IMM;
 	base.data_size=32;
-	base.addr=start.val+16;
+	base.addr=start.val+2;
 	operand_read(&base);
 	printf("base=%x\n",base.val);
 
