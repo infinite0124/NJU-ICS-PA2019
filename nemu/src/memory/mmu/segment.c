@@ -7,7 +7,7 @@ uint32_t segment_translate(uint32_t offset, uint8_t sreg)
 	/* perform segment translation from virtual address to linear address
 	 * by reading the invisible part of the segment register 'sreg'
 	 */
-	uint32_t base=segReg[sreg].base;
+	uint32_t base=cpu.segReg[sreg].base;
 	uint32_t addr=base+offset;
 	return addr;
 }
