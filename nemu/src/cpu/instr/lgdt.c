@@ -25,7 +25,14 @@ make_instr_func(lgdt)
 
 	cpu.gdtr.limit=limit.val;
 	cpu.gdtr.base=base.val;
+	
+	OPERAND test;
+	test.type=OPR_IMM;
+	test.data_size=32;
+	test.addr=eip+3;
+	operand_read(&test);
+	printf("test=%x\n",test.val);
 
-	return 5;
+	return 6;
 
 }
