@@ -20,8 +20,8 @@ make_instr_func(lgdt)
 	base.addr=start.val+16;
 	operand_read(&base);
 
-	cpu.gdtr.limit=limit;
-	cpu.gdtr.base=base;
+	cpu.gdtr.limit=limit.val;
+	cpu.gdtr.base=base.val;
 
 	return 3;
 
