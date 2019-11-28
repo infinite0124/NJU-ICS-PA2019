@@ -3,13 +3,13 @@
 make_instr_func(lgdt)
 {
 	OPERAND start;
-	start.type=OPR_MEM;
+	start.type=OPR_IMM;
 	start.data_size=4;
-	start.addr=eip+1;
-	//operand_read(&start);
+	start.addr=eip+2;
+	operand_read(&start);
 	printf("addr=%x\n",start.addr);
 
-	/*OPERAND limit;
+	OPERAND limit;
 	limit.type=OPR_IMM;
 	limit.data_size=2;
 	limit.addr=start.val;
