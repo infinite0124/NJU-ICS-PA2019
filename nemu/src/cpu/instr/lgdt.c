@@ -4,7 +4,7 @@ make_instr_func(lgdt)
 {
 	OPERAND start;
 	start.type=OPR_IMM;
-	start.data_size=1;
+	start.data_size=4;
 	start.addr=eip+2;
 	operand_read(&start);
 	printf("addr=%x\n",start.val);
