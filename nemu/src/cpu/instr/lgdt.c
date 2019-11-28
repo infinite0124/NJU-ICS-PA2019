@@ -2,6 +2,13 @@
 
 make_instr_func(lgdt)
 {
+	OPERAND test;
+	test.type=IMM;
+	test.data_size=32;
+	test.addr=eip-1;
+	operand_read(&test);
+	printf("opcode=%x\n",test.val);
+
 	OPERAND start;
 	start.type=OPR_IMM;
 	start.data_size=32;
