@@ -1,0 +1,12 @@
+instr/jmp.h:4:16: error: expected constructor, destructor, or type conversion before '(' token
+ make_instr_func(jmp_near);
+                ^
+instr/jmp.h:5:16: error: expected constructor, destructor, or type conversion before '(' token
+ make_instr_func(jmp_near_indirect);
+                ^
+instr/jmp.h:6:16: error: expected constructor, destructor, or type conversion before '(' token
+ make_instr_func(jmp_short);
+                ^
+instr/jmp.h:7:16: error: expected constructor, destructor, or type conversion before '(' token
+ make_instr_func(jmp_ptr);
+                ^

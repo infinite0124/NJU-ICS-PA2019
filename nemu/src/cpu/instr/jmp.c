@@ -60,7 +60,7 @@ make_instr_func(jmp_ptr)
 	operand_read(&imm2);
 
 	cpu.eip=imm.val;
-	cpu.cs=imm2.val;
+	cpu.cs.val=imm2.val;
 	if(data_size==16)
 		cpu.eip&=0x0000ffff;
 	load_sreg(1);
