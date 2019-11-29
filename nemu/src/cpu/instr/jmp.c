@@ -47,6 +47,25 @@ make_instr_func(jmp_near_indirect)
 	return 0;
 }
 
+make_instr_func(jmp_ptr)
+{
+	OPERAND imm,imm2;
+	imm.type=OPR_IMM;
+	imm2.type=OPR_IMM;
+	imm.data_size=data_size;
+	imm2.data_size=16;
+	imm.addr=eip+1;
+	imm2.addr=eip+1;
+	operand_read(&imm);
+	operand_read(&imm2);
+
+	cpu.eip=imm.val;
+	cpu.cs=imm2.val;
+	if(data_size==16)
+		cpu.eip&=0x0000ffff;
+	load_sreg(1);
+	return 1+data_size/8;
+}
 
 /*make_instr_func(je)
 {
