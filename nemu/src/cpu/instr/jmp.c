@@ -64,7 +64,7 @@ make_instr_func(jmp_ptr)
 	if(data_size==16)
 		cpu.eip&=0x0000ffff;
 	//load_sreg(1);
-	return 1+data_size/8;
+	return 0;
 }
 
 /*make_instr_func(je)
