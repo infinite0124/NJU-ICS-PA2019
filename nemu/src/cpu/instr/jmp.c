@@ -58,6 +58,7 @@ make_instr_func(jmp_ptr)
 	imm2.addr=eip+1;
 	operand_read(&imm);
 	operand_read(&imm2);
+	printf("eip=%x,cs=%x\n",imm.val,imm2.val);
 
 	cpu.eip=imm.val;
 	cpu.cs.val=imm2.val;
