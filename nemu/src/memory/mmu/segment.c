@@ -20,9 +20,14 @@ void load_sreg(uint8_t sreg)
 	 */
 	SegDesc s;
 	uint32_t addr=cpu.gdtr.base+8*cpu.segReg[sreg].index;
+	printf("addr=%x\n",addr);
+
 	memcpy(&s,(void *)addr,8);
 	cpu.segReg[sreg].base=(s.base_31_24<<24)+(s.base_23_16<<16)+s.base_15_0;
 	cpu.segReg[sreg].limit=(s.limit_19_16<<16)+s.limit_15_0;
+	printf("base=%x\n",cpu.segReg[sreg].base);
+	printf("limit=%x\n",cpu.segReg[sreg].limit);
+
 	assert(s.granularity==1||s.present==0||cpu.segReg[sreg].base==0||cpu.segReg[sreg].limit==0xffffffff);
 
 }
