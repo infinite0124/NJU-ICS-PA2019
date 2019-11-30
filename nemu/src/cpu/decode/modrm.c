@@ -146,8 +146,12 @@ int modrm_s_rm(uint32_t eip, OPERAND *s, OPERAND *rm)
 {
 	MODRM modrm;
 	modrm.val = instr_fetch(eip, 1);
-	s->type = OPR_S
+	s->type = OPR_SREG;
+	s->addr = modrm.reg_opcode;
+	int len = parse_rm_32(eip, modrm, rm);
+	return len;
 }
+
 int modrm_opcode_rm(uint32_t eip, uint8_t *opcode, OPERAND *rm)
 {
 	MODRM modrm;

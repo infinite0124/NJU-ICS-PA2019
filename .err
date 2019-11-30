@@ -85,25 +85,15 @@ nemu/src/cpu/decode/modrm.c: In function 'int modrm_s_rm(uint32_t, OPERAND*, OPE
 nemu/src/cpu/decode/modrm.c:148:14: error: 'instr_fetch' was not declared in this scope
   modrm.val = instr_fetch(eip, 1);
               ^~~~~~~~~~~
-nemu/src/cpu/decode/modrm.c:149:12: error: 'OPR_S' was not declared in this scope
-  s->type = OPR_S
-            ^~~~~
-nemu/src/cpu/decode/modrm.c:149:12: note: suggested alternative: 'OPR_SREG'
-  s->type = OPR_S
-            ^~~~~
-            OPR_SREG
-nemu/src/cpu/decode/modrm.c:150:1: warning: no return statement in function returning non-void [-Wreturn-type]
- }
- ^
 nemu/src/cpu/decode/modrm.c: In function 'int modrm_opcode_rm(uint32_t, uint8_t*, OPERAND*)':
-nemu/src/cpu/decode/modrm.c:154:14: error: 'instr_fetch' was not declared in this scope
+nemu/src/cpu/decode/modrm.c:158:14: error: 'instr_fetch' was not declared in this scope
   modrm.val = instr_fetch(eip, 1);
               ^~~~~~~~~~~
 nemu/src/cpu/decode/modrm.c: In function 'int modrm_opcode(uint32_t, uint8_t*)':
-nemu/src/cpu/decode/modrm.c:163:14: error: 'instr_fetch' was not declared in this scope
+nemu/src/cpu/decode/modrm.c:167:14: error: 'instr_fetch' was not declared in this scope
   modrm.val = instr_fetch(eip, 1);
               ^~~~~~~~~~~
 nemu/src/cpu/decode/modrm.c: In function 'int modrm_rm(uint32_t, OPERAND*)':
-nemu/src/cpu/decode/modrm.c:171:14: error: 'instr_fetch' was not declared in this scope
+nemu/src/cpu/decode/modrm.c:175:14: error: 'instr_fetch' was not declared in this scope
   modrm.val = instr_fetch(eip, 1);
               ^~~~~~~~~~~
