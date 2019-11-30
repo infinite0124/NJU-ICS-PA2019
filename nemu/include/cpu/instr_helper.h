@@ -107,6 +107,9 @@ void print_asm_3(char *instr, char *suffix, uint8_t len, OPERAND *opr_1, OPERAND
 #define decode_operand_rm2r \
 	len += modrm_r_rm(eip + 1, &opr_dest, &opr_src);
 
+#define decode_operand_s2rm \
+	len += modrm_s_rm(eip + 1, &opr_dest, &opr_src);
+
 #define decode_operand_i2rm              \
 	len += modrm_rm(eip + 1, &opr_dest); \
 	opr_src.type = OPR_IMM;              \

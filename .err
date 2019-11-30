@@ -1,0 +1,41 @@
+nemu/include/cpu/instr_helper.h:5:27: error: typedef 'instr_func' is initialized (use decltype instead)
+ typedef int (*instr_func)(uint32_t eip, uint8_t opcode);
+                           ^~~~~~~~
+nemu/include/cpu/instr_helper.h:5:27: error: 'uint32_t' was not declared in this scope
+nemu/include/cpu/instr_helper.h:5:27: note: suggested alternative: 'char32_t'
+ typedef int (*instr_func)(uint32_t eip, uint8_t opcode);
+                           ^~~~~~~~
+                           char32_t
+nemu/include/cpu/instr_helper.h:5:41: error: 'uint8_t' was not declared in this scope
+ typedef int (*instr_func)(uint32_t eip, uint8_t opcode);
+                                         ^~~~~~~
+nemu/include/cpu/instr_helper.h:7:45: error: 'uint8_t' has not been declared
+ void print_asm_0(char *instr, char *suffix, uint8_t len);
+                                             ^~~~~~~
+nemu/include/cpu/instr_helper.h:8:45: error: 'uint8_t' has not been declared
+ void print_asm_1(char *instr, char *suffix, uint8_t len, OPERAND *opr_1);
+                                             ^~~~~~~
+nemu/include/cpu/instr_helper.h:8:58: error: 'OPERAND' has not been declared
+ void print_asm_1(char *instr, char *suffix, uint8_t len, OPERAND *opr_1);
+                                                          ^~~~~~~
+nemu/include/cpu/instr_helper.h:9:45: error: 'uint8_t' has not been declared
+ void print_asm_2(char *instr, char *suffix, uint8_t len, OPERAND *opr_1, OPERAND *opr_2);
+                                             ^~~~~~~
+nemu/include/cpu/instr_helper.h:9:58: error: 'OPERAND' has not been declared
+ void print_asm_2(char *instr, char *suffix, uint8_t len, OPERAND *opr_1, OPERAND *opr_2);
+                                                          ^~~~~~~
+nemu/include/cpu/instr_helper.h:9:74: error: 'OPERAND' has not been declared
+ void print_asm_2(char *instr, char *suffix, uint8_t len, OPERAND *opr_1, OPERAND *opr_2);
+                                                                          ^~~~~~~
+nemu/include/cpu/instr_helper.h:10:45: error: 'uint8_t' has not been declared
+ void print_asm_3(char *instr, char *suffix, uint8_t len, OPERAND *opr_1, OPERAND *opr_2, OPERAND *opr_3);
+                                             ^~~~~~~
+nemu/include/cpu/instr_helper.h:10:58: error: 'OPERAND' has not been declared
+ void print_asm_3(char *instr, char *suffix, uint8_t len, OPERAND *opr_1, OPERAND *opr_2, OPERAND *opr_3);
+                                                          ^~~~~~~
+nemu/include/cpu/instr_helper.h:10:74: error: 'OPERAND' has not been declared
+ void print_asm_3(char *instr, char *suffix, uint8_t len, OPERAND *opr_1, OPERAND *opr_2, OPERAND *opr_3);
+                                                                          ^~~~~~~
+nemu/include/cpu/instr_helper.h:10:90: error: 'OPERAND' has not been declared
+ void print_asm_3(char *instr, char *suffix, uint8_t len, OPERAND *opr_1, OPERAND *opr_2, OPERAND *opr_3);
+                                                                                          ^~~~~~~
