@@ -50,56 +50,62 @@ mov.h:20:16: error: expected constructor, destructor, or type conversion before 
  make_instr_func(mov_rm2s_w);
                 ^
 mov.h:22:16: error: expected constructor, destructor, or type conversion before '(' token
- make_instr_func(movs_v);
+ make_instr_func(mov_r2c_l);
                 ^
 mov.h:23:16: error: expected constructor, destructor, or type conversion before '(' token
- make_instr_func(movs_b);
+ make_instr_func(mov_c2r_l);
                 ^
 mov.h:25:16: error: expected constructor, destructor, or type conversion before '(' token
- make_instr_func(cmova_rm2r_v);
+ make_instr_func(movs_v);
                 ^
 mov.h:26:16: error: expected constructor, destructor, or type conversion before '(' token
- make_instr_func(cmovae_rm2r_v);
-                ^
-mov.h:27:16: error: expected constructor, destructor, or type conversion before '(' token
- make_instr_func(cmovb_rm2r_v);
+ make_instr_func(movs_b);
                 ^
 mov.h:28:16: error: expected constructor, destructor, or type conversion before '(' token
- make_instr_func(cmovbe_rm2r_v);
+ make_instr_func(cmova_rm2r_v);
                 ^
 mov.h:29:16: error: expected constructor, destructor, or type conversion before '(' token
- make_instr_func(cmovg_rm2r_v);
+ make_instr_func(cmovae_rm2r_v);
                 ^
 mov.h:30:16: error: expected constructor, destructor, or type conversion before '(' token
- make_instr_func(cmovge_rm2r_v);
+ make_instr_func(cmovb_rm2r_v);
                 ^
 mov.h:31:16: error: expected constructor, destructor, or type conversion before '(' token
- make_instr_func(cmovl_rm2r_v);
+ make_instr_func(cmovbe_rm2r_v);
                 ^
 mov.h:32:16: error: expected constructor, destructor, or type conversion before '(' token
- make_instr_func(cmovle_rm2r_v);
+ make_instr_func(cmovg_rm2r_v);
                 ^
 mov.h:33:16: error: expected constructor, destructor, or type conversion before '(' token
- make_instr_func(cmovne_rm2r_v);
+ make_instr_func(cmovge_rm2r_v);
                 ^
 mov.h:34:16: error: expected constructor, destructor, or type conversion before '(' token
- make_instr_func(cmovno_rm2r_v);
+ make_instr_func(cmovl_rm2r_v);
                 ^
 mov.h:35:16: error: expected constructor, destructor, or type conversion before '(' token
- make_instr_func(cmovnp_rm2r_v);
+ make_instr_func(cmovle_rm2r_v);
                 ^
 mov.h:36:16: error: expected constructor, destructor, or type conversion before '(' token
- make_instr_func(cmovns_rm2r_v);
+ make_instr_func(cmovne_rm2r_v);
                 ^
 mov.h:37:16: error: expected constructor, destructor, or type conversion before '(' token
- make_instr_func(cmovo_rm2r_v);
+ make_instr_func(cmovno_rm2r_v);
                 ^
 mov.h:38:16: error: expected constructor, destructor, or type conversion before '(' token
- make_instr_func(cmovp_rm2r_v);
+ make_instr_func(cmovnp_rm2r_v);
                 ^
 mov.h:39:16: error: expected constructor, destructor, or type conversion before '(' token
- make_instr_func(cmovs_rm2r_v);
+ make_instr_func(cmovns_rm2r_v);
                 ^
 mov.h:40:16: error: expected constructor, destructor, or type conversion before '(' token
+ make_instr_func(cmovo_rm2r_v);
+                ^
+mov.h:41:16: error: expected constructor, destructor, or type conversion before '(' token
+ make_instr_func(cmovp_rm2r_v);
+                ^
+mov.h:42:16: error: expected constructor, destructor, or type conversion before '(' token
+ make_instr_func(cmovs_rm2r_v);
+                ^
+mov.h:43:16: error: expected constructor, destructor, or type conversion before '(' token
  make_instr_func(cmove_rm2r_v);
                 ^
