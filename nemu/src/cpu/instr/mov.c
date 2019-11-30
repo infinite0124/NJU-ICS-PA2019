@@ -83,10 +83,10 @@ make_instr_func(mov_r2c_l)
 	MODRM modrm;
 	modrm.val=instr_fetch(eip+1,1);
 	OPERAND creg,reg;
-	creg.type=OPER_CREG;
+	creg.type=OPR_CREG;
 	creg.addr=modem.reg_opcode;
 
-	reg.type=OPER_REG;
+	reg.type=OPR_REG;
 	reg.addr=modrm.mod;
 	reg.data_size=32;
 
