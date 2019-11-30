@@ -103,6 +103,7 @@ make_instr_func(mov_c2r_l)
 	OPERAND creg,reg;
 	creg.type=OPR_CREG;
 	creg.addr=modrm.reg_opcode;
+	creg.data_size=32;
 
 	reg.type=OPR_REG;
 	reg.addr=modrm.mod;
