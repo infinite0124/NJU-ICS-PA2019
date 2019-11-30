@@ -70,10 +70,46 @@ make_instr_func(mov_srm162r_l) {
         r.data_size = 32;
         rm.data_size = 16;
         len += modrm_r_rm(eip + 1, &r, &rm);
-        operand_read(&rm);
+	operand_read(&rm);
         r.val = sign_ext(rm.val, 16);
         operand_write(&r);
 
 	print_asm_2("mov", "", len, &rm, &r);
         return len;
+}
+
+make_instr_func(mov_r2c_l)
+{
+	MODRM modrm;
+	modrm.val=instr_fetch(eip+1,1);
+	OPERAND creg,reg;
+	creg.type=OPER_CREG;
+	creg.addr=modem.reg_opcode;
+
+	reg.type=OPER_REG;
+	reg.addr=modrm.mod;
+	reg.data_size=32;
+
+	operand_read(&reg);
+	creg.val=reg.val;
+	operand_write(&creg);
+	return 2;
+}
+
+make_instr_func(mov_c2r_l)
+{
+	MODRM modrm;
+	modrm.val=instr_fetch(eip+1,1);
+	OPERAND creg,reg;
+	creg.type=OPR_CREG;
+	creg.addr=modrm.reg_opcode;
+
+	reg.type=OPR_REG;
+	reg.addr=modrm.mod;
+	reg.data_size=32;
+
+	operand_read(&creg);
+	reg.val=creg.val;
+	operand_write(&reg);
+	return 2;
 }
