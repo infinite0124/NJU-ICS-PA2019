@@ -80,7 +80,7 @@ void print_asm_3(char *instr, char *suffix, uint8_t len, OPERAND *opr_1, OPERAND
 #define decode_data_size_near opr_src.data_size = opr_dest.data_size = 32;
 
 // determine the type and address of operand(s)
-// possible types: r, rm, i, m, a, c, o
+// possible types: r, rm, i, m, a, c, o 	+s,creg
 // here c stands for CL, CX, or ECX
 
 #define decode_operand_rm \
