@@ -1,99 +1,41 @@
-In file included from ./libs/newlib/include/string.h:12,
-                 from ./nemu/include/nemu.h:6,
-                 from nemu/src/cpu/decode/modrm.c:1:
-./libs/newlib/include/sys/cdefs.h:303:18: warning: ISO C++11 requires whitespace after the macro name
- #define _Noreturn[[noreturn]]
-                  ^
-In file included from ./kernel/include/memory.h:4,
-                 from ./nemu/include/nemu.h:9,
-                 from nemu/src/cpu/decode/modrm.c:1:
-./kernel/include/common.h:18: warning: "NULL" redefined
- #define NULL ((void *)0)
- 
-In file included from ./libs/newlib/include/stdio.h:35,
-                 from ./nemu/include/nemu.h:8,
-                 from nemu/src/cpu/decode/modrm.c:1:
-/usr/lib/gcc/i686-linux-gnu/8/include/stddef.h:403: note: this is the location of the previous definition
- #define NULL __null
- 
-In file included from ./kernel/include/common.h:20,
-                 from ./kernel/include/memory.h:4,
-                 from ./nemu/include/nemu.h:9,
-                 from nemu/src/cpu/decode/modrm.c:1:
-./kernel/include/debug.h:22: warning: "assert" redefined
- #define assert(cond)                              \
- 
-In file included from ./nemu/include/nemu.h:7,
-                 from nemu/src/cpu/decode/modrm.c:1:
-./libs/newlib/include/assert.h:16: note: this is the location of the previous definition
- #define assert(__e) ((__e) ? (void)0 : __assert_func(__FILE__, __LINE__, \
- 
-In file included from ./libs/newlib/include/string.h:11,
-                 from ./nemu/include/nemu.h:6,
-                 from nemu/src/cpu/decode/modrm.c:1:
-./libs/newlib/include/sys/reent.h:640:11: warning: unnecessary parentheses in declaration of '_sig_func' [-Wparentheses]
-   void (**(_sig_func))(int);
-           ^
-In file included from ./kernel/include/memory.h:4,
-                 from ./nemu/include/nemu.h:9,
-                 from nemu/src/cpu/decode/modrm.c:1:
-./kernel/include/common.h:13:17: error: redeclaration of C++ built-in type 'bool' [-fpermissive]
- typedef uint8_t bool;
-                 ^~~~
-In file included from nemu/src/cpu/decode/modrm.c:1:
-./nemu/include/nemu.h:22:17: error: redeclaration of C++ built-in type 'bool' [-fpermissive]
- typedef uint8_t bool;
-                 ^~~~
-./nemu/include/nemu.h: In function 'void memcpy_with_mask(void*, const void*, size_t, uint8_t*)':
-./nemu/include/nemu.h:46:16: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
-  for (i = 0; i < len; i++)
-              ~~^~~~~
-In file included from ./nemu/include/cpu/cpu.h:7,
-                 from ./nemu/include/cpu/operand.h:5,
-                 from ./nemu/include/cpu/modrm.h:4,
-                 from nemu/src/cpu/decode/modrm.c:2:
-./nemu/include/cpu/reg.h: At global scope:
-./nemu/include/cpu/reg.h:22:2: error: conflicting declaration 'typedef union CR0 CR0'
- }CR0;
-  ^~~
-In file included from ./kernel/include/x86.h:4,
-                 from ./kernel/include/debug.h:5,
-                 from ./kernel/include/common.h:20,
-                 from ./kernel/include/memory.h:4,
-                 from ./nemu/include/nemu.h:9,
-                 from nemu/src/cpu/decode/modrm.c:1:
-./kernel/include/x86/cpu.h:26:3: note: previous declaration as 'typedef union CR0 CR0'
- } CR0;
-   ^~~
-nemu/src/cpu/decode/modrm.c: In function 'int case_mod_00(uint32_t, MODRM, OPERAND*)':
-nemu/src/cpu/decode/modrm.c:22:15: error: 'instr_fetch' was not declared in this scope
-   opr->addr = instr_fetch(eip + 1, 4);
-               ^~~~~~~~~~~
-nemu/src/cpu/decode/modrm.c: In function 'int case_mod_01(uint32_t, MODRM, OPERAND*)':
-nemu/src/cpu/decode/modrm.c:47:19: error: 'instr_fetch' was not declared in this scope
-   disp8 = (int8_t)instr_fetch(eip + 2, 1);
-                   ^~~~~~~~~~~
-nemu/src/cpu/decode/modrm.c: In function 'int case_mod_10(uint32_t, MODRM, OPERAND*)':
-nemu/src/cpu/decode/modrm.c:81:21: error: 'instr_fetch' was not declared in this scope
-   disp32 = (int32_t)instr_fetch(eip + 2, 4);
-                     ^~~~~~~~~~~
-nemu/src/cpu/decode/modrm.c: In function 'int modrm_r_rm(uint32_t, OPERAND*, OPERAND*)':
-nemu/src/cpu/decode/modrm.c:138:14: error: 'instr_fetch' was not declared in this scope
-  modrm.val = instr_fetch(eip, 1);
-              ^~~~~~~~~~~
-nemu/src/cpu/decode/modrm.c: In function 'int modrm_s_rm(uint32_t, OPERAND*, OPERAND*)':
-nemu/src/cpu/decode/modrm.c:148:14: error: 'instr_fetch' was not declared in this scope
-  modrm.val = instr_fetch(eip, 1);
-              ^~~~~~~~~~~
-nemu/src/cpu/decode/modrm.c: In function 'int modrm_opcode_rm(uint32_t, uint8_t*, OPERAND*)':
-nemu/src/cpu/decode/modrm.c:158:14: error: 'instr_fetch' was not declared in this scope
-  modrm.val = instr_fetch(eip, 1);
-              ^~~~~~~~~~~
-nemu/src/cpu/decode/modrm.c: In function 'int modrm_opcode(uint32_t, uint8_t*)':
-nemu/src/cpu/decode/modrm.c:167:14: error: 'instr_fetch' was not declared in this scope
-  modrm.val = instr_fetch(eip, 1);
-              ^~~~~~~~~~~
-nemu/src/cpu/decode/modrm.c: In function 'int modrm_rm(uint32_t, OPERAND*)':
-nemu/src/cpu/decode/modrm.c:175:14: error: 'instr_fetch' was not declared in this scope
-  modrm.val = instr_fetch(eip, 1);
-              ^~~~~~~~~~~
+nemu/include/cpu/instr_helper.h:5:27: error: typedef 'instr_func' is initialized (use decltype instead)
+ typedef int (*instr_func)(uint32_t eip, uint8_t opcode);
+                           ^~~~~~~~
+nemu/include/cpu/instr_helper.h:5:27: error: 'uint32_t' was not declared in this scope
+nemu/include/cpu/instr_helper.h:5:27: note: suggested alternative: 'char32_t'
+ typedef int (*instr_func)(uint32_t eip, uint8_t opcode);
+                           ^~~~~~~~
+                           char32_t
+nemu/include/cpu/instr_helper.h:5:41: error: 'uint8_t' was not declared in this scope
+ typedef int (*instr_func)(uint32_t eip, uint8_t opcode);
+                                         ^~~~~~~
+nemu/include/cpu/instr_helper.h:7:45: error: 'uint8_t' has not been declared
+ void print_asm_0(char *instr, char *suffix, uint8_t len);
+                                             ^~~~~~~
+nemu/include/cpu/instr_helper.h:8:45: error: 'uint8_t' has not been declared
+ void print_asm_1(char *instr, char *suffix, uint8_t len, OPERAND *opr_1);
+                                             ^~~~~~~
+nemu/include/cpu/instr_helper.h:8:58: error: 'OPERAND' has not been declared
+ void print_asm_1(char *instr, char *suffix, uint8_t len, OPERAND *opr_1);
+                                                          ^~~~~~~
+nemu/include/cpu/instr_helper.h:9:45: error: 'uint8_t' has not been declared
+ void print_asm_2(char *instr, char *suffix, uint8_t len, OPERAND *opr_1, OPERAND *opr_2);
+                                             ^~~~~~~
+nemu/include/cpu/instr_helper.h:9:58: error: 'OPERAND' has not been declared
+ void print_asm_2(char *instr, char *suffix, uint8_t len, OPERAND *opr_1, OPERAND *opr_2);
+                                                          ^~~~~~~
+nemu/include/cpu/instr_helper.h:9:74: error: 'OPERAND' has not been declared
+ void print_asm_2(char *instr, char *suffix, uint8_t len, OPERAND *opr_1, OPERAND *opr_2);
+                                                                          ^~~~~~~
+nemu/include/cpu/instr_helper.h:10:45: error: 'uint8_t' has not been declared
+ void print_asm_3(char *instr, char *suffix, uint8_t len, OPERAND *opr_1, OPERAND *opr_2, OPERAND *opr_3);
+                                             ^~~~~~~
+nemu/include/cpu/instr_helper.h:10:58: error: 'OPERAND' has not been declared
+ void print_asm_3(char *instr, char *suffix, uint8_t len, OPERAND *opr_1, OPERAND *opr_2, OPERAND *opr_3);
+                                                          ^~~~~~~
+nemu/include/cpu/instr_helper.h:10:74: error: 'OPERAND' has not been declared
+ void print_asm_3(char *instr, char *suffix, uint8_t len, OPERAND *opr_1, OPERAND *opr_2, OPERAND *opr_3);
+                                                                          ^~~~~~~
+nemu/include/cpu/instr_helper.h:10:90: error: 'OPERAND' has not been declared
+ void print_asm_3(char *instr, char *suffix, uint8_t len, OPERAND *opr_1, OPERAND *opr_2, OPERAND *opr_3);
+                                                                                          ^~~~~~~
