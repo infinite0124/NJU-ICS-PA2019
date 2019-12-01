@@ -32,6 +32,6 @@ void load_sreg(uint8_t sreg)
 	printf("base=%x\n",cpu.segReg[sreg].base);
 	printf("limit=%x\n",cpu.segReg[sreg].limit);
 
-	assert(s.granularity==0&&s.present==0&&cpu.segReg[sreg].base==0&&cpu.segReg[sreg].limit==0xfffff);
+	assert(s.granularity==1&&s.present==1&&cpu.segReg[sreg].base==0&&cpu.segReg[sreg].limit==0xfffff);
 
 }
