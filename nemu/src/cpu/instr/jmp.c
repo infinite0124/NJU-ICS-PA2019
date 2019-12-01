@@ -58,13 +58,13 @@ make_instr_func(jmp_ptr)
 	imm2.addr=eip+1+data_size/8;
 	operand_read(&imm);
 	operand_read(&imm2);
-	printf("eip=%x,cs=%x\n",imm.val,imm2.val);
+	//printf("eip=%x,cs=%x\n",imm.val,imm2.val);
 
 	cpu.eip=imm.val;
 	cpu.cs.val=imm2.val;
 	if(data_size==16)
 		cpu.eip&=0x0000ffff;
-	//load_sreg(1);
+	load_sreg(1);
 	return 0;
 }
 
