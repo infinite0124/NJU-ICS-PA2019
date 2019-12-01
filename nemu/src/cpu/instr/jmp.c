@@ -55,7 +55,7 @@ make_instr_func(jmp_ptr)
 	imm.data_size=data_size;
 	imm2.data_size=16;
 	imm.addr=eip+1;
-	imm2.addr=eip+data_size/8;
+	imm2.addr=eip+1+data_size/8;
 	operand_read(&imm);
 	operand_read(&imm2);
 	printf("eip=%x,cs=%x\n",imm.val,imm2.val);
