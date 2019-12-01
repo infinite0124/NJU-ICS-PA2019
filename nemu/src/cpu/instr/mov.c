@@ -5,7 +5,7 @@ static void instr_execute_2op()
 	operand_read(&opr_src);
 	opr_dest.val = opr_src.val;
 	operand_write(&opr_dest);
-	if((opr_dest.type==OPR_SREG)&&cpu.cr0.pe)
+	if((opr_dest.type==OPR_SREG))
 	{
 		load_sreg(opr_dest.addr);
 	}
