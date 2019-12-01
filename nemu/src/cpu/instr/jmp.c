@@ -64,7 +64,8 @@ make_instr_func(jmp_ptr)
 	cpu.cs.val=imm2.val;
 	if(data_size==16)
 		cpu.eip&=0x0000ffff;
-	load_sreg(1);
+	if(cpu.cr0.pe)
+		load_sreg(1);
 	return 0;
 }
 
