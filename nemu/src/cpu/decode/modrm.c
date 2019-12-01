@@ -148,7 +148,7 @@ int modrm_s_rm(uint32_t eip, OPERAND *s, OPERAND *rm)
 	modrm.val = instr_fetch(eip, 1);
 	s->type = OPR_SREG;
 	s->addr = modrm.reg_opcode;
-	printf("sreg=%x\n",s->addr);
+	//printf("sreg=%x\n",s->addr);
 	int len = parse_rm_32(eip, modrm, rm);
 	return len;
 }
