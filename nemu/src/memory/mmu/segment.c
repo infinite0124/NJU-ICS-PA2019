@@ -24,7 +24,7 @@ void load_sreg(uint8_t sreg)
 	//printf("addr=%x\n",addr);
 	uint64_t temp;
 	temp=instr_fetch(cpu.gdtr.base,8);
-	printf("temp=%x\n",temp);
+	printf("temp=%llx\n",temp);
 	//memcpy(&s,(void *)addr,8);
 	//printf("s[0]=%x\n",s.val[0]);
 	//cpu.segReg[sreg].base=(s.base_31_24<<24)+(s.base_23_16<<16)+s.base_15_0;
