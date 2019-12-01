@@ -18,7 +18,6 @@ void load_sreg(uint8_t sreg)
 	/* load the invisibile part of the segment register 'sreg' by reading the GDT.
 	 * The visible part of 'sreg' should be assigned by mov or ljmp already.
 	 */
-	printf("base=%x\n",cpu.gdtr.base);
 	SegDesc s;
 	uint32_t addr=cpu.gdtr.base+8*cpu.segReg[sreg].index;
 	printf("addr=%x\n",addr);
@@ -26,9 +25,13 @@ void load_sreg(uint8_t sreg)
 	
 	cpu.segReg[sreg].base=(s.base_31_24<<24)+(s.base_23_16<<16)+s.base_15_0;
 	cpu.segReg[sreg].limit=(s.limit_19_16<<16)+s.limit_15_0;
+	cpu.segReg[sreg].soft_use=s.soft_use;
+	cpu.segReg[sreg].privilege_level=s.privilege_level;
+	//type unwritten
+
 	printf("base=%x\n",cpu.segReg[sreg].base);
 	printf("limit=%x\n",cpu.segReg[sreg].limit);
 
-	assert(s.granularity==1||s.present==0||cpu.segReg[sreg].base==0||cpu.segReg[sreg].limit==0xffffffff);
+	assert(s.granularity==1||s.present==0||cpu.segReg[sreg].base==0||cpu.segReg[sreg].limit==0xfffff);
 
 }
