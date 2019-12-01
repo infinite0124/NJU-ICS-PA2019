@@ -116,9 +116,11 @@ make_instr_func(mov_c2r_l)
 	reg.type=OPR_REG;
 	reg.addr=modrm.mod;
 	reg.data_size=32;
+	printf("reg=%x,creg=%x\n",reg.addr,creg.addr);
 
 	operand_read(&creg);
 	reg.val=creg.val;
+	printf("reg.val=%x\n",reg.val);
 	operand_write(&reg);
 	return 2;
 }
