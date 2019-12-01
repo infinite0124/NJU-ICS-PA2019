@@ -19,7 +19,7 @@ void load_sreg(uint8_t sreg)
 	 * The visible part of 'sreg' should be assigned by mov or ljmp already.
 	 */
 	printf("base=%x\n",cpu.gdtr.base);
-	SegDesc s;
+	//SegDesc s;
 	//uint32_t addr=cpu.gdtr.base+cpu.segReg[sreg].index;
 	//printf("addr=%x\n",addr);
 	uint64_t temp;
