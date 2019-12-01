@@ -7,7 +7,6 @@ static void instr_execute_2op()
 	operand_write(&opr_dest);
 	if((opr_dest.type==OPR_SREG))
 	{
-		printf("sreg==%x\n",opr_dest.addr);
 		load_sreg(opr_dest.addr);
 	}
 }
