@@ -22,9 +22,9 @@ void load_sreg(uint8_t sreg)
 	//SegDesc s;
 	//uint32_t addr=cpu.gdtr.base+cpu.segReg[sreg].index;
 	//printf("addr=%x\n",addr);
-	uint64_t temp;
-	temp=instr_fetch(cpu.gdtr.base,8);
-	printf("temp=%llx\n",temp);
+	uint32_t temp;
+	temp=instr_fetch(cpu.gdtr.base,4);
+	printf("temp=%x\n",temp);
 	//memcpy(&s,(void *)addr,8);
 	//printf("s[0]=%x\n",s.val[0]);
 	//cpu.segReg[sreg].base=(s.base_31_24<<24)+(s.base_23_16<<16)+s.base_15_0;
