@@ -1,5 +1,4 @@
-In file included from ../include/cpu/cpu.h:6,
-                 from memory/mmu/segment.c:1:
+In file included from memory/memory.c:1:
 ../include/nemu.h:10:10: fatal error: config.h: No such file or directory
  #include <config.h>
           ^~~~~~~~~~
