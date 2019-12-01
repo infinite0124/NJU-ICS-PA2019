@@ -92,7 +92,7 @@ make_instr_func(mov_r2c_l)
 	printf("creg=%x\n",creg.addr);
 
 	reg.type=OPR_REG;
-	reg.addr=modrm.mod;
+	reg.addr=modrm.rm;
 	reg.data_size=32;
 	printf("reg=%x\n",reg.addr);
 
