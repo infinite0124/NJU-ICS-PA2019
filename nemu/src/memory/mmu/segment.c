@@ -19,21 +19,16 @@ void load_sreg(uint8_t sreg)
 	 * The visible part of 'sreg' should be assigned by mov or ljmp already.
 	 */
 	printf("base=%x\n",cpu.gdtr.base);
-	//SegDesc s;
-	//uint32_t addr=cpu.gdtr.base+cpu.segReg[sreg].index;
-	//printf("addr=%x\n",addr);
-	uint32_t temp;
-	temp=instr_fetch(cpu.gdtr.base,4);
-	printf("temp=%x\n",temp);
-	temp=instr_fetch(cpu.gdtr.base+4,4);
-	printf("temp=%x\n",temp);
-	//memcpy(&s,(void *)addr,8);
-	//printf("s[0]=%x\n",s.val[0]);
-	//cpu.segReg[sreg].base=(s.base_31_24<<24)+(s.base_23_16<<16)+s.base_15_0;
-	//cpu.segReg[sreg].limit=(s.limit_19_16<<16)+s.limit_15_0;
-	//printf("base=%x\n",cpu.segReg[sreg].base);
-	//printf("limit=%x\n",cpu.segReg[sreg].limit);
+	SegDesc s;
+	uint32_t addr=cpu.gdtr.base+cpu.segReg[sreg].index;
+	printf("addr=%x\n",addr);
+	memcpy(&s,cpu.gdtr.base+cpu.segReg[sreg].index,8);
+	
+	cpu.segReg[sreg].base=(s.base_31_24<<24)+(s.base_23_16<<16)+s.base_15_0;
+	cpu.segReg[sreg].limit=(s.limit_19_16<<16)+s.limit_15_0;
+	printf("base=%x\n",cpu.segReg[sreg].base);
+	printf("limit=%x\n",cpu.segReg[sreg].limit);
 
-	//assert(s.granularity==1||s.present==0||cpu.segReg[sreg].base==0||cpu.segReg[sreg].limit==0xffffffff);
+	assert(s.granularity==1||s.present==0||cpu.segReg[sreg].base==0||cpu.segReg[sreg].limit==0xffffffff);
 
 }
