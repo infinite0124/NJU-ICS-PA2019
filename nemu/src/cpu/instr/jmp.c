@@ -54,7 +54,7 @@ make_instr_func(jmp_ptr)
 	imm2.type=OPR_IMM;
 	imm.data_size=data_size;
 	imm2.data_size=16;
-	imm.addr=eip+1;
+	imm.addr=eip+3;
 	imm2.addr=eip+1;
 	operand_read(&imm);
 	operand_read(&imm2);
@@ -64,7 +64,7 @@ make_instr_func(jmp_ptr)
 	cpu.cs.val=imm2.val;
 	if(data_size==16)
 		cpu.eip&=0x0000ffff;
-	load_sreg(1);
+	//load_sreg(1);
 	return 0;
 }
 
