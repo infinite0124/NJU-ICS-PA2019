@@ -1,0 +1,82 @@
+In file included from ./libs/newlib/include/string.h:12,
+                 from ./nemu/include/nemu.h:6,
+                 from nemu/include/cpu/reg.h:4:
+./libs/newlib/include/sys/cdefs.h:303:18: warning: ISO C++11 requires whitespace after the macro name
+ #define _Noreturn[[noreturn]]
+                  ^
+In file included from ./kernel/include/memory.h:4,
+                 from ./nemu/include/nemu.h:9,
+                 from nemu/include/cpu/reg.h:4:
+./kernel/include/common.h:18: warning: "NULL" redefined
+ #define NULL ((void *)0)
+ 
+In file included from ./libs/newlib/include/stdio.h:35,
+                 from ./nemu/include/nemu.h:8,
+                 from nemu/include/cpu/reg.h:4:
+/usr/lib/gcc/i686-linux-gnu/8/include/stddef.h:403: note: this is the location of the previous definition
+ #define NULL __null
+ 
+In file included from ./kernel/include/common.h:20,
+                 from ./kernel/include/memory.h:4,
+                 from ./nemu/include/nemu.h:9,
+                 from nemu/include/cpu/reg.h:4:
+./kernel/include/debug.h:22: warning: "assert" redefined
+ #define assert(cond)                              \
+ 
+In file included from ./nemu/include/nemu.h:7,
+                 from nemu/include/cpu/reg.h:4:
+./libs/newlib/include/assert.h:16: note: this is the location of the previous definition
+ #define assert(__e) ((__e) ? (void)0 : __assert_func(__FILE__, __LINE__, \
+ 
+In file included from ./libs/newlib/include/string.h:11,
+                 from ./nemu/include/nemu.h:6,
+                 from nemu/include/cpu/reg.h:4:
+./libs/newlib/include/sys/reent.h:640:11: warning: unnecessary parentheses in declaration of '_sig_func' [-Wparentheses]
+   void (**(_sig_func))(int);
+           ^
+In file included from ./kernel/include/memory.h:4,
+                 from ./nemu/include/nemu.h:9,
+                 from nemu/include/cpu/reg.h:4:
+./kernel/include/common.h:13:17: error: redeclaration of C++ built-in type 'bool' [-fpermissive]
+ typedef uint8_t bool;
+                 ^~~~
+In file included from nemu/include/cpu/reg.h:4:
+./nemu/include/nemu.h:22:17: error: redeclaration of C++ built-in type 'bool' [-fpermissive]
+ typedef uint8_t bool;
+                 ^~~~
+./nemu/include/nemu.h: In function 'void memcpy_with_mask(void*, const void*, size_t, uint8_t*)':
+./nemu/include/nemu.h:46:16: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  for (i = 0; i < len; i++)
+              ~~^~~~~
+nemu/include/cpu/reg.h: At global scope:
+nemu/include/cpu/reg.h:22:2: error: conflicting declaration 'typedef union CR0 CR0'
+ }CR0;
+  ^~~
+In file included from ./kernel/include/x86.h:4,
+                 from ./kernel/include/debug.h:5,
+                 from ./kernel/include/common.h:20,
+                 from ./kernel/include/memory.h:4,
+                 from ./nemu/include/nemu.h:9,
+                 from nemu/include/cpu/reg.h:4:
+./kernel/include/x86/cpu.h:26:3: note: previous declaration as 'typedef union CR0 CR0'
+ } CR0;
+   ^~~
+nemu/include/cpu/reg.h:29:2: error: expected ';' at end of member declaration
+  uint32_t val;
+  ^~~~~~~~
+          ;
+nemu/include/cpu/reg.h:29:11: error: 'val' does not name a type
+  uint32_t val;
+           ^~~
+nemu/include/cpu/reg.h:30:2: error: conflicting declaration 'typedef union CR3 CR3'
+ }CR3;
+  ^~~
+In file included from ./kernel/include/x86.h:4,
+                 from ./kernel/include/debug.h:5,
+                 from ./kernel/include/common.h:20,
+                 from ./kernel/include/memory.h:4,
+                 from ./nemu/include/nemu.h:9,
+                 from nemu/include/cpu/reg.h:4:
+./kernel/include/x86/cpu.h:39:3: note: previous declaration as 'typedef union CR3 CR3'
+ } CR3;
+   ^~~
