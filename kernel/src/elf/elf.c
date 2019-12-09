@@ -1,7 +1,7 @@
 #include "common.h"
 #include "memory.h"
 #include "string.h"
-
+#include "stdio.h"
 #include <elf.h>
 
 #ifdef HAS_DEVICE_IDE
@@ -41,7 +41,7 @@ uint32_t loader()
 			//panic("Please implement the loader");
 		#ifdef IA32_PAGE
 			ph->p_vaddr = mm_malloc(ph->p_vaddr, ph->p_memsz);
-			Log(ph->p_vaddr);
+			printf("%x\n",ph->p_vaddr);
 		#endif
 /*copy the segment from the ELF file to its proper memory area */
 		memcpy((void *)ph->p_vaddr, (void *)elf + ph->p_offset, ph->p_filesz);
