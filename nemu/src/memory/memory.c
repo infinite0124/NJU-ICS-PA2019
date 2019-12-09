@@ -43,12 +43,40 @@ void paddr_write(paddr_t paddr, size_t len, uint32_t data)
 
 uint32_t laddr_read(laddr_t laddr, size_t len)
 {
-	return paddr_read(laddr, len);
+	assert(len==1||len==2||len==4);
+	if(cpu.cr0.pe&&cpu.cr0.pg)
+	{
+	/*	if()//data across the page boundary
+		{
+			assert(0);
+		}
+		else
+		{*/
+			hwaddr_t hwaddr=page_translate(laddr);
+			return hw_mem_read(hwaddr,len);
+		//}
+	}
+	else
+		return paddr_read(laddr, len);
 }
 
 void laddr_write(laddr_t laddr, size_t len, uint32_t data)
 {
-	paddr_write(laddr, len, data);
+	assert(len==1||len==2||len==4);
+	if(cpu.cr0.pe&&cpu.cr0.pg)
+	{
+		/*if()//data across the boundary
+		{
+			assert(0);
+		}
+		else
+		{*/
+			hwaddr_t hwaddr=page_translate(laddr);
+			hw_mem_write(hwaddr,len,data);
+		//}
+	}
+	else
+		paddr_write(laddr, len, data);
 }
 
 uint32_t vaddr_read(vaddr_t vaddr, uint8_t sreg, size_t len)
