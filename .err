@@ -105,15 +105,8 @@ nemu/src/memory/mmu/page.c:11:29: error: 'CR0' {aka 'union CR0'} has no member n
 ./kernel/include/debug.h:25:9: note: in definition of macro 'assert'
    if (!(cond))                              \
          ^~~~
-nemu/src/memory/mmu/page.c:12:12: error: 'addr' was not declared in this scope
-  uint32_t (addr=cpu.cr3.pdtr<<12)+4*dir;
-            ^~~~
-nemu/src/memory/mmu/page.c:12:12: note: suggested alternative: 'laddr'
-  uint32_t (addr=cpu.cr3.pdtr<<12)+4*dir;
-            ^~~~
-            laddr
 nemu/src/memory/mmu/page.c:12:25: error: 'CR3' {aka 'union CR3'} has no member named 'pdtr'
-  uint32_t (addr=cpu.cr3.pdtr<<12)+4*dir;
+  uint32_t addr=(cpu.cr3.pdtr<<12)+4*dir;
                          ^~~~
 nemu/src/memory/mmu/page.c:14:14: error: 'hw_mem' was not declared in this scope
   memcpy(&pde,hw_mem+addr,4);
