@@ -72,7 +72,6 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data)
 		else
 		{*/
 			paddr_t paddr=page_translate(laddr);
-			printf("%x\n",paddr);
 			hw_mem_write(paddr,len,data);
 		//}
 	}
