@@ -17,6 +17,7 @@ paddr_t page_translate(laddr_t laddr)
 	PTE pte;
 	memcpy(&pte,hw_mem+p_addr,4);
 	assert(pte.present==1);//
+	assert(pte.page_frame==0);//
 	return pte.page_frame<<12+offset;
 	//assert(0);
 #else
