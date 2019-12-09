@@ -30,16 +30,13 @@ kernel/src/elf/elf.c:33:19: warning: pointer of type 'void *' used in arithmetic
   ph = (void *)elf + elf->e_phoff;
        ~~~~~~~~~~~~^~~~~~~~~~~~~~
 kernel/src/elf/elf.c:33:19: error: invalid conversion from 'void*' to 'Elf32_Phdr*' [-fpermissive]
-kernel/src/elf/elf.c:44:4: error: 'printf' was not declared in this scope
-    printf("%x\n",ph->p_vaddr);
-    ^~~~~~
-kernel/src/elf/elf.c:44:4: note: 'printf' is defined in header '<cstdio>'; did you forget to '#include <cstdio>'?
-kernel/src/elf/elf.c:6:1:
-+#include <cstdio>
- 
-kernel/src/elf/elf.c:44:4:
-    printf("%x\n",ph->p_vaddr);
-    ^~~~~~
+kernel/src/elf/elf.c:44:4: error: 'log' was not declared in this scope
+    log(ph->p_vaddr);
+    ^~~
+kernel/src/elf/elf.c:44:4: note: suggested alternative: 'Log'
+    log(ph->p_vaddr);
+    ^~~
+    Log
 kernel/src/elf/elf.c:47:43: warning: pointer of type 'void *' used in arithmetic [-Wpointer-arith]
    memcpy((void *)ph->p_vaddr, (void *)elf + ph->p_offset, ph->p_filesz);
                                ~~~~~~~~~~~~^~~~~~~~~~~~~~
