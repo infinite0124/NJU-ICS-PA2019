@@ -94,24 +94,30 @@ In file included from ./kernel/include/common.h:20,
                  from nemu/src/memory/mmu/page.c:1:
 nemu/src/memory/mmu/page.c: In function 'paddr_t page_translate(laddr_t)':
 nemu/src/memory/mmu/page.c:11:17: error: 'CR0' {aka 'union CR0'} has no member named 'pe'
-  assert(cpu.cr0.pe&&cpu.cr0.pg);
+  assert(cpu.cr0.pe&&cpu.cr0.pg);//
                  ^~
 ./kernel/include/debug.h:25:9: note: in definition of macro 'assert'
    if (!(cond))                              \
          ^~~~
 nemu/src/memory/mmu/page.c:11:29: error: 'CR0' {aka 'union CR0'} has no member named 'pg'
-  assert(cpu.cr0.pe&&cpu.cr0.pg);
+  assert(cpu.cr0.pe&&cpu.cr0.pg);//
                              ^~
 ./kernel/include/debug.h:25:9: note: in definition of macro 'assert'
    if (!(cond))                              \
          ^~~~
 nemu/src/memory/mmu/page.c:12:24: error: 'CR3' {aka 'union CR3'} has no member named 'pdtr'
-  uint32_t addr=cpu.cr3.pdtr+4*dir;
+  uint32_t addr=cpu.cr3.pdtr<<12+4*dir;
                         ^~~~
-nemu/src/memory/mmu/page.c:14:20: error: 'hw_mem' was not declared in this scope
-  memcpy(&next_addr,hw_mem+addr,4);
-                    ^~~~~~
-nemu/src/memory/mmu/page.c:14:20: note: suggested alternative: 'memmem'
-  memcpy(&next_addr,hw_mem+addr,4);
-                    ^~~~~~
-                    memmem
+nemu/src/memory/mmu/page.c:14:14: error: 'hw_mem' was not declared in this scope
+  memcpy(&pde,hw_mem+addr,4);
+              ^~~~~~
+nemu/src/memory/mmu/page.c:14:14: note: suggested alternative: 'memmem'
+  memcpy(&pde,hw_mem+addr,4);
+              ^~~~~~
+              memmem
+nemu/src/memory/mmu/page.c:16:36: warning: suggest parentheses around '+' inside '<<' [-Wparentheses]
+  uint32_t p_addr=pde.page_frame<<12+4*page;
+                                  ~~^~~~~~~
+nemu/src/memory/mmu/page.c:20:27: warning: suggest parentheses around '+' inside '<<' [-Wparentheses]
+  return pte.page_frame<<12+offset;
+                         ~~^~~~~~~
