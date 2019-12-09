@@ -9,7 +9,7 @@ paddr_t page_translate(laddr_t laddr)
 	uint32_t page=(laddr&0x003ff000)>>12;
 	uint32_t offset=laddr&0x00000fff;
 	assert(cpu.cr0.pe&&cpu.cr0.pg);//
-	uint32_t (addr=cpu.cr3.pdtr<<12)+4*dir;
+	uint32_t addr=(cpu.cr3.pdtr<<12)+4*dir;
 	PDE pde;
 	memcpy(&pde,hw_mem+addr,4);
 	assert(pde.present==1);//
