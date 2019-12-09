@@ -52,8 +52,8 @@ uint32_t laddr_read(laddr_t laddr, size_t len)
 		}
 		else
 		{*/
-			hwaddr_t hwaddr=page_translate(laddr);
-			return hw_mem_read(hwaddr,len);
+			paddr_t paddr=page_translate(laddr);
+			return hw_mem_read(paddr,len);
 		//}
 	}
 	else
@@ -71,8 +71,8 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data)
 		}
 		else
 		{*/
-			hwaddr_t hwaddr=page_translate(laddr);
-			hw_mem_write(hwaddr,len,data);
+			paddr_t paddr=page_translate(laddr);
+			hw_mem_write(paddr,len,data);
 		//}
 	}
 	else
