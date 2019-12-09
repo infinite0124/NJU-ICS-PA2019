@@ -105,9 +105,16 @@ nemu/src/memory/mmu/page.c:11:29: error: 'CR0' {aka 'union CR0'} has no member n
 ./kernel/include/debug.h:25:9: note: in definition of macro 'assert'
    if (!(cond))                              \
          ^~~~
-nemu/src/memory/mmu/page.c:12:24: error: 'CR3' {aka 'union CR3'} has no member named 'pdtr'
-  uint32_t addr=cpu.cr3.pdtr<<12+4*dir;
-                        ^~~~
+nemu/src/memory/mmu/page.c:12:12: error: 'addr' was not declared in this scope
+  uint32_t (addr=cpu.cr3.pdtr<<12)+4*dir;
+            ^~~~
+nemu/src/memory/mmu/page.c:12:12: note: suggested alternative: 'laddr'
+  uint32_t (addr=cpu.cr3.pdtr<<12)+4*dir;
+            ^~~~
+            laddr
+nemu/src/memory/mmu/page.c:12:25: error: 'CR3' {aka 'union CR3'} has no member named 'pdtr'
+  uint32_t (addr=cpu.cr3.pdtr<<12)+4*dir;
+                         ^~~~
 nemu/src/memory/mmu/page.c:14:14: error: 'hw_mem' was not declared in this scope
   memcpy(&pde,hw_mem+addr,4);
               ^~~~~~
@@ -115,9 +122,3 @@ nemu/src/memory/mmu/page.c:14:14: note: suggested alternative: 'memmem'
   memcpy(&pde,hw_mem+addr,4);
               ^~~~~~
               memmem
-nemu/src/memory/mmu/page.c:16:36: warning: suggest parentheses around '+' inside '<<' [-Wparentheses]
-  uint32_t p_addr=pde.page_frame<<12+4*page;
-                                  ~~^~~~~~~
-nemu/src/memory/mmu/page.c:21:27: warning: suggest parentheses around '+' inside '<<' [-Wparentheses]
-  return pte.page_frame<<12+offset;
-                         ~~^~~~~~~
