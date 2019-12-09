@@ -108,10 +108,10 @@ nemu/src/memory/mmu/page.c:11:29: error: 'CR0' {aka 'union CR0'} has no member n
 nemu/src/memory/mmu/page.c:12:24: error: 'CR3' {aka 'union CR3'} has no member named 'pdtr'
   uint32_t addr=cpu.cr3.pdtr+4*dir;
                         ^~~~
-nemu/src/memory/mmu/page.c:14:20: error: 'hw_addr' was not declared in this scope
-  memcpy(&next_addr,hw_addr+addr,4);
-                    ^~~~~~~
-nemu/src/memory/mmu/page.c:14:20: note: suggested alternative: 'addr'
-  memcpy(&next_addr,hw_addr+addr,4);
-                    ^~~~~~~
-                    addr
+nemu/src/memory/mmu/page.c:14:20: error: 'hw_mem' was not declared in this scope
+  memcpy(&next_addr,hw_mem+addr,4);
+                    ^~~~~~
+nemu/src/memory/mmu/page.c:14:20: note: suggested alternative: 'memmem'
+  memcpy(&next_addr,hw_mem+addr,4);
+                    ^~~~~~
+                    memmem

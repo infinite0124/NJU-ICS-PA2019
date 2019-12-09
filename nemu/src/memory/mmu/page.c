@@ -11,10 +11,10 @@ paddr_t page_translate(laddr_t laddr)
 	assert(cpu.cr0.pe&&cpu.cr0.pg);
 	uint32_t addr=cpu.cr3.pdtr+4*dir;
 	uint32_t next_addr;
-	memcpy(&next_addr,hw_addr+addr,4);
+	memcpy(&next_addr,hw_mem+addr,4);
 	uint32_t p_addr=next_addr+4*page;
 	uint32_t p_page;
-	memcpy(&p_page,hw_addr+p_addr,4);
+	memcpy(&p_page,hw_mem+p_addr,4);
 	return p_page+offset;
 	//assert(0);
 #else
