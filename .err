@@ -105,18 +105,13 @@ nemu/src/memory/mmu/page.c:11:29: error: 'CR0' {aka 'union CR0'} has no member n
 ./kernel/include/debug.h:25:9: note: in definition of macro 'assert'
    if (!(cond))                              \
          ^~~~
-nemu/src/memory/mmu/page.c:12:14: error: expected initializer before '.' token
-  uint32_t cpu.cr3.pdtr+4*dir;
-              ^
-nemu/src/memory/mmu/page.c:8:11: warning: unused variable 'dir' [-Wunused-variable]
-  uint32_t dir=laddr>>22;
-           ^~~
-nemu/src/memory/mmu/page.c:9:11: warning: unused variable 'page' [-Wunused-variable]
-  uint32_t page=(laddr&0x003ff000)>>12;
-           ^~~~
-nemu/src/memory/mmu/page.c:10:11: warning: unused variable 'offset' [-Wunused-variable]
-  uint32_t offset=laddr&0x00000fff;
-           ^~~~~~
-nemu/src/memory/mmu/page.c:18:1: warning: no return statement in function returning non-void [-Wreturn-type]
- }
- ^
+nemu/src/memory/mmu/page.c:12:24: error: 'CR3' {aka 'union CR3'} has no member named 'pdtr'
+  uint32_t addr=cpu.cr3.pdtr+4*dir;
+                        ^~~~
+nemu/src/memory/mmu/page.c:14:20: error: 'hw_addr' was not declared in this scope
+  memcpy(&next_addr,hw_addr+addr,4);
+                    ^~~~~~~
+nemu/src/memory/mmu/page.c:14:20: note: suggested alternative: 'addr'
+  memcpy(&next_addr,hw_addr+addr,4);
+                    ^~~~~~~
+                    addr

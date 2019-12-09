@@ -9,8 +9,14 @@ paddr_t page_translate(laddr_t laddr)
 	uint32_t page=(laddr&0x003ff000)>>12;
 	uint32_t offset=laddr&0x00000fff;
 	assert(cpu.cr0.pe&&cpu.cr0.pg);
-	uint32_t cpu.cr3.pdtr+4*dir;
-	assert(0);
+	uint32_t addr=cpu.cr3.pdtr+4*dir;
+	uint32_t next_addr;
+	memcpy(&next_addr,hw_addr+addr,4);
+	uint32_t p_addr=next_addr+4*page;
+	uint32_t p_page;
+	memcpy(&p_page,hw_addr+p_addr,4);
+	return p_page+offset;
+	//assert(0);
 #else
 	return tlb_read(laddr) | (laddr & PAGE_MASK);
 	;
