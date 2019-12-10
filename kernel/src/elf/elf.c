@@ -41,7 +41,7 @@ uint32_t loader()
 			//panic("Please implement the loader");
 		#ifdef IA32_PAGE
 			Log("va=%x\n",ph->p_vaddr);
-			ph->p_vaddr = mm_malloc(ph->p_vaddr, ph->p_memsz);
+		//	ph->p_vaddr = mm_malloc(ph->p_vaddr, ph->p_memsz);
 			Log("pa=%x\n",ph->p_vaddr);
 		#endif
 /*copy the segment from the ELF file to its proper memory area */
