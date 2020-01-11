@@ -8,6 +8,11 @@ typedef struct {
 	uint32_t base :32;
 }GDTR;
 
+typedef struct {
+	uint32_t limit :16;
+	uint32_t base :32;
+}IDTR;
+
 typedef union {
 	struct {
 		uint32_t pe :1;
@@ -125,7 +130,7 @@ typedef struct
 
 #ifdef IA32_INTR
 	// interrupt
-	IDTR idtr; // IDTR, todo: define type IDTR
+	IDTR idtr; // IDTR
 	uint8_t intr;
 #else
 	uint8_t dummy_intr[7];
