@@ -12,11 +12,11 @@ paddr_t page_translate(laddr_t laddr)
 	uint32_t addr=(cpu.cr3.pdtr<<12)+4*dir;
 	PDE pde;
 	memcpy(&pde,hw_mem+addr,4);
-	assert(pde.present==1);//
+	//assert(pde.present==1);//
 	uint32_t p_addr=(pde.page_frame<<12)+4*page;
 	PTE pte;
 	memcpy(&pte,hw_mem+p_addr,4);
-	assert(pte.present==1);//
+	//assert(pte.present==1);//
 //	assert(pte.page_frame==0);//
 	return (pte.page_frame<<12)+offset;
 	//assert(0);
