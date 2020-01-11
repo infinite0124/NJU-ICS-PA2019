@@ -14,14 +14,14 @@ make_instr_func(lidt)
 	limit.data_size=16;
 	limit.addr=start.val;
 	operand_read(&limit);
-//	printf("limit=%x\n",limit.val);
+	printf("limit=%x\n",limit.val);
 
 	OPERAND base;
 	base.type=OPR_IMM;
 	base.data_size=32;
 	base.addr=start.val+2;
 	operand_read(&base);
-//	printf("base=%x\n",base.val);
+	printf("base=%x\n",base.val);
 
 	cpu.idtr.limit=limit.val;
 	cpu.idtr.base=base.val;
