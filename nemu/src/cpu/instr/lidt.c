@@ -1,6 +1,6 @@
 #include "cpu/instr.h"
 
-make_instr_func(lgdt)
+make_instr_func(lidt)
 {
 	OPERAND start;
 	start.type=OPR_IMM;
@@ -23,8 +23,8 @@ make_instr_func(lgdt)
 	operand_read(&base);
 //	printf("base=%x\n",base.val);
 
-	cpu.gdtr.limit=limit.val;
-	cpu.gdtr.base=base.val;
+	cpu.idtr.limit=limit.val;
+	cpu.idtr.base=base.val;
 
 	return 6;
 
