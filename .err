@@ -115,6 +115,3 @@ nemu/src/memory/mmu/page.c:16:14: note: suggested alternative: 'memmem'
   memcpy(&pde,hw_mem+addr,4);
               ^~~~~~
               memmem
-nemu/src/memory/mmu/page.c:26:11: warning: unused variable 'temp' [-Wunused-variable]
-  uint32_t temp;
-           ^~~~
