@@ -115,3 +115,15 @@ nemu/src/memory/mmu/page.c:15:14: note: suggested alternative: 'memmem'
   memcpy(&pde,hw_mem+addr,4);
               ^~~~~~
               memmem
+nemu/src/memory/mmu/page.c:25:15: error: invalid conversion from 'uint32_t' {aka 'unsigned int'} to 'const void*' [-fpermissive]
+  memcpy(&temp,res,4);
+               ^~~
+In file included from ./libs/newlib/include/string.h:10,
+                 from ./nemu/include/nemu.h:6,
+                 from ./nemu/include/cpu/cpu.h:6,
+                 from nemu/src/memory/mmu/page.c:1:
+./libs/newlib/include/string.h:23:39: note:   initializing argument 2 of 'void* memcpy(void*, const void*, size_t)'
+ _PTR _EXFUN(memcpy, (_PTR __restrict, const _PTR __restrict, size_t));
+./libs/newlib/include/_ansi.h:70:34: note: in definition of macro '_EXFUN'
+ #define _EXFUN(name, proto) name proto
+                                  ^~~~~
