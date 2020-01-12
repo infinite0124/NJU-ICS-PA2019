@@ -5,7 +5,7 @@
 paddr_t page_translate(laddr_t laddr)
 {
 #ifndef TLB_ENABLED
-	if(laddr>0xd0000000)
+	if(laddr<0xc0000000)
 		printf("laddr:%x\n",laddr);
 	uint32_t dir=laddr>>22;
 	uint32_t page=(laddr&0x003ff000)>>12;
@@ -20,9 +20,9 @@ paddr_t page_translate(laddr_t laddr)
 	memcpy(&pte,hw_mem+p_addr,4);
 	assert(pte.present==1);//
 //	assert(pte.page_frame==0);//
-	//uint32_t res=(pte.page_frame<<12)+offset;
-	//if(addr>0x00030000)
-	//	printf("addr:%x\n",res);
+	uint32_t res=(pte.page_frame<<12)+offset;
+	if(res>0x00030000)
+		printf("addr:%x\n",res);
 	//uint32_t temp;
 	//memcpy(&temp,res,4);
 	//printf("temp:%x\n",temp);
