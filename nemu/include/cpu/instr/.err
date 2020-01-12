@@ -1,3 +1,6 @@
 cli.h:2:16: error: expected constructor, destructor, or type conversion before '(' token
  make_instr_func(cli);
                 ^
+cli.h:3:16: error: expected constructor, destructor, or type conversion before '(' token
+ make_instr_func(sti);
+                ^
