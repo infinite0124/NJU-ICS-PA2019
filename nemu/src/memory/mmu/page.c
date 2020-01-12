@@ -21,10 +21,10 @@ paddr_t page_translate(laddr_t laddr)
 	assert(pte.present==1);//
 //	assert(pte.page_frame==0);//
 	uint32_t res=(pte.page_frame<<12)+offset;
-	if(res>0x00030000)
+	if(res>0x00040000)
 		printf("addr:%x\n",res);
-	//uint32_t temp;
-	//memcpy(&temp,res,4);
+	uint32_t temp;
+	memcpy(&temp,hw_mem+res,4);
 	//printf("temp:%x\n",temp);
 	return (pte.page_frame<<12)+offset;
 	//assert(0);
