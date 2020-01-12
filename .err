@@ -93,37 +93,28 @@ In file included from ./kernel/include/common.h:20,
                  from ./nemu/include/cpu/cpu.h:6,
                  from nemu/src/memory/mmu/page.c:1:
 nemu/src/memory/mmu/page.c: In function 'paddr_t page_translate(laddr_t)':
-nemu/src/memory/mmu/page.c:12:17: error: 'CR0' {aka 'union CR0'} has no member named 'pe'
+nemu/src/memory/mmu/page.c:13:17: error: 'CR0' {aka 'union CR0'} has no member named 'pe'
   assert(cpu.cr0.pe&&cpu.cr0.pg);//
                  ^~
 ./kernel/include/debug.h:25:9: note: in definition of macro 'assert'
    if (!(cond))                              \
          ^~~~
-nemu/src/memory/mmu/page.c:12:29: error: 'CR0' {aka 'union CR0'} has no member named 'pg'
+nemu/src/memory/mmu/page.c:13:29: error: 'CR0' {aka 'union CR0'} has no member named 'pg'
   assert(cpu.cr0.pe&&cpu.cr0.pg);//
                              ^~
 ./kernel/include/debug.h:25:9: note: in definition of macro 'assert'
    if (!(cond))                              \
          ^~~~
-nemu/src/memory/mmu/page.c:13:25: error: 'CR3' {aka 'union CR3'} has no member named 'pdtr'
+nemu/src/memory/mmu/page.c:14:25: error: 'CR3' {aka 'union CR3'} has no member named 'pdtr'
   uint32_t addr=(cpu.cr3.pdtr<<12)+4*dir;
                          ^~~~
-nemu/src/memory/mmu/page.c:15:14: error: 'hw_mem' was not declared in this scope
+nemu/src/memory/mmu/page.c:16:14: error: 'hw_mem' was not declared in this scope
   memcpy(&pde,hw_mem+addr,4);
               ^~~~~~
-nemu/src/memory/mmu/page.c:15:14: note: suggested alternative: 'memmem'
+nemu/src/memory/mmu/page.c:16:14: note: suggested alternative: 'memmem'
   memcpy(&pde,hw_mem+addr,4);
               ^~~~~~
               memmem
-nemu/src/memory/mmu/page.c:25:15: error: invalid conversion from 'uint32_t' {aka 'unsigned int'} to 'const void*' [-fpermissive]
-  memcpy(&temp,res,4);
-               ^~~
-In file included from ./libs/newlib/include/string.h:10,
-                 from ./nemu/include/nemu.h:6,
-                 from ./nemu/include/cpu/cpu.h:6,
-                 from nemu/src/memory/mmu/page.c:1:
-./libs/newlib/include/string.h:23:39: note:   initializing argument 2 of 'void* memcpy(void*, const void*, size_t)'
- _PTR _EXFUN(memcpy, (_PTR __restrict, const _PTR __restrict, size_t));
-./libs/newlib/include/_ansi.h:70:34: note: in definition of macro '_EXFUN'
- #define _EXFUN(name, proto) name proto
-                                  ^~~~~
+nemu/src/memory/mmu/page.c:26:11: warning: unused variable 'temp' [-Wunused-variable]
+  uint32_t temp;
+           ^~~~
