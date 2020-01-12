@@ -19,6 +19,7 @@ paddr_t page_translate(laddr_t laddr)
 	memcpy(&pte,hw_mem+p_addr,4);
 	assert(pte.present==1);//
 //	assert(pte.page_frame==0);//
+	printf("addr:%x\n",(pte.page_frame<<12)+offset);
 	return (pte.page_frame<<12)+offset;
 	//assert(0);
 #else
