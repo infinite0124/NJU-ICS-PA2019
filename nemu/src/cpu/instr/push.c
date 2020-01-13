@@ -52,11 +52,11 @@ int pushf()
 
 int push_segReg(int no)
 {
-	cpu.esp-=data_size/8;
+	cpu.esp-=16;
 	opr_dest.type=OPR_MEM;
 	opr_dest.addr=cpu.esp;
-	opr_dest.data_size=data_size;
-	opr_dest.val=cpu.segReg[no];
+	opr_dest.data_size=16;
+	opr_dest.val=cpu.segReg[no].val;
 	operand_write(&opr_dest);
 	return 1;
 }
