@@ -6,8 +6,8 @@ make_instr_func(lgdt)
 	modrm_rm(eip+1,&start);
 	start.data_size=32;
 	
-	operand_read(&start);
-	printf("addr=%x\n",start.val);
+	//operand_read(&start);
+	printf("addr=%x\n",start.mem_addr.disp);
 
 	OPERAND limit;
 	limit.type=OPR_IMM;
