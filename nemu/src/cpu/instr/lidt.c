@@ -1,31 +1,32 @@
 #include "cpu/instr.h"
 
-make_instr_func(lidt)
+make_instr_func(lgdt)
 {
+	int len=1;
 	OPERAND start;
-	start.type=OPR_IMM;
+	len+=modrm_rm(eip+1,&start);
 	start.data_size=32;
-	start.addr=eip+2;
-	operand_read(&start);
-//	printf("addr=%x\n",start.val);
+	//printf("addr=%x\n",start.mem_addr.disp);
 
 	OPERAND limit;
 	limit.type=OPR_IMM;
 	limit.data_size=16;
-	limit.addr=start.val;
+	limit.addr=start.mem_addr.disp;
+	//printf("limit.addr=%x\n",limit.addr);
 	operand_read(&limit);
-	printf("limit=%x\n",limit.val);
+	//printf("limit=%x\n",limit.val);
 
 	OPERAND base;
 	base.type=OPR_IMM;
 	base.data_size=32;
-	base.addr=start.val+2;
+	base.addr=start.mem_addr.disp+2;
 	operand_read(&base);
-	printf("base=%x\n",base.val);
+	//printf("base.addr=%x\n",base.addr);
+	//printf("base=%x\n",base.val);
 
-	cpu.idtr.limit=limit.val;
-	cpu.idtr.base=base.val;
-
-	return 6;
+	cpu.gdtr.limit=limit.val;
+	cpu.gdtr.base=base.val;
+	//printf("len=%x\n",len);
+	return len;
 
 }
