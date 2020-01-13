@@ -42,8 +42,9 @@ int push_gr(uint32_t eip, uint8_t opcode)
 int pushf()
 {
 	cpu.esp-=data_size/8;
-	opr_dest.type=OPR_IMM;
+	opr_dest.type=OPR_MEM;
 	opr_dest.addr=cpu.esp;
+	opr_dest.data_size=data_size;
 	opr_dest.val=cpu.eflags;
 	operand_write(&opr_dest);
 	return 1;
@@ -52,8 +53,9 @@ int pushf()
 int push_segReg(int no)
 {
 	cpu.esp-=data_size/8;
-	opr_dest.type=OPR_IMM;
+	opr_dest.type=OPR_MEM;
 	opr_dest.addr=cpu.esp;
+	opr_dest.data_size=data_size;
 	opr_dest.val=cpu.segReg[no];
 	operand_write(&opr_dest);
 	return 1;
