@@ -2,6 +2,8 @@
 #define __INSTR_PUSH_H__
 
 int push_gr(uint32_t eip,uint8_t opcode);
+int pushf();
+int push_segReg(int no);
 int push_eip();
 make_instr_func(push_r_v);
 make_instr_func(push_rm_v);

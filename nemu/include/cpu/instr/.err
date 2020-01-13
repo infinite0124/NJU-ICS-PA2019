@@ -1,6 +1,25 @@
-cli.h:2:16: error: expected constructor, destructor, or type conversion before '(' token
- make_instr_func(cli);
+push.h:4:13: error: 'uint32_t' was not declared in this scope
+ int push_gr(uint32_t eip,uint8_t opcode);
+             ^~~~~~~~
+push.h:4:13: note: suggested alternative: 'char32_t'
+ int push_gr(uint32_t eip,uint8_t opcode);
+             ^~~~~~~~
+             char32_t
+push.h:4:26: error: 'uint8_t' was not declared in this scope
+ int push_gr(uint32_t eip,uint8_t opcode);
+                          ^~~~~~~
+push.h:4:40: error: expression list treated as compound expression in initializer [-fpermissive]
+ int push_gr(uint32_t eip,uint8_t opcode);
+                                        ^
+push.h:8:16: error: expected constructor, destructor, or type conversion before '(' token
+ make_instr_func(push_r_v);
                 ^
-cli.h:3:16: error: expected constructor, destructor, or type conversion before '(' token
- make_instr_func(sti);
+push.h:9:16: error: expected constructor, destructor, or type conversion before '(' token
+ make_instr_func(push_rm_v);
+                ^
+push.h:10:16: error: expected constructor, destructor, or type conversion before '(' token
+ make_instr_func(push_i_b);
+                ^
+push.h:11:16: error: expected constructor, destructor, or type conversion before '(' token
+ make_instr_func(push_i_v);
                 ^
