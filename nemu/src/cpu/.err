@@ -1,4 +1,4 @@
-instr/cli.c:1:10: fatal error: cpu/instr.h: No such file or directory
+decode/opcode.c:1:10: fatal error: cpu/instr.h: No such file or directory
  #include "cpu/instr.h"
           ^~~~~~~~~~~~~
 compilation terminated.
