@@ -39,6 +39,26 @@ int push_gr(uint32_t eip, uint8_t opcode)
 	return len;
 }
 
+int pushf()
+{
+	cpu.esp-=data_size/8;
+	opr_dest.type=OPR_IMM;
+	opr_dest.addr=cpu.esp;
+	opr_dest.val=cpu.eflags;
+	operand_write(&opr_dest);
+	return 1;
+}
+
+int push_segReg(int no)
+{
+	cpu.esp-=data_size/8;
+	opr_dest.type=OPR_IMM;
+	opr_dest.addr=cpu.esp;
+	opr_dest.val=cpu.segReg[no];
+	operand_write(&opr_dest);
+	return 1;
+}
+
 int push_eip()
 {
 	//printf("data_size=%x\n",data_size);
