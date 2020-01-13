@@ -45,7 +45,7 @@ int pushf()
 	opr_dest.type=OPR_MEM;
 	opr_dest.addr=cpu.esp;
 	opr_dest.data_size=data_size;
-	opr_dest.val=cpu.eflags;
+	opr_dest.val=cpu.eflags.val;
 	operand_write(&opr_dest);
 	return 1;
 }
