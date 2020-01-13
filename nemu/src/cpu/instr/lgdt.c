@@ -3,7 +3,7 @@
 make_instr_func(lgdt)
 {
 	OPERAND start;
-	modrm_rm(eip,&start);
+	modrm_rm(eip+1,&start);
 /*	start.type=OPR_IMM;
 	start.data_size=32;
 	start.addr=eip+2;
