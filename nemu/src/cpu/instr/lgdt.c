@@ -13,6 +13,7 @@ make_instr_func(lgdt)
 	limit.type=OPR_IMM;
 	limit.data_size=16;
 	limit.addr=start.val;
+	printf("limit.addr=%x\n",limit.addr);
 	operand_read(&limit);
 	printf("limit=%x\n",limit.val);
 
@@ -21,6 +22,7 @@ make_instr_func(lgdt)
 	base.data_size=32;
 	base.addr=start.val+2;
 	operand_read(&base);
+	printf("base.addr=%x\n",base.addr);
 	printf("base=%x\n",base.val);
 
 	cpu.gdtr.limit=limit.val;
