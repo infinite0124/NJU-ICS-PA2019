@@ -2,7 +2,7 @@
 
 make_instr_func(lgdt)
 {
-	int len=2;
+	int len=1;
 	OPERAND start;
 	len+=modrm_rm(eip+1,&start);
 	start.data_size=32;
