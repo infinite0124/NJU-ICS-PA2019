@@ -26,7 +26,7 @@ make_instr_func(lgdt)
 
 	cpu.gdtr.limit=limit.val;
 	cpu.gdtr.base=base.val;
-	printf("len=%x\n",len);
+	//printf("len=%x\n",len);
 	return len;
 
 }
