@@ -1,6 +1,6 @@
 #include "cpu/instr.h"
 
-make_instr_func(lgdt)
+make_instr_func(lidt)
 {
 	int len=1;
 	OPERAND start;
@@ -24,8 +24,8 @@ make_instr_func(lgdt)
 	//printf("base.addr=%x\n",base.addr);
 	//printf("base=%x\n",base.val);
 
-	cpu.gdtr.limit=limit.val;
-	cpu.gdtr.base=base.val;
+	cpu.idtr.limit=limit.val;
+	cpu.idtr.base=base.val;
 	//printf("len=%x\n",len);
 	return len;
 
