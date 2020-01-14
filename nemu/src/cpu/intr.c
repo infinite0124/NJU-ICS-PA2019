@@ -13,6 +13,7 @@ void raise_intr(uint8_t intr_no)
 	//printf("base=%x,limit=%x\n",cpu.gdtr.base,cpu.gdtr.limit);
 
 	uint32_t addr=cpu.idtr.base+8*intr_no;
+	printf("intr_no=%x\n",intr_no);
 	printf("addr=%x\n",addr);
 	GateDesc gatedesc;
 	memcpy(&gatedesc,hw_mem+addr,8);
