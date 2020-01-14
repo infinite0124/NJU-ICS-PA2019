@@ -8,6 +8,7 @@ void raise_intr(uint8_t intr_no)
 	pushf();
 	push_segReg(1);
 	push_eip();
+	printf("eip=%x\n",cpu.eip);
 	assert(intr_no<=cpu.idtr.limit);
 	//printf("base=%x,limit=%x\n",cpu.idtr.base,cpu.idtr.limit);
 	//printf("base=%x,limit=%x\n",cpu.gdtr.base,cpu.gdtr.limit);
