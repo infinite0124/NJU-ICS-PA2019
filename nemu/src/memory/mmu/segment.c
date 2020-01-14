@@ -22,7 +22,7 @@ void load_sreg(uint8_t sreg)
 	uint32_t addr=cpu.gdtr.base+8*cpu.segReg[sreg].index;
 //	printf("addr=%x\n",addr);
 	memcpy(&s,hw_mem+addr,8);
-	printf("%x\n",s.base_15_0);
+	//printf("%x\n",);
 	cpu.segReg[sreg].base=(s.base_31_24<<24)+(s.base_23_16<<16)+s.base_15_0;
 	cpu.segReg[sreg].limit=(s.limit_19_16<<16)+s.limit_15_0;
 	cpu.segReg[sreg].soft_use=s.soft_use;
