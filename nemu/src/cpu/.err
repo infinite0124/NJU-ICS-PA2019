@@ -1,4 +1,4 @@
-decode/opcode.c:1:10: fatal error: cpu/instr.h: No such file or directory
- #include "cpu/instr.h"
-          ^~~~~~~~~~~~~
+intr.c:1:10: fatal error: cpu/intr.h: No such file or directory
+ #include "cpu/intr.h"
+          ^~~~~~~~~~~~
 compilation terminated.
