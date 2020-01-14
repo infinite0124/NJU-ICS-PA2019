@@ -21,6 +21,11 @@ void raise_intr(uint8_t intr_no)
 	printf("type:%x\n",gatedesc.type);
 	if(gatedesc.type==0xe)
 		cpu.eflags.IF=0;
+
+	cpu.cs.val=gatedesc.selecter;
+	cpu.cs.base=0;
+	cpu.cs.limit=0xfffff;
+
 	cpu.eip=(gatedesc.offset_31_16<<16)+gatedesc.offset_15_0;
 	printf("eip=%x\n",cpu.eip);
 
