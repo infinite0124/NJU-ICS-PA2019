@@ -1,4 +1,4 @@
-page.c:1:10: fatal error: cpu/cpu.h: No such file or directory
+segment.c:1:10: fatal error: cpu/cpu.h: No such file or directory
  #include "cpu/cpu.h"
           ^~~~~~~~~~~
 compilation terminated.
