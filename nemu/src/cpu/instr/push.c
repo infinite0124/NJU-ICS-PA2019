@@ -44,7 +44,7 @@ int pushf()
 	cpu.esp-=4;
 	opr_dest.type=OPR_MEM;
 	opr_dest.addr=cpu.esp;
-	opr_dest.data_size=data_size;
+	opr_dest.data_size=32;
 	opr_dest.val=cpu.eflags.val;
 	operand_write(&opr_dest);
 	return 1;
@@ -67,7 +67,7 @@ int push_eip()
 	opr_src.type=OPR_REG;
 	opr_src.data_size=data_size;
 	opr_src.val=cpu.eip;
-	cpu.esp-=data_size/8;
+	cpu.esp-=4;
 	opr_dest.type=OPR_MEM;
 	opr_dest.addr=cpu.esp;
 	opr_dest.data_size=data_size;
