@@ -41,7 +41,7 @@ int push_gr(uint32_t eip, uint8_t opcode)
 
 int pushf()
 {
-	cpu.esp-=data_size/8;
+	cpu.esp-=4;
 	opr_dest.type=OPR_MEM;
 	opr_dest.addr=cpu.esp;
 	opr_dest.data_size=data_size;
@@ -52,7 +52,7 @@ int pushf()
 
 int push_segReg(int no)
 {
-	cpu.esp-=16;
+	cpu.esp-=2;
 	opr_dest.type=OPR_MEM;
 	opr_dest.addr=cpu.esp;
 	opr_dest.data_size=16;
