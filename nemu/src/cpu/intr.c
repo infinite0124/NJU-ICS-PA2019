@@ -13,12 +13,16 @@ void raise_intr(uint8_t intr_no)
 	//printf("base=%x,limit=%x\n",cpu.gdtr.base,cpu.gdtr.limit);
 
 	uint32_t addr=cpu.idtr.base+8*intr_no;
-	printf("intr_no=%x\n",intr_no);
-	printf("addr=%x\n",addr);
+	//printf("intr_no=%x\n",intr_no);
+	//printf("addr=%x\n",addr);
 	GateDesc gatedesc;
 	memcpy(&gatedesc,hw_mem+addr-0xc0000000,8);
 	printf("type:%x\n",gatedesc.type);
-	
+	if(gatedesc.type==0xe)
+		cpu.eflags.IF=0;
+	cpu.eip=gatedesc.offset_31_16<<16+gatedesc.offset_15_0;
+	printf("eip=%x\n",cpu.eip);
+
 #endif
 }
 
