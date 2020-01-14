@@ -73,5 +73,6 @@ int push_eip()
 	opr_dest.data_size=data_size;
 	opr_dest.val=opr_src.val;
 	operand_write(&opr_dest);
+	printf("push_eip:%x\n",opr_dest.val);
 	return 1;
 }
