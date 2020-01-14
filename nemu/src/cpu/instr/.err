@@ -1,4 +1,4 @@
-push.c:1:10: fatal error: cpu/instr.h: No such file or directory
+lidt.c:1:10: fatal error: cpu/instr.h: No such file or directory
  #include "cpu/instr.h"
           ^~~~~~~~~~~~~
 compilation terminated.
