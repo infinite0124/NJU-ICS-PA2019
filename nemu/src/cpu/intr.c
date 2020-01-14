@@ -16,7 +16,7 @@ void raise_intr(uint8_t intr_no)
 	printf("intr_no=%x\n",intr_no);
 	printf("addr=%x\n",addr);
 	GateDesc gatedesc;
-	memcpy(&gatedesc,(void *)addr,8);
+	memcpy(&gatedesc,hw_mem+addr-0xc0000000,8);
 	printf("type:%x\n",gatedesc.val[0]);
 	
 #endif
