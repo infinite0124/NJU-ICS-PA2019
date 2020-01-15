@@ -8,6 +8,7 @@ void raise_intr(uint8_t intr_no)
 	pushf();
 	push_segReg(1);
 	push_eip();
+	printf("eip=%x\n",cpu.eip);
 	printf("intr_no=%x\n",intr_no);
 
 	/*cpu.esp-=4;
