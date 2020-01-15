@@ -25,6 +25,7 @@ make_instr_func(ret_near_imm16)
 
 make_instr_func(iret)
 {
+	printf("iret");
 	cpu.eip=pop();
 	cpu.cs.val=pop();
 	cpu.eflags.val=pop();
