@@ -27,6 +27,7 @@ make_instr_func(iret)
 {
 	printf("iret");
 	cpu.eip=pop();
+	printf("iret:%x\n",cpu.eip);
 	cpu.cs.val=pop();
 	cpu.eflags.val=pop();
 	return 0;
