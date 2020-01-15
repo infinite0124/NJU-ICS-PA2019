@@ -9,5 +9,5 @@ make_instr_func(int_)
 	operand_read(&opr_src);
 	
 	raise_sw_intr(opr_src.val);
-	return 0;
+	return 2;
 }
