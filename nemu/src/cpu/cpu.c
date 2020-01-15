@@ -142,7 +142,7 @@ void do_intr()
 
 		assert(intr_no != I8259_NO_INTR);
 		i8259_ack_intr();	// tell the PIC interrupt info received
-		raise_sw_intr(intr_no); // raise intrrupt to turn into kernel handler
+		raise_intr(intr_no); // raise intrrupt to turn into kernel handler
 	}
 }
 #endif
