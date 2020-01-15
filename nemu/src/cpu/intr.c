@@ -5,13 +5,16 @@
 void raise_intr(uint8_t intr_no)
 {
 #ifdef IA32_INTR
-	pushf();
-	push_segReg(1);
-	push_eip();
-	//cpu.esp-=4;
-	//vaddr_write(cpu.esp,SREG_SS,4,cpu.eflags.val);
-	//cpu.esp-=2;
-	//vaddr_write(cpu)
+	//pushf();
+	//push_segReg(1);
+	//push_eip();
+	cpu.esp-=4;
+	vaddr_write(cpu.esp,SREG_SS,4,cpu.eflags.val);
+	cpu.esp-=2;
+	vaddr_write(cpu.esp,SREG_SS,2,cpu.cs.val);
+	cpu.esp-=4;
+	vaddr_write(cpu.esp,SREG_SS,4,cpu.eip);
+
 	assert(intr_no<=cpu.idtr.limit);
 
 	uint32_t laddr=segment_translate(cpu.idtr.base+8*intr_no,2);
@@ -21,9 +24,9 @@ void raise_intr(uint8_t intr_no)
 	memcpy(&gatedesc,hw_mem+paddr,8);
 
 	if(gatedesc.type==0xe)
-		cpu.eflags.IF=1;
-	else if(gatedesc.type==0xf)
 		cpu.eflags.IF=0;
+	else if(gatedesc.type==0xf)
+		cpu.eflags.IF=1;
 
 	cpu.cs.val=gatedesc.selector;
 	cpu.cs.base=0;
