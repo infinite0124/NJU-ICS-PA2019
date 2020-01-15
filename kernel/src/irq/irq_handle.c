@@ -54,7 +54,7 @@ void irq_handle(TrapFrame *tf)
 		Log("irq_id=%x\n",irq_id);
 
 		struct IRQ_t *f = handles[irq_id];
-		Log("hey");
+		
 		while (f != NULL)
 		{ 
 			//call handlers one by one 
