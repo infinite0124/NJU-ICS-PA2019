@@ -25,7 +25,8 @@ void raise_intr(uint8_t intr_no)
 	cpu.cs.limit=0xfffff;
 
 	cpu.eip=(gatedesc.offset_31_16<<16)+gatedesc.offset_15_0;
-
+	printf("eip=%x\n",cpu.eip);
+	
 #endif
 }
 
