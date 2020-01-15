@@ -1,4 +1,4 @@
-intr.c:1:10: fatal error: cpu/intr.h: No such file or directory
- #include "cpu/intr.h"
-          ^~~~~~~~~~~~
+/home/zq/pa2019_fall/kernel/src/irq/irq_handle.c:1:10: fatal error: common.h: No such file or directory
+ #include "common.h"
+          ^~~~~~~~~~
 compilation terminated.

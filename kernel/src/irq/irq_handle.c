@@ -58,6 +58,7 @@ void irq_handle(TrapFrame *tf)
 		while (f != NULL)
 		{ 
 			//call handlers one by one 
+			Log("hi");
 			f->routine();
 			f = f->next;
 		}
