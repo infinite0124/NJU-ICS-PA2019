@@ -39,6 +39,12 @@ int push_gr(uint32_t eip, uint8_t opcode)
 	return len;
 }
 
+make_instr_func(pusha)
+{
+	cpu.esp-=data_size;
+	return 1;	
+}
+
 int pushf()
 {
 	cpu.esp-=4;
