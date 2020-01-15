@@ -8,7 +8,10 @@ void raise_intr(uint8_t intr_no)
 	pushf();
 	push_segReg(1);
 	push_eip();
-
+	//cpu.esp-=4;
+	//vaddr_write(cpu.esp,SREG_SS,4,cpu.eflags.val);
+	//cpu.esp-=2;
+	//vaddr_write(cpu)
 	assert(intr_no<=cpu.idtr.limit);
 
 	uint32_t laddr=segment_translate(cpu.idtr.base+8*intr_no,2);
