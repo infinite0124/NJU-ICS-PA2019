@@ -62,5 +62,6 @@ void irq_handle(TrapFrame *tf)
 			f->routine();
 			f = f->next;
 		}
+		Log("here\n");
 	}
-	}
+}
