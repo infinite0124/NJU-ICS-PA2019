@@ -23,3 +23,6 @@ push.h:10:16: error: expected constructor, destructor, or type conversion before
 push.h:11:16: error: expected constructor, destructor, or type conversion before '(' token
  make_instr_func(push_i_v);
                 ^
+push.h:12:16: error: expected constructor, destructor, or type conversion before '(' token
+ make_instr_func(pusha);
+                ^
