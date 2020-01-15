@@ -34,6 +34,8 @@ void irq_handle(TrapFrame *tf)
 	int irq = tf->irq;
 	Log("irq=%x\n",irq);
 	Log("eax=%x\n",tf->eax);
+	Log("eip=%x\n",tf->eip);
+	Log("error code=%x\n",tf->error_code);
 
 	if (irq < 0)
 	{
