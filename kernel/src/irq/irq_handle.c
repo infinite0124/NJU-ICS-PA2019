@@ -1,6 +1,5 @@
 #include "common.h"
 #include "x86.h"
-
 #define NR_IRQ_HANDLE 32
 
 /* There are no more than 16(actually, 3) kinds of hardward interrupts. */
@@ -34,8 +33,8 @@ void irq_handle(TrapFrame *tf)
 {
 	int irq = tf->irq;
 	Log("irq=%x\n",irq);
-	uint32_t temp;
-	memcpy(&temp,cpu.esp,4);
+	uint32_t *temp;
+	temp=cpu.esp;
 	LOG("temp1=%x\n",temp);
 
 	if (irq < 0)
