@@ -29,7 +29,7 @@ int push_gr(uint32_t eip, uint8_t opcode)
 	r.addr=opcode&0x7;
 	r.data_size=data_size;
 	r.val=cpu.gpr[r.addr]._32;
-	cpu.esp-=data_size;
+	cpu.esp-=data_size/8;
 	mem.type=OPR_MEM;
 	mem.addr=cpu.esp;
 	mem.data_size=data_size;
