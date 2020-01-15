@@ -32,7 +32,7 @@ void add_irq_handle(int irq, void (*func)(void))
 void irq_handle(TrapFrame *tf)
 {
 	int irq = tf->irq;
-
+	Log("eip in handle:%x\n",tf->eip);
 	if (irq < 0)
 	{
 		panic("Unhandled exception!");
@@ -54,7 +54,7 @@ void irq_handle(TrapFrame *tf)
 		Log("irq_id=%x\n",irq_id);
 
 		struct IRQ_t *f = handles[irq_id];
-
+		Log("hey");
 		while (f != NULL)
 		{ 
 			//call handlers one by one 
