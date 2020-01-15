@@ -32,10 +32,6 @@ void add_irq_handle(int irq, void (*func)(void))
 void irq_handle(TrapFrame *tf)
 {
 	int irq = tf->irq;
-	Log("irq=%x\n",irq);
-	Log("eax=%x\n",tf->eax);
-	Log("eip=%x\n",tf->eip);
-	Log("error code=%x\n",tf->error_code);
 
 	if (irq < 0)
 	{
@@ -47,7 +43,6 @@ void irq_handle(TrapFrame *tf)
 	}
 	else if (irq < 1000)
 	{
-		Log("panic\n");
 		panic("Unexpected exception #%d at eip = %x", irq, tf->eip);
 	}
 	else if (irq >= 1000)
