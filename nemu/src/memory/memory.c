@@ -46,7 +46,7 @@ uint32_t laddr_read(laddr_t laddr, size_t len)
 	assert(len==1||len==2||len==4);
 	if(cpu.cr0.pe&&cpu.cr0.pg)
 	{
-		if(laddr>0x9000000)//data across the page boundary
+		if(laddr>0xd0000000)//data across the page boundary
 		{
 			printf("eip=%x\n",cpu.eip);
 			return 0;
