@@ -34,7 +34,10 @@ void irq_handle(TrapFrame *tf)
 {
 	int irq = tf->irq;
 	Log("irq=%x\n",irq);
-	
+	uint32_t temp;
+	memcpy(&temp,cpu.esp,4);
+	LOG("temp1=%x\n",temp);
+
 	if (irq < 0)
 	{
 		panic("Unhandled exception!");

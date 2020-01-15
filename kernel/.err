@@ -1,0 +1,21 @@
+In file included from src/irq/irq_handle.c:1:
+./include/common.h:13:17: error: redeclaration of C++ built-in type 'bool' [-fpermissive]
+ typedef uint8_t bool;
+                 ^~~~
+src/irq/irq_handle.c: In function 'void irq_handle(TrapFrame*)':
+src/irq/irq_handle.c:38:15: error: 'cpu' was not declared in this scope
+  memcpy(&temp,cpu.esp,4);
+               ^~~
+src/irq/irq_handle.c:38:2: error: 'memcpy' was not declared in this scope
+  memcpy(&temp,cpu.esp,4);
+  ^~~~~~
+src/irq/irq_handle.c:38:2: note: 'memcpy' is defined in header '<cstring>'; did you forget to '#include <cstring>'?
+src/irq/irq_handle.c:3:1:
++#include <cstring>
+ 
+src/irq/irq_handle.c:38:2:
+  memcpy(&temp,cpu.esp,4);
+  ^~~~~~
+src/irq/irq_handle.c:39:2: error: 'LOG' was not declared in this scope
+  LOG("temp1=%x\n",temp);
+  ^~~
