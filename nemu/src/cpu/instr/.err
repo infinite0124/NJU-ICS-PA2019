@@ -1,4 +1,4 @@
-ret.c:1:10: fatal error: cpu/instr.h: No such file or directory
- #include "cpu/instr.h"
-          ^~~~~~~~~~~~~
+/home/zq/pa2019_fall/nemu/src/cpu/cpu.c:1:10: fatal error: nemu.h: No such file or directory
+ #include "nemu.h"
+          ^~~~~~~~
 compilation terminated.
