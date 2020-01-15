@@ -33,9 +33,7 @@ void irq_handle(TrapFrame *tf)
 {
 	int irq = tf->irq;
 	Log("irq=%x\n",irq);
-	uint32_t *temp;
-	temp=cpu.esp;
-	LOG("temp1=%x\n",temp);
+	Log("eax=%x\n",tf->eax);
 
 	if (irq < 0)
 	{
