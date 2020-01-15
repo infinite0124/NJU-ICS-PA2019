@@ -22,3 +22,11 @@ make_instr_func(ret_near_imm16)
 	print_asm_1("ret","",3,&imm);
 	return 0;
 }
+
+make_instr_func(iret)
+{
+	cpu.eip=pop();
+	cpu.cs.val=pop();
+	cpu.eflags=pop();
+	return 0;
+}
