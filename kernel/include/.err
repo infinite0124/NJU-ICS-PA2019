@@ -1,0 +1,5 @@
+In file included from x86/memory.h:38:
+../include/common.h:4:10: fatal error: config.h: No such file or directory
+ #include "config.h"
+          ^~~~~~~~~~
+compilation terminated.
