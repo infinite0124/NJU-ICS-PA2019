@@ -1,6 +1,3 @@
-pop.h:5:16: error: expected constructor, destructor, or type conversion before '(' token
- make_instr_func(pop_r_v);
-                ^
-pop.h:6:16: error: expected constructor, destructor, or type conversion before '(' token
- make_instr_func(popa);
+int.h:2:16: error: expected constructor, destructor, or type conversion before '(' token
+ make_instr_func(int_);
                 ^
