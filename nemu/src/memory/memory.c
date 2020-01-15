@@ -49,7 +49,7 @@ uint32_t laddr_read(laddr_t laddr, size_t len)
 		if(laddr>0xd0000000)//data across the page boundary
 		{
 			printf("eip=%x\n",cpu.eip);
-			return 0;
+			assert(0);
 		}
 		else
 		{
