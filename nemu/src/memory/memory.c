@@ -46,15 +46,15 @@ uint32_t laddr_read(laddr_t laddr, size_t len)
 	assert(len==1||len==2||len==4);
 	if(cpu.cr0.pe&&cpu.cr0.pg)
 	{
-	/*	if()//data across the page boundary
+		if(laddr>0x9000000)//data across the page boundary
 		{
 			assert(0);
 		}
 		else
-		{*/
+		{
 			paddr_t paddr=page_translate(laddr);
 			return hw_mem_read(paddr,len);
-		//}
+		}
 	}
 	else
 		return paddr_read(laddr, len);
