@@ -6,7 +6,7 @@ paddr_t page_translate(laddr_t laddr)
 {
 #ifndef TLB_ENABLED
 	//if(laddr<0xc0000000)
-//	printf("laddr:%x\n",laddr);
+	printf("laddr:%x\n",laddr);
 	uint32_t dir=laddr>>22;
 	uint32_t page=(laddr&0x003ff000)>>12;
 	uint32_t offset=laddr&0x00000fff;
