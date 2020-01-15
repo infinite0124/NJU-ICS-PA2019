@@ -33,6 +33,7 @@ make_instr_func(popa)
 	cpu.edi=pop();
 	cpu.esi=pop();
 	cpu.ebp=pop();
+	pop();
 	cpu.ebx=pop();
 	cpu.edx=pop();
 	cpu.ecx=pop();
