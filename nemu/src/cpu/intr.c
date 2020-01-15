@@ -28,7 +28,7 @@ void raise_intr(uint8_t intr_no)
 	printf("type=%x\n",gatedesc.type);
 
 	if(gatedesc.type==0xe)
-		cpu.eflags.IF=0;
+		cpu.eflags.IF=1;
 //	else if(gatedesc.type==0xf)
 //		cpu.eflags.IF=1;
 
