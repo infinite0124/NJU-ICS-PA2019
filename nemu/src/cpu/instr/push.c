@@ -36,6 +36,7 @@ int push_gr(uint32_t eip, uint8_t opcode)
 
 make_instr_func(pusha)
 {
+	printf("pusha");
 	push_gr(eip,0);
 	push_gr(eip,1);
 	push_gr(eip,2);
