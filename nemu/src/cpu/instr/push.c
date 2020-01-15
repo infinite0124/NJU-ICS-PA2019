@@ -38,7 +38,14 @@ int push_gr(uint32_t eip, uint8_t opcode)
 
 make_instr_func(pusha)
 {
-	cpu.esp-=data_size;
+	push_gr(eip,0);
+	push_gr(eip,1);
+	push_gr(eip,2);
+	push_gr(eip,3);
+	push_gr(eip,4);
+	push_gr(eip,5);
+	push_gr(eip,6);
+	push_gr(eip,7);
 	return 1;	
 }
 
