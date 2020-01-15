@@ -25,6 +25,8 @@ void raise_intr(uint8_t intr_no)
 	GateDesc gatedesc;
 	memcpy(&gatedesc,hw_mem+paddr,8);
 
+	printf("type=%x\n",gatedesc.type);
+
 	if(gatedesc.type==0xe)
 		cpu.eflags.IF=0;
 //	else if(gatedesc.type==0xf)
