@@ -14,6 +14,8 @@ paddr_t page_translate(laddr_t laddr)
 	uint32_t addr=(cpu.cr3.pdtr<<12)+4*dir;
 	PDE pde;
 	memcpy(&pde,hw_mem+addr,4);
+	if(!pde.present)
+		printf("laddr:%x\n",laddr);
 	assert(pde.present==1);//
 	uint32_t p_addr=(pde.page_frame<<12)+4*page;
 	PTE pte;
