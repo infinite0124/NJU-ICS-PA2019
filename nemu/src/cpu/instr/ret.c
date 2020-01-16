@@ -30,5 +30,6 @@ make_instr_func(iret)
 	printf("iret:%x\n",cpu.eip);
 	cpu.cs.val=pop();
 	cpu.eflags.val=pop();
+	BREAK_POINT
 	return 0;
 }
