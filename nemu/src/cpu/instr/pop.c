@@ -30,7 +30,7 @@ make_instr_impl_1op(pop,r,v)
 
 make_instr_func(popa)
 {
-	printf("popa");
+	//printf("popa");
 	cpu.edi=pop();
 	cpu.esi=pop();
 	cpu.ebp=pop();
