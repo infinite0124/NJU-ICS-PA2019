@@ -136,9 +136,9 @@ void do_intr()
 	if (cpu.intr && cpu.eflags.IF)
 	{
 		// get interrupt number
-		printf("cpu.intr:%x\n",cpu.intr);
+		//printf("cpu.intr:%x\n",cpu.intr);
 		uint8_t intr_no = i8259_query_intr_no(); // get interrupt number
-		printf("intr_no in do_intr:%x\n",intr_no);
+		//printf("intr_no in do_intr:%x\n",intr_no);
 
 		assert(intr_no != I8259_NO_INTR);
 		i8259_ack_intr();	// tell the PIC interrupt info received

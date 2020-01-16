@@ -1,54 +1,46 @@
 In file included from ./libs/newlib/include/string.h:12,
                  from ./nemu/include/nemu.h:6,
-                 from ./nemu/include/cpu/intr.h:4,
-                 from nemu/src/cpu/intr.c:1:
+                 from nemu/src/cpu/cpu.c:1:
 ./libs/newlib/include/sys/cdefs.h:303:18: warning: ISO C++11 requires whitespace after the macro name
  #define _Noreturn[[noreturn]]
                   ^
 In file included from ./kernel/include/memory.h:4,
                  from ./nemu/include/nemu.h:9,
-                 from ./nemu/include/cpu/intr.h:4,
-                 from nemu/src/cpu/intr.c:1:
+                 from nemu/src/cpu/cpu.c:1:
 ./kernel/include/common.h:18: warning: "NULL" redefined
  #define NULL ((void *)0)
  
 In file included from ./libs/newlib/include/stdio.h:35,
                  from ./nemu/include/nemu.h:8,
-                 from ./nemu/include/cpu/intr.h:4,
-                 from nemu/src/cpu/intr.c:1:
+                 from nemu/src/cpu/cpu.c:1:
 /usr/lib/gcc/i686-linux-gnu/8/include/stddef.h:403: note: this is the location of the previous definition
  #define NULL __null
  
 In file included from ./kernel/include/common.h:20,
                  from ./kernel/include/memory.h:4,
                  from ./nemu/include/nemu.h:9,
-                 from ./nemu/include/cpu/intr.h:4,
-                 from nemu/src/cpu/intr.c:1:
+                 from nemu/src/cpu/cpu.c:1:
 ./kernel/include/debug.h:22: warning: "assert" redefined
  #define assert(cond)                              \
  
 In file included from ./nemu/include/nemu.h:7,
-                 from ./nemu/include/cpu/intr.h:4,
-                 from nemu/src/cpu/intr.c:1:
+                 from nemu/src/cpu/cpu.c:1:
 ./libs/newlib/include/assert.h:16: note: this is the location of the previous definition
  #define assert(__e) ((__e) ? (void)0 : __assert_func(__FILE__, __LINE__, \
  
 In file included from ./libs/newlib/include/string.h:11,
                  from ./nemu/include/nemu.h:6,
-                 from ./nemu/include/cpu/intr.h:4,
-                 from nemu/src/cpu/intr.c:1:
+                 from nemu/src/cpu/cpu.c:1:
 ./libs/newlib/include/sys/reent.h:640:11: warning: unnecessary parentheses in declaration of '_sig_func' [-Wparentheses]
    void (**(_sig_func))(int);
            ^
 In file included from ./kernel/include/memory.h:4,
                  from ./nemu/include/nemu.h:9,
-                 from ./nemu/include/cpu/intr.h:4,
-                 from nemu/src/cpu/intr.c:1:
+                 from nemu/src/cpu/cpu.c:1:
 ./kernel/include/common.h:13:17: error: redeclaration of C++ built-in type 'bool' [-fpermissive]
  typedef uint8_t bool;
                  ^~~~
-In file included from ./nemu/include/cpu/intr.h:4,
-                 from nemu/src/cpu/intr.c:1:
+In file included from nemu/src/cpu/cpu.c:1:
 ./nemu/include/nemu.h:22:17: error: redeclaration of C++ built-in type 'bool' [-fpermissive]
  typedef uint8_t bool;
                  ^~~~
@@ -56,52 +48,9 @@ In file included from ./nemu/include/cpu/intr.h:4,
 ./nemu/include/nemu.h:46:16: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
   for (i = 0; i < len; i++)
               ~~^~~~~
-In file included from nemu/src/cpu/intr.c:1:
-./nemu/include/cpu/intr.h: At global scope:
-./nemu/include/cpu/intr.h:7:15: error: 'union' tag used in naming 'struct GateDescriptor' [-fpermissive]
- typedef union GateDescriptor {
-               ^~~~~~~~~~~~~~
-In file included from ./kernel/include/x86.h:6,
-                 from ./kernel/include/debug.h:5,
-                 from ./kernel/include/common.h:20,
-                 from ./kernel/include/memory.h:4,
-                 from ./nemu/include/nemu.h:9,
-                 from ./nemu/include/cpu/intr.h:4,
-                 from nemu/src/cpu/intr.c:1:
-./kernel/include/x86/memory.h:95:16: note: 'struct GateDescriptor' was previously declared here
- typedef struct GateDescriptor
-                ^~~~~~~~~~~~~~
-In file included from nemu/src/cpu/intr.c:1:
-./nemu/include/cpu/intr.h:7:15: error: redefinition of 'struct GateDescriptor'
- typedef union GateDescriptor {
-               ^~~~~~~~~~~~~~
-In file included from ./kernel/include/x86.h:6,
-                 from ./kernel/include/debug.h:5,
-                 from ./kernel/include/common.h:20,
-                 from ./kernel/include/memory.h:4,
-                 from ./nemu/include/nemu.h:9,
-                 from ./nemu/include/cpu/intr.h:4,
-                 from nemu/src/cpu/intr.c:1:
-./kernel/include/x86/memory.h:95:16: note: previous definition of 'struct GateDescriptor'
- typedef struct GateDescriptor
-                ^~~~~~~~~~~~~~
-In file included from nemu/src/cpu/intr.c:1:
-./nemu/include/cpu/intr.h:20:3: error: conflicting declaration 'typedef int GateDesc'
- } GateDesc;
-   ^~~~~~~~
-In file included from ./kernel/include/x86.h:6,
-                 from ./kernel/include/debug.h:5,
-                 from ./kernel/include/common.h:20,
-                 from ./kernel/include/memory.h:4,
-                 from ./nemu/include/nemu.h:9,
-                 from ./nemu/include/cpu/intr.h:4,
-                 from nemu/src/cpu/intr.c:1:
-./kernel/include/x86/memory.h:105:3: note: previous declaration as 'typedef struct GateDescriptor GateDesc'
- } GateDesc;
-   ^~~~~~~~
 In file included from ./nemu/include/cpu/cpu.h:7,
-                 from ./nemu/include/cpu/instr.h:5,
-                 from nemu/src/cpu/intr.c:2:
+                 from nemu/src/cpu/cpu.c:2:
+./nemu/include/cpu/reg.h: At global scope:
 ./nemu/include/cpu/reg.h:27:2: error: conflicting declaration 'typedef union CR0 CR0'
  }CR0;
   ^~~
@@ -110,14 +59,12 @@ In file included from ./kernel/include/x86.h:4,
                  from ./kernel/include/common.h:20,
                  from ./kernel/include/memory.h:4,
                  from ./nemu/include/nemu.h:9,
-                 from ./nemu/include/cpu/intr.h:4,
-                 from nemu/src/cpu/intr.c:1:
+                 from nemu/src/cpu/cpu.c:1:
 ./kernel/include/x86/cpu.h:26:3: note: previous declaration as 'typedef union CR0 CR0'
  } CR0;
    ^~~
 In file included from ./nemu/include/cpu/cpu.h:7,
-                 from ./nemu/include/cpu/instr.h:5,
-                 from nemu/src/cpu/intr.c:2:
+                 from nemu/src/cpu/cpu.c:2:
 ./nemu/include/cpu/reg.h:35:2: error: conflicting declaration 'typedef union CR3 CR3'
  }CR3;
   ^~~
@@ -126,25 +73,71 @@ In file included from ./kernel/include/x86.h:4,
                  from ./kernel/include/common.h:20,
                  from ./kernel/include/memory.h:4,
                  from ./nemu/include/nemu.h:9,
-                 from ./nemu/include/cpu/intr.h:4,
-                 from nemu/src/cpu/intr.c:1:
+                 from nemu/src/cpu/cpu.c:1:
 ./kernel/include/x86/cpu.h:39:3: note: previous declaration as 'typedef union CR3 CR3'
  } CR3;
    ^~~
-nemu/src/cpu/intr.c: In function 'void raise_intr(uint8_t)':
-nemu/src/cpu/intr.c:15:17: error: 'segment_translate' was not declared in this scope
-  uint32_t laddr=segment_translate(cpu.idtr.base+8*intr_no,2);
-                 ^~~~~~~~~~~~~~~~~
-nemu/src/cpu/intr.c:16:17: error: 'page_translate' was not declared in this scope
-  uint32_t paddr=page_translate(laddr);
-                 ^~~~~~~~~~~~~~
-nemu/src/cpu/intr.c:19:19: error: 'hw_mem' was not declared in this scope
-  memcpy(&gatedesc,hw_mem+paddr,8);
-                   ^~~~~~
-nemu/src/cpu/intr.c:19:19: note: suggested alternative: 'memmem'
-  memcpy(&gatedesc,hw_mem+paddr,8);
-                   ^~~~~~
-                   memmem
-nemu/src/cpu/intr.c:28:22: error: 'GateDesc' {aka 'struct GateDescriptor'} has no member named 'selector'
-  cpu.cs.val=gatedesc.selector;
-                      ^~~~~~~~
+In file included from nemu/src/cpu/cpu.c:3:
+./nemu/include/cpu/intr.h:7:15: error: 'union' tag used in naming 'struct GateDescriptor' [-fpermissive]
+ typedef union GateDescriptor {
+               ^~~~~~~~~~~~~~
+In file included from ./kernel/include/x86.h:6,
+                 from ./kernel/include/debug.h:5,
+                 from ./kernel/include/common.h:20,
+                 from ./kernel/include/memory.h:4,
+                 from ./nemu/include/nemu.h:9,
+                 from nemu/src/cpu/cpu.c:1:
+./kernel/include/x86/memory.h:95:16: note: 'struct GateDescriptor' was previously declared here
+ typedef struct GateDescriptor
+                ^~~~~~~~~~~~~~
+In file included from nemu/src/cpu/cpu.c:3:
+./nemu/include/cpu/intr.h:7:15: error: redefinition of 'struct GateDescriptor'
+ typedef union GateDescriptor {
+               ^~~~~~~~~~~~~~
+In file included from ./kernel/include/x86.h:6,
+                 from ./kernel/include/debug.h:5,
+                 from ./kernel/include/common.h:20,
+                 from ./kernel/include/memory.h:4,
+                 from ./nemu/include/nemu.h:9,
+                 from nemu/src/cpu/cpu.c:1:
+./kernel/include/x86/memory.h:95:16: note: previous definition of 'struct GateDescriptor'
+ typedef struct GateDescriptor
+                ^~~~~~~~~~~~~~
+In file included from nemu/src/cpu/cpu.c:3:
+./nemu/include/cpu/intr.h:20:3: error: conflicting declaration 'typedef int GateDesc'
+ } GateDesc;
+   ^~~~~~~~
+In file included from ./kernel/include/x86.h:6,
+                 from ./kernel/include/debug.h:5,
+                 from ./kernel/include/common.h:20,
+                 from ./kernel/include/memory.h:4,
+                 from ./nemu/include/nemu.h:9,
+                 from nemu/src/cpu/cpu.c:1:
+./kernel/include/x86/memory.h:105:3: note: previous declaration as 'typedef struct GateDescriptor GateDesc'
+ } GateDesc;
+   ^~~~~~~~
+In file included from ./kernel/include/memory.h:4,
+                 from ./nemu/include/nemu.h:9,
+                 from nemu/src/cpu/cpu.c:1:
+nemu/src/cpu/cpu.c: In function 'void exec(uint32_t)':
+./kernel/include/common.h:18:24: error: invalid conversion from 'void*' to 'BP*' {aka 'breakpoint*'} [-fpermissive]
+ #define NULL ((void *)0)
+                        ^
+nemu/src/cpu/cpu.c:48:18: note: in expansion of macro 'NULL'
+  static BP *bp = NULL;
+                  ^~~~
+nemu/src/cpu/cpu.c:79:5: error: 'vaddr_write' was not declared in this scope
+     vaddr_write(bp->addr, SREG_CS, 1, bp->ori_byte);
+     ^~~~~~~~~~~
+nemu/src/cpu/cpu.c:79:5: note: suggested alternative: 'vaddr_t'
+     vaddr_write(bp->addr, SREG_CS, 1, bp->ori_byte);
+     ^~~~~~~~~~~
+     vaddr_t
+nemu/src/cpu/cpu.c: In function 'int exec_inst()':
+nemu/src/cpu/cpu.c:121:11: error: 'instr_fetch' was not declared in this scope
+  opcode = instr_fetch(cpu.eip, 1);
+           ^~~~~~~~~~~
+nemu/src/cpu/cpu.c:121:11: note: suggested alternative: 'instr_func'
+  opcode = instr_fetch(cpu.eip, 1);
+           ^~~~~~~~~~~
+           instr_func
