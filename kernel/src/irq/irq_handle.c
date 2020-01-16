@@ -66,5 +66,5 @@ void irq_handle(TrapFrame *tf)
 		}
 		Log("here\n");
 	}
-	BREAK_POINT
+
 }
