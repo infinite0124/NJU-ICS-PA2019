@@ -30,6 +30,6 @@ make_instr_func(iret)
 	printf("iret:%x\n",cpu.eip);
 	cpu.cs.val=pop();
 	cpu.eflags.val=pop();
-	assert(0);
+//	assert(0);
 	return 0;
 }
