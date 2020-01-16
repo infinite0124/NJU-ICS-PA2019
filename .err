@@ -132,19 +132,19 @@ In file included from ./kernel/include/x86.h:4,
  } CR3;
    ^~~
 nemu/src/cpu/intr.c: In function 'void raise_intr(uint8_t)':
-nemu/src/cpu/intr.c:23:17: error: 'segment_translate' was not declared in this scope
+nemu/src/cpu/intr.c:15:17: error: 'segment_translate' was not declared in this scope
   uint32_t laddr=segment_translate(cpu.idtr.base+8*intr_no,2);
                  ^~~~~~~~~~~~~~~~~
-nemu/src/cpu/intr.c:24:17: error: 'page_translate' was not declared in this scope
+nemu/src/cpu/intr.c:16:17: error: 'page_translate' was not declared in this scope
   uint32_t paddr=page_translate(laddr);
                  ^~~~~~~~~~~~~~
-nemu/src/cpu/intr.c:27:19: error: 'hw_mem' was not declared in this scope
+nemu/src/cpu/intr.c:19:19: error: 'hw_mem' was not declared in this scope
   memcpy(&gatedesc,hw_mem+paddr,8);
                    ^~~~~~
-nemu/src/cpu/intr.c:27:19: note: suggested alternative: 'memmem'
+nemu/src/cpu/intr.c:19:19: note: suggested alternative: 'memmem'
   memcpy(&gatedesc,hw_mem+paddr,8);
                    ^~~~~~
                    memmem
-nemu/src/cpu/intr.c:36:22: error: 'GateDesc' {aka 'struct GateDescriptor'} has no member named 'selector'
+nemu/src/cpu/intr.c:28:22: error: 'GateDesc' {aka 'struct GateDescriptor'} has no member named 'selector'
   cpu.cs.val=gatedesc.selector;
                       ^~~~~~~~
