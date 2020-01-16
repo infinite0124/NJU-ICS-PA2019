@@ -1,54 +1,46 @@
 In file included from ./libs/newlib/include/string.h:12,
                  from ./nemu/include/nemu.h:6,
-                 from ./nemu/include/cpu/cpu.h:6,
-                 from nemu/src/memory/mmu/page.c:1:
+                 from nemu/src/memory/memory.c:1:
 ./libs/newlib/include/sys/cdefs.h:303:18: warning: ISO C++11 requires whitespace after the macro name
  #define _Noreturn[[noreturn]]
                   ^
 In file included from ./kernel/include/memory.h:4,
                  from ./nemu/include/nemu.h:9,
-                 from ./nemu/include/cpu/cpu.h:6,
-                 from nemu/src/memory/mmu/page.c:1:
+                 from nemu/src/memory/memory.c:1:
 ./kernel/include/common.h:18: warning: "NULL" redefined
  #define NULL ((void *)0)
  
 In file included from ./libs/newlib/include/stdio.h:35,
                  from ./nemu/include/nemu.h:8,
-                 from ./nemu/include/cpu/cpu.h:6,
-                 from nemu/src/memory/mmu/page.c:1:
+                 from nemu/src/memory/memory.c:1:
 /usr/lib/gcc/i686-linux-gnu/8/include/stddef.h:403: note: this is the location of the previous definition
  #define NULL __null
  
 In file included from ./kernel/include/common.h:20,
                  from ./kernel/include/memory.h:4,
                  from ./nemu/include/nemu.h:9,
-                 from ./nemu/include/cpu/cpu.h:6,
-                 from nemu/src/memory/mmu/page.c:1:
+                 from nemu/src/memory/memory.c:1:
 ./kernel/include/debug.h:22: warning: "assert" redefined
  #define assert(cond)                              \
  
 In file included from ./nemu/include/nemu.h:7,
-                 from ./nemu/include/cpu/cpu.h:6,
-                 from nemu/src/memory/mmu/page.c:1:
+                 from nemu/src/memory/memory.c:1:
 ./libs/newlib/include/assert.h:16: note: this is the location of the previous definition
  #define assert(__e) ((__e) ? (void)0 : __assert_func(__FILE__, __LINE__, \
  
 In file included from ./libs/newlib/include/string.h:11,
                  from ./nemu/include/nemu.h:6,
-                 from ./nemu/include/cpu/cpu.h:6,
-                 from nemu/src/memory/mmu/page.c:1:
+                 from nemu/src/memory/memory.c:1:
 ./libs/newlib/include/sys/reent.h:640:11: warning: unnecessary parentheses in declaration of '_sig_func' [-Wparentheses]
    void (**(_sig_func))(int);
            ^
 In file included from ./kernel/include/memory.h:4,
                  from ./nemu/include/nemu.h:9,
-                 from ./nemu/include/cpu/cpu.h:6,
-                 from nemu/src/memory/mmu/page.c:1:
+                 from nemu/src/memory/memory.c:1:
 ./kernel/include/common.h:13:17: error: redeclaration of C++ built-in type 'bool' [-fpermissive]
  typedef uint8_t bool;
                  ^~~~
-In file included from ./nemu/include/cpu/cpu.h:6,
-                 from nemu/src/memory/mmu/page.c:1:
+In file included from nemu/src/memory/memory.c:1:
 ./nemu/include/nemu.h:22:17: error: redeclaration of C++ built-in type 'bool' [-fpermissive]
  typedef uint8_t bool;
                  ^~~~
@@ -57,7 +49,7 @@ In file included from ./nemu/include/cpu/cpu.h:6,
   for (i = 0; i < len; i++)
               ~~^~~~~
 In file included from ./nemu/include/cpu/cpu.h:7,
-                 from nemu/src/memory/mmu/page.c:1:
+                 from nemu/src/memory/memory.c:2:
 ./nemu/include/cpu/reg.h: At global scope:
 ./nemu/include/cpu/reg.h:27:2: error: conflicting declaration 'typedef union CR0 CR0'
  }CR0;
@@ -67,13 +59,12 @@ In file included from ./kernel/include/x86.h:4,
                  from ./kernel/include/common.h:20,
                  from ./kernel/include/memory.h:4,
                  from ./nemu/include/nemu.h:9,
-                 from ./nemu/include/cpu/cpu.h:6,
-                 from nemu/src/memory/mmu/page.c:1:
+                 from nemu/src/memory/memory.c:1:
 ./kernel/include/x86/cpu.h:26:3: note: previous declaration as 'typedef union CR0 CR0'
  } CR0;
    ^~~
 In file included from ./nemu/include/cpu/cpu.h:7,
-                 from nemu/src/memory/mmu/page.c:1:
+                 from nemu/src/memory/memory.c:2:
 ./nemu/include/cpu/reg.h:35:2: error: conflicting declaration 'typedef union CR3 CR3'
  }CR3;
   ^~~
@@ -82,36 +73,87 @@ In file included from ./kernel/include/x86.h:4,
                  from ./kernel/include/common.h:20,
                  from ./kernel/include/memory.h:4,
                  from ./nemu/include/nemu.h:9,
-                 from ./nemu/include/cpu/cpu.h:6,
-                 from nemu/src/memory/mmu/page.c:1:
+                 from nemu/src/memory/memory.c:1:
 ./kernel/include/x86/cpu.h:39:3: note: previous declaration as 'typedef union CR3 CR3'
  } CR3;
    ^~~
-In file included from ./kernel/include/common.h:20,
-                 from ./kernel/include/memory.h:4,
-                 from ./nemu/include/nemu.h:9,
-                 from ./nemu/include/cpu/cpu.h:6,
-                 from nemu/src/memory/mmu/page.c:1:
-nemu/src/memory/mmu/page.c: In function 'paddr_t page_translate(laddr_t)':
-nemu/src/memory/mmu/page.c:13:17: error: 'CR0' {aka 'union CR0'} has no member named 'pe'
-  assert(cpu.cr0.pe&&cpu.cr0.pg);//
-                 ^~
-./kernel/include/debug.h:25:9: note: in definition of macro 'assert'
-   if (!(cond))                              \
-         ^~~~
-nemu/src/memory/mmu/page.c:13:29: error: 'CR0' {aka 'union CR0'} has no member named 'pg'
-  assert(cpu.cr0.pe&&cpu.cr0.pg);//
-                             ^~
-./kernel/include/debug.h:25:9: note: in definition of macro 'assert'
-   if (!(cond))                              \
-         ^~~~
-nemu/src/memory/mmu/page.c:14:25: error: 'CR3' {aka 'union CR3'} has no member named 'pdtr'
-  uint32_t addr=(cpu.cr3.pdtr<<12)+4*dir;
-                         ^~~~
-nemu/src/memory/mmu/page.c:16:14: error: 'hw_mem' was not declared in this scope
-  memcpy(&pde,hw_mem+addr,4);
-              ^~~~~~
-nemu/src/memory/mmu/page.c:16:14: note: suggested alternative: 'memmem'
-  memcpy(&pde,hw_mem+addr,4);
-              ^~~~~~
-              memmem
+nemu/src/memory/memory.c:9:16: error: 'MEM_SIZE_B' was not declared in this scope
+ uint8_t hw_mem[MEM_SIZE_B];
+                ^~~~~~~~~~
+nemu/src/memory/memory.c:9:16: note: suggested alternative: 'PT_SIZE'
+ uint8_t hw_mem[MEM_SIZE_B];
+                ^~~~~~~~~~
+                PT_SIZE
+nemu/src/memory/memory.c: In function 'uint32_t hw_mem_read(paddr_t, size_t)':
+nemu/src/memory/memory.c:15:15: error: 'hw_mem' was not declared in this scope
+  memcpy(&ret, hw_mem + paddr, len);
+               ^~~~~~
+nemu/src/memory/memory.c:15:15: note: suggested alternative: 'memmem'
+  memcpy(&ret, hw_mem + paddr, len);
+               ^~~~~~
+               memmem
+nemu/src/memory/memory.c: In function 'void hw_mem_write(paddr_t, size_t, uint32_t)':
+nemu/src/memory/memory.c:21:9: error: 'hw_mem' was not declared in this scope
+  memcpy(hw_mem + paddr, &data, len);
+         ^~~~~~
+nemu/src/memory/memory.c:21:9: note: suggested alternative: 'memmem'
+  memcpy(hw_mem + paddr, &data, len);
+         ^~~~~~
+         memmem
+nemu/src/memory/memory.c: In function 'uint32_t laddr_read(laddr_t, size_t)':
+nemu/src/memory/memory.c:47:13: error: 'CR0' {aka 'union CR0'} has no member named 'pe'
+  if(cpu.cr0.pe&&cpu.cr0.pg)
+             ^~
+nemu/src/memory/memory.c:47:25: error: 'CR0' {aka 'union CR0'} has no member named 'pg'
+  if(cpu.cr0.pe&&cpu.cr0.pg)
+                         ^~
+nemu/src/memory/memory.c:56:18: error: 'page_translate' was not declared in this scope
+    paddr_t paddr=page_translate(laddr);
+                  ^~~~~~~~~~~~~~
+nemu/src/memory/memory.c: In function 'void laddr_write(laddr_t, size_t, uint32_t)':
+nemu/src/memory/memory.c:67:13: error: 'CR0' {aka 'union CR0'} has no member named 'pe'
+  if(cpu.cr0.pe&&cpu.cr0.pg)
+             ^~
+nemu/src/memory/memory.c:67:25: error: 'CR0' {aka 'union CR0'} has no member named 'pg'
+  if(cpu.cr0.pe&&cpu.cr0.pg)
+                         ^~
+nemu/src/memory/memory.c:75:18: error: 'page_translate' was not declared in this scope
+    paddr_t paddr=page_translate(laddr);
+                  ^~~~~~~~~~~~~~
+nemu/src/memory/memory.c: In function 'uint32_t vaddr_read(vaddr_t, uint8_t, size_t)':
+nemu/src/memory/memory.c:90:13: error: 'CR0' {aka 'union CR0'} has no member named 'pe'
+  if(cpu.cr0.pe){
+             ^~
+nemu/src/memory/memory.c:91:11: error: 'segment_translate' was not declared in this scope
+   laddr = segment_translate(vaddr, sreg);
+           ^~~~~~~~~~~~~~~~~
+nemu/src/memory/memory.c: In function 'void vaddr_write(vaddr_t, uint8_t, size_t, uint32_t)':
+nemu/src/memory/memory.c:104:13: error: 'CR0' {aka 'union CR0'} has no member named 'pe'
+  if(cpu.cr0.pe){
+             ^~
+nemu/src/memory/memory.c:105:9: error: 'segment_translate' was not declared in this scope
+   laddr=segment_translate(vaddr,sreg);
+         ^~~~~~~~~~~~~~~~~
+nemu/src/memory/memory.c: In function 'void init_mem()':
+nemu/src/memory/memory.c:114:9: error: 'hw_mem' was not declared in this scope
+  memset(hw_mem, 0, MEM_SIZE_B);
+         ^~~~~~
+nemu/src/memory/memory.c:114:9: note: suggested alternative: 'memmem'
+  memset(hw_mem, 0, MEM_SIZE_B);
+         ^~~~~~
+         memmem
+nemu/src/memory/memory.c:114:20: error: 'MEM_SIZE_B' was not declared in this scope
+  memset(hw_mem, 0, MEM_SIZE_B);
+                    ^~~~~~~~~~
+nemu/src/memory/memory.c:114:20: note: suggested alternative: 'PT_SIZE'
+  memset(hw_mem, 0, MEM_SIZE_B);
+                    ^~~~~~~~~~
+                    PT_SIZE
+nemu/src/memory/memory.c: In function 'uint8_t* get_mem_addr()':
+nemu/src/memory/memory.c:133:9: error: 'hw_mem' was not declared in this scope
+  return hw_mem;
+         ^~~~~~
+nemu/src/memory/memory.c:133:9: note: suggested alternative: 'memmem'
+  return hw_mem;
+         ^~~~~~
+         memmem
