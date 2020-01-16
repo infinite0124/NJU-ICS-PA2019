@@ -61,7 +61,7 @@ int pushf()
 
 int push_segReg(int no)
 {
-	cpu.esp-=2;
+	cpu.esp-=4;
 	opr_dest.type=OPR_MEM;
 	opr_dest.addr=cpu.esp;
 	opr_dest.data_size=16;
