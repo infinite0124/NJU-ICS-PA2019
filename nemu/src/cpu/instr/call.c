@@ -24,16 +24,19 @@ static void instr_execute_1op()
 {
 	operand_read(&opr_src);
 	printf("src:%x\n",opr_src.val);
-	//cpu.eip=opr_src.val&(0xffffffff>>(32-data_size));
+	cpu.eip=opr_src.val&(0xffffffff>>(32-data_size));
 }
 make_instr_impl_1op(call,rm,v)
 make_instr_func(call_near_indirect)
 {
+	printf("\n");
 	printf("%x\n",cpu.eip);
-	cpu.eip+=call_rm_v(eip,opcode);
+	uint32_t old_eip=cpu.eip;
+	uint32_t len=0;
+	len+=call_rm_v(eip,opcode);
+	old_eip+=len;
 	push_eip();
-	printf("%x\n",cpu.eip);
-	cpu.eip=opr_src.val&(0xffffffff>>(32-data_size));
+	printf("%x\n",old_eip);
 	printf("%x\n",cpu.eip);
 	return 0;
 }
