@@ -23,6 +23,7 @@ int call_near(uint32_t eip,uint8_t opcode)
 static void instr_execute_1op()
 {
 	operand_read(&opr_src);
+	printf("eax=%x\n",cpu.eax);
 	printf("src:%x\n",opr_src.val);
 	cpu.eip=opr_src.val&(0xffffffff>>(32-data_size));
 }
