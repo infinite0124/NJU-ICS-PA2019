@@ -37,15 +37,16 @@ uint32_t loader()
 		if (ph->p_type == PT_LOAD)
 		{
 			//Log("va=%x",ph->p_vaddr);
-			uint32_t paddr= mm_malloc(ph->p_vaddr, ph->p_memsz);
+			//uint32_t paddr= mm_malloc(ph->p_vaddr, ph->p_memsz);
+			ph->p_vaddr= mm_malloc(ph->p_vaddr, ph->p_memsz);
 			//Log("pa=%x\n",ph->p_vaddr);
 /*copy the segment from the ELF file to its proper memory area */
-		//memcpy((void *)ph->p_vaddr, (void *)elf + ph->p_offset, ph->p_filesz);
-		ide_read((void *)ph->p_vaddr,ELF_OFFSET_IN_DISK+ph->p_offset,ph->p_filesz);
+			memcpy((void *)ph->p_vaddr, (void *)elf + ph->p_offset, ph->p_filesz);
+			//ide_read(buf,elf+ELF_OFFSET_IN_DISK+ph->p_offset,ph->p_filesz);
 /* zeror the memory area [vaddr + file_sz, vaddr + mem_sz) */
-		if(ph->p_memsz>ph->p_filesz)
-			memset((void *)(paddr+ph->p_filesz),0,ph->p_filesz);
-		//memset((void *)ph->p_vaddr+ph->p_filesz, 0, ph->p_memsz-ph->p_filesz);
+			//if(ph->p_memsz>ph->p_filesz)
+			//	memset((void *)(paddr+ph->p_filesz),0,ph->p_filesz);
+			memset((void *)ph->p_vaddr+ph->p_filesz, 0, ph->p_memsz-ph->p_filesz);
 #ifdef IA32_PAGE
 			/* Record the program break for future use */
 			extern uint32_t brk;
