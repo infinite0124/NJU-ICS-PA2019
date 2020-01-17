@@ -23,7 +23,7 @@ In file included from ./libs/newlib/include/string.h:11,
    void (**(_sig_func))(int);
            ^
 kernel/src/elf/elf.c: In function 'uint32_t loader()':
-kernel/src/elf/elf.c:26:8: error: invalid conversion from 'void*' to 'Elf32_Ehdr*' [-fpermissive]
+kernel/src/elf/elf.c:25:8: error: invalid conversion from 'void*' to 'Elf32_Ehdr*' [-fpermissive]
   elf = (void *)buf;
         ^~~~~~~~~~~
 kernel/src/elf/elf.c:34:19: warning: pointer of type 'void *' used in arithmetic [-Wpointer-arith]

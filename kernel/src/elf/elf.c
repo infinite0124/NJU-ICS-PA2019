@@ -20,11 +20,11 @@ uint32_t loader()
 	Elf32_Phdr *ph, *eph;
 
 #ifdef HAS_DEVICE_IDE
-	BREAK_POINT
 	uint8_t buf[4096];
 	ide_read(buf, ELF_OFFSET_IN_DISK, 4096);
 	elf = (void *)buf;
 	Log("ELF loading from hard disk.");
+	BREAK_POINT
 #else
 	elf = (void *)0x0;
 	Log("ELF loading from ram disk.");
