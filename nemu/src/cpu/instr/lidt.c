@@ -16,7 +16,7 @@ make_instr_func(lidt)
 	//printf("limit.addr=%x\n",limit.addr);
 
 	operand_read(&limit);
-	printf("limit=%x\n",limit.val);
+	//printf("limit=%x\n",limit.val);
 
 	OPERAND base;
 	base.type=OPR_IMM;
@@ -24,7 +24,7 @@ make_instr_func(lidt)
 	base.addr=start.addr+2;
 	operand_read(&base);
 	//printf("base.addr=%x\n",base.addr);
-	printf("base=%x\n",base.val);
+	//printf("base=%x\n",base.val);
 
 	cpu.idtr.limit=limit.val;
 	cpu.idtr.base=base.val;
