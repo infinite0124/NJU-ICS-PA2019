@@ -16,6 +16,7 @@ void serial_printc(char ch)
 	//Log("%x ",ch);
 	while (!serial_idle())
 		; // wait untile serial is idle
+	BREAK_POINT
 	out_byte(0x3f8,ch);
 	// print 'ch' via out instruction here
 	//HIT_BAD_TRAP;
