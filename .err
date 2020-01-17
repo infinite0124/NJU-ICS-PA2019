@@ -30,7 +30,7 @@ kernel/src/elf/elf.c:33:19: warning: pointer of type 'void *' used in arithmetic
   ph = (void *)elf + elf->e_phoff;
        ~~~~~~~~~~~~^~~~~~~~~~~~~~
 kernel/src/elf/elf.c:33:19: error: invalid conversion from 'void*' to 'Elf32_Phdr*' [-fpermissive]
-kernel/src/elf/elf.c:46:13: error: invalid conversion from 'void*' to 'uint8_t*' {aka 'unsigned char*'} [-fpermissive]
+kernel/src/elf/elf.c:47:13: error: invalid conversion from 'void*' to 'uint8_t*' {aka 'unsigned char*'} [-fpermissive]
     ide_read((void *)paddr,ELF_OFFSET_IN_DISK+ph->p_offset,ph->p_filesz);
              ^~~~~~~~~~~~~
 kernel/src/elf/elf.c:13:15: note:   initializing argument 1 of 'void ide_read(uint8_t*, uint32_t, uint32_t)'

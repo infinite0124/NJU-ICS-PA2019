@@ -36,6 +36,7 @@ uint32_t loader()
 	{
 		if (ph->p_type == PT_LOAD)
 		{
+			BREAK_POINT
 			//Log("va=%x",ph->p_vaddr);
 			uint32_t paddr= mm_malloc(ph->p_vaddr, ph->p_memsz);
 			//ph->p_vaddr= mm_malloc(ph->p_vaddr, ph->p_memsz);
