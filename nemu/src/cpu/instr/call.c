@@ -28,8 +28,11 @@ static void instr_execute_1op()
 make_instr_impl_1op(call,rm,v)
 make_instr_func(call_near_indirect)
 {
-	cpu.eip+=call_rm_v(eip,opcode);
+	printf("%x\n",cpu.eip);
+	cpu.eip+=call_rm_v(eip,opcode)-1;
 	push_eip();
+	printf("%x\n",cpu.eip);
 	cpu.eip=opr_src.val&(0xffffffff>>(32-data_size));
+	printf("%x\n",cpu.eip);
 	return 0;
 }
