@@ -80,7 +80,7 @@ static struct pio_handler_map
 // called by the out instruction
 void pio_write(uint16_t port, size_t len, uint32_t data)
 {
-	printf("write\n");
+	//printf("write\n");
 	assert(len == 1 || len == 2 || len == 4);
 	write_io_port(port, len, data);
 	int i = 0;
@@ -102,7 +102,7 @@ void pio_write(uint16_t port, size_t len, uint32_t data)
 // called by the in instruction
 uint32_t pio_read(uint16_t port, size_t len)
 {
-	printf("read\n");
+	//printf("read\n");
 	assert(len == 1 || len == 2 || len == 4);
 	// call device read to put data into the port
 	int i = 0;
