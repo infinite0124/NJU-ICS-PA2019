@@ -21,7 +21,7 @@ uint32_t loader()
 
 #ifdef HAS_DEVICE_IDE
 	uint8_t buf[4096];
-	BREAK_POINT
+	//BREAK_POINT
 	ide_read(buf, ELF_OFFSET_IN_DISK, 4096);
 	//BREAK_POINT
 	elf = (void *)buf;
@@ -42,7 +42,7 @@ uint32_t loader()
 			//Log("va=%x",ph->p_vaddr);
 			uint32_t paddr= mm_malloc(ph->p_vaddr, ph->p_memsz);
 			//ph->p_vaddr= mm_malloc(ph->p_vaddr, ph->p_memsz);
-			Log("pa=%x\n",paddr);
+		//	Log("pa=%x\n",paddr);
 /*copy the segment from the ELF file to its proper memory area */
 			//memcpy((void *)ph->p_vaddr, (void *)elf + ph->p_offset, ph->p_filesz);
 			
