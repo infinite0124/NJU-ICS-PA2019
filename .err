@@ -30,25 +30,15 @@ kernel/src/elf/elf.c:33:19: warning: pointer of type 'void *' used in arithmetic
   ph = (void *)elf + elf->e_phoff;
        ~~~~~~~~~~~~^~~~~~~~~~~~~~
 kernel/src/elf/elf.c:33:19: error: invalid conversion from 'void*' to 'Elf32_Phdr*' [-fpermissive]
-kernel/src/elf/elf.c:46:38: warning: pointer of type 'void *' used in arithmetic [-Wpointer-arith]
-    ide_read((void *)paddr,(void *)elf+ph->p_offset,ph->p_filesz);
-                           ~~~~~~~~~~~^~~~~~~~~~~~~
 kernel/src/elf/elf.c:46:13: error: invalid conversion from 'void*' to 'uint8_t*' {aka 'unsigned char*'} [-fpermissive]
-    ide_read((void *)paddr,(void *)elf+ph->p_offset,ph->p_filesz);
+    ide_read((void *)paddr,elf+ph->p_offset,ph->p_filesz);
              ^~~~~~~~~~~~~
 kernel/src/elf/elf.c:13:15: note:   initializing argument 1 of 'void ide_read(uint8_t*, uint32_t, uint32_t)'
  void ide_read(uint8_t *, uint32_t, uint32_t);
                ^~~~~~~~~
-kernel/src/elf/elf.c:46:38: error: invalid conversion from 'void*' to 'uint32_t' {aka 'unsigned int'} [-fpermissive]
-    ide_read((void *)paddr,(void *)elf+ph->p_offset,ph->p_filesz);
-                           ~~~~~~~~~~~^~~~~~~~~~~~~
+kernel/src/elf/elf.c:46:30: error: invalid conversion from 'Elf32_Ehdr*' to 'uint32_t' {aka 'unsigned int'} [-fpermissive]
+    ide_read((void *)paddr,elf+ph->p_offset,ph->p_filesz);
+                           ~~~^~~~~~~~~~~~~
 kernel/src/elf/elf.c:13:26: note:   initializing argument 2 of 'void ide_read(uint8_t*, uint32_t, uint32_t)'
  void ide_read(uint8_t *, uint32_t, uint32_t);
                           ^~~~~~~~
-kernel/src/elf/elf.c:48:54: error: 'p_filesz' was not declared in this scope
-    memset((void *)(paddr+ph->p_filesz),0,ph->p_memsz-p_filesz);
-                                                      ^~~~~~~~
-kernel/src/elf/elf.c:48:54: note: suggested alternative: 'fileno'
-    memset((void *)(paddr+ph->p_filesz),0,ph->p_memsz-p_filesz);
-                                                      ^~~~~~~~
-                                                      fileno
