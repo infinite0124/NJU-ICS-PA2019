@@ -30,6 +30,6 @@ make_instr_func(call_near_indirect)
 {
 	cpu.eip+=call_rm_v(eip,opcode);
 	push_eip();
-	cpu.eip=opr_src&(0xffffffff>>(32-data_size));
+	cpu.eip=opr_src.val&(0xffffffff>>(32-data_size));
 	return 0;
 }
