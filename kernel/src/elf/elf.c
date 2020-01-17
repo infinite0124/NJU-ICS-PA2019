@@ -46,7 +46,7 @@ uint32_t loader()
 		#endif
 /*copy the segment from the ELF file to its proper memory area */
 		//memcpy((void *)ph->p_vaddr, (void *)elf + ph->p_offset, ph->p_filesz);
-		ide_read((void *)ph->p_vaddr,ELF_OFFSET_IN_DISK+ph->p_offset,ph->filesz);
+		ide_read((void *)ph->p_vaddr,ELF_OFFSET_IN_DISK+ph->p_offset,ph->p_filesz);
 /* zeror the memory area [vaddr + file_sz, vaddr + mem_sz) */
 		//memset((void *)ph->p_vaddr+ph->p_filesz, 0, ph->p_memsz-ph->p_filesz);
 #ifdef IA32_PAGE
