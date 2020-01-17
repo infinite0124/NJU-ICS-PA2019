@@ -21,9 +21,9 @@ uint32_t loader()
 
 #ifdef HAS_DEVICE_IDE
 	uint8_t buf[4096];
-	BREAK_POINT
+	//BREAK_POINT
 	ide_read(buf, ELF_OFFSET_IN_DISK, 4096);
-	BREAK_POINT
+	//BREAK_POINT
 	elf = (void *)buf;
 	Log("ELF loading from hard disk.");
 #else
@@ -38,7 +38,7 @@ uint32_t loader()
 	{
 		if (ph->p_type == PT_LOAD)
 		{
-			BREAK_POINT
+		//	BREAK_POINT
 			//Log("va=%x",ph->p_vaddr);
 			uint32_t paddr= mm_malloc(ph->p_vaddr, ph->p_memsz);
 			//ph->p_vaddr= mm_malloc(ph->p_vaddr, ph->p_memsz);
