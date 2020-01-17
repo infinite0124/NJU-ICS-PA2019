@@ -25,9 +25,7 @@ uint32_t loader()
 	ide_read(buf, ELF_OFFSET_IN_DISK, 4096);
 	BREAK_POINT
 	elf = (void *)buf;
-	BREAK_POINT
 	Log("ELF loading from hard disk.");
-	BREAK_POINT
 #else
 	elf = (void *)0x0;
 	Log("ELF loading from ram disk.");
