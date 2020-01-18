@@ -37,11 +37,21 @@ int push_gr(uint32_t eip, uint8_t opcode)
 make_instr_func(pusha)
 {
 	//printf("pusha");
+	uint32_t old_esp=cpu.esp;
 	push_gr(eip,0);
 	push_gr(eip,1);
 	push_gr(eip,2);
 	push_gr(eip,3);
-	push_gr(eip,4);
+
+	cpu.esp-=4;
+	OPERAND temp;
+	temp.type=OPR_MEM;
+	temp.data_size=data_size;
+	temp.addr=cpu.esp;
+	temp.val=old_esp;
+	operand_write(&temp);
+
+	//push_gr(eip,4);
 	push_gr(eip,5);
 	push_gr(eip,6);
 	push_gr(eip,7);
