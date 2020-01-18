@@ -8,7 +8,7 @@ int call_near(uint32_t eip,uint8_t opcode)
 	uint32_t imm=instr_fetch(eip+1,data_size/8);
 //	printf("original_eip=%x\n",cpu.eip);
 //	printf("imm=%x\n",imm);
-	len+=1;
+	len+=data_size/8;
 //	printf("len=%x\n",len);
 	cpu.eip+=len;
 	push_eip();
@@ -31,7 +31,7 @@ make_instr_impl_1op(call,rm,v)
 
 make_instr_func(call_near_indirect)
 {
-	int len=1+data_size/8;
+	int len=2;
 	printf("len=%x\n",len);
 
 	cpu.esp-=4;
