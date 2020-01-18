@@ -27,7 +27,7 @@ void create_video_mapping()
 
 		for(ptable_idx=0xa0;ptable_idx<(0xa0+(SCR_SIZE>>12));ptable_idx++)
 		{
-			ptable[ptable_idx].val=ptable_idx;
+			ptable[ptable_idx].val=ptable_idx<<12;
 			//ptable->val=make_pte(pframe_idx<<12);
 			//pframe_idx++;
 		}
