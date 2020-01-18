@@ -66,7 +66,7 @@ void video_mapping_read_test()
 	uint32_t *buf = (void *)VMEM_ADDR;
 	for (i = 0; i < SCR_SIZE / 4; i++)
 	{
-		Log("buf:%x,%x\n",buf[i],i);
+		//Log("buf:%x,%x\n",buf[i],i);
 		assert(buf[i] == i);
 	}
 }

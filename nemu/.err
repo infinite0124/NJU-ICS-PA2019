@@ -1,5 +1,5 @@
 In file included from ./include/cpu/cpu.h:8,
-                 from include/cpu/instr.h:5:
+                 from src/memory/memory.c:2:
 ./include/cpu/alu.h:4:10: fatal error: cpu-ref/alu_ref.h: No such file or directory
  #include <cpu-ref/alu_ref.h>
           ^~~~~~~~~~~~~~~~~~~
