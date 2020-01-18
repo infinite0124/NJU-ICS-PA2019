@@ -34,7 +34,7 @@ uint32_t paddr_read(paddr_t paddr, size_t len)
 	}
 	else
 	{
-		BREAK_POINT
+		assert(0);
 		ret=mmio_read(paddr,len,is_mmio(paddr));
 	}
 	return ret;
@@ -52,7 +52,7 @@ void paddr_write(paddr_t paddr, size_t len, uint32_t data)
 	}
 	else
 	{
-		BREAK_POINT
+		assert(0);
 		mmio_write(paddr,len,data,is_mmio(paddr));
 
 	}
