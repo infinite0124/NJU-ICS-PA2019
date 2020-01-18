@@ -11,13 +11,13 @@ PDE *get_updir();
 void create_video_mapping()
 {
 
-	BREAK_POINT
+//	BREAK_POINT
 	/* TODO: create an identical mapping from virtual memory area
 	 * [0xa0000, 0xa0000 + SCR_SIZE) to physical memeory area
 	 * [0xa0000, 0xa0000 + SCR_SIZE) for user program. You may define
 	 * some page tables to create this mapping.
 	 */
-	/*PDE *pdir=get_updir();
+	PDE *pdir=get_updir();
 	PTE *ptable=(PTE *)pdir[0].val;
 	uint32_t ptable_idx;
 
@@ -30,10 +30,10 @@ void create_video_mapping()
 			ptable[ptable_idx].val=ptable_idx;
 			//ptable->val=make_pte(pframe_idx<<12);
 			//pframe_idx++;
-		}*/
+		}
 	
 
-	panic("please implement me");
+	//panic("please implement me");
 }
 
 void video_mapping_write_test()
