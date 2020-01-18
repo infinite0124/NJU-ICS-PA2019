@@ -33,7 +33,7 @@ void create_video_mapping()
 		}
 	
 
-	panic("please implement me");
+	//panic("please implement me");
 }
 
 void video_mapping_write_test()
