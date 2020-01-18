@@ -31,24 +31,25 @@ make_instr_impl_1op(call,rm,v)
 
 make_instr_func(call_near_indirect)
 {
-	int len=2;
-	printf("len=%x\n",len);
-
 	cpu.esp-=4;
 	OPERAND temp1;
-	temp1.type=OPR_MEM;
+	temp1.type=OPR_IMM;
 	temp1.data_size=data_size;
 	temp1.addr=cpu.esp;
 	temp1.sreg=SREG_SS;
-	temp1.val=cpu.eip+len;
-	operand_write(&temp1);
 
 	OPERAND temp2;
 	temp2.data_size=data_size;
 	temp2.sreg=SREG_CS;
-	modrm_rm(cpu.eip+1,&temp2);
+	int len=modrm_rm(cpu.eip+1,&temp2);
+	printf("len=%x\n",len);
+
+	temp1.val=cpu.eip+len;
+	operand_write(&temp1);
+
 	int offset=sign_ext(temp2.val,32);
 	print_asm_1("call","",1+data_size/8,&temp2);
+	printf("offset=%x\n",offset);
 	cpu.eip=offset;
 	return 0;
 }
