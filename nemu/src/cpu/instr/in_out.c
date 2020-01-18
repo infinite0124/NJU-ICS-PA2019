@@ -3,16 +3,24 @@
 
 make_instr_func(in_b)
 {
-	pio_read(cpu.gpr[2]._16,1);
+	uint8_t val=pio_read(cpu.gpr[2]._16,1);
+	cpu.gpr[0]._8=val;
 	return 1;
 }
 
 make_instr_func(in_v)
 {
+
 	if(data_size==16)
-		pio_read(cpu.gpr[2]._16,2);
+	{
+		uint16_t val=pio_read(cpu.gpr[2]._16,2);
+		cpu.gpr[0]._16=val;
+	}
 	else if(data_size==32)
-		pio_read(cpu.gpr[2]._16,4);
+	{	
+		uint32_t val=pio_read(cpu.gpr[2]._16,4);
+		cpu.gpr[0]._32=val;
+	}
 	return 1;
 }
 
