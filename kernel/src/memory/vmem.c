@@ -17,18 +17,18 @@ void create_video_mapping()
 	 * [0xa0000, 0xa0000 + SCR_SIZE) for user program. You may define
 	 * some page tables to create this mapping.
 	 */
-	uint32_t pdir=(uint32_t)get_updir();
-	Log("pdtr=%x\n",pdir);
-	PDE pde;
-	memcpy(&pde,(void *)pdir,4);
-	assert(pde.present);
-	uint32_t p_addr=pde.page_frame<<12;
-	uint32_t ptable[1024];
-	ptable=p_addr;
-	for(int page=0xa0;page<0xa0+(SCR_SIZE>>12);page++)
+	PTE ptable[1024] align_to_page;
+
+	PDE *pdir=(PDE *)va_to_pa(get_updir());
+	PTE *pte=(PTE *)va_to_pa(ptable);
+	pdir[0].val=make_pde(pte);
+	pte+=0xa0;
+	for(int i=0xa0;i<=0xaf;i++)
 	{
-		ptable[page].page_frame=page;
+		pte->val=make_pte(i<<12);
+		pte++;
 	}
+	
 /*	PTE *ptable=(PTE *)pdir[0].val;
 	uint32_t ptable_idx;
 
