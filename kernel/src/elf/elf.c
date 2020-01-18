@@ -21,7 +21,7 @@ uint32_t loader()
 
 #ifdef HAS_DEVICE_IDE
 	uint8_t buf[4096];
-	BREAK_POINT
+	//BREAK_POINT
 	ide_read(buf, ELF_OFFSET_IN_DISK, 4096);
 	//BREAK_POINT
 	elf = (void *)buf;
