@@ -17,7 +17,7 @@ void create_video_mapping()
 	 * some page tables to create this mapping.
 	 */
 	PDE *pdir=get_updir();
-	PTE *ptable=pdir[0].val;
+	PTE *ptable=(PTE *)pdir[0].val;
 	uint32_t ptable_idx;
 
 		//pdir[pdir_idx].val=make_pde(ptable);
