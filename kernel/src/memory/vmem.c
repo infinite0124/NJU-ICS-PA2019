@@ -23,7 +23,7 @@ void create_video_mapping()
 	memcpy(&pde,pdir,4);
 	assert(pde.present);
 
-	PTE *ptable=(PTE *)pdir[0].val;
+/*	PTE *ptable=(PTE *)pdir[0].val;
 	uint32_t ptable_idx;
 
 		//pdir[pdir_idx].val=make_pde(ptable);
@@ -36,6 +36,7 @@ void create_video_mapping()
 			//ptable->val=make_pte(pframe_idx<<12);
 			//pframe_idx++;
 		}
+		*/
 	
 
 	//panic("please implement me");
