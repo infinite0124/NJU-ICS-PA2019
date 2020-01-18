@@ -28,7 +28,7 @@ void create_video_mapping()
 		pte->val=make_pte(i<<12);
 		pte++;
 	}
-	
+	assert(0);
 /*	PTE *ptable=(PTE *)pdir[0].val;
 	uint32_t ptable_idx;
 

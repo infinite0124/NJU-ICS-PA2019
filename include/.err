@@ -1,0 +1,4 @@
+/home/zq/pa2019_fall/kernel/src/memory/vmem.c:1:10: fatal error: common.h: No such file or directory
+ #include "common.h"
+          ^~~~~~~~~~
+compilation terminated.
