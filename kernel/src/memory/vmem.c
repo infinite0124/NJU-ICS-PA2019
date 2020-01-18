@@ -17,21 +17,20 @@ void create_video_mapping()
 	 * some page tables to create this mapping.
 	 */
 	PDE *pdir=get_updir();
-	/*PTE *ptable=(PTE *)va_to_pa(kptable);
+	PTE *ptable=pdir[0].val;
+	uint32_t ptable_idx;
 
-	uint32_t pdir_idx,ptable_idx,pframe_idx;
+		//pdir[pdir_idx].val=make_pde(ptable);
+		//pdir[pdir_idx+KOFFSET/PT_SIZE.val]=make_pde(ptable);
+	Log("NR_PT:%x\n",NR_PT);
 
-	for(pdir_idx=(VMEM_ADDR>>22);pdir_idx<=((VMEM_ADDR+SRC_SIZE)>>22);pdir_idx++)
-	{
-		pdir[pdir_idx].val=make_pde(ptable);
-		pdir[pdir_idx+KOFFSET/PT_SIZE.val]=make_pde(ptable);
-		for(ptable_idx=0;ptable_idx<NR_PTE;ptable_idx++)
+		for(ptable_idx=0xa0;ptable_idx<0xa0+NR_PT;ptable_idx++)
 		{
-			ptable->val=make_pte(pframe_idx<<12);
-			pframe_idx++;
-			ptable++;
+			ptable[ptable_idx].val=ptable_idx;
+			//ptable->val=make_pte(pframe_idx<<12);
+			//pframe_idx++;
 		}
-	}*/
+	
 
 	//panic("please implement me");
 }
