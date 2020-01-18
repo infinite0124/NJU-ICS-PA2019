@@ -28,12 +28,15 @@ static void instr_execute_1op()
 	cpu.eip=opr_src.val&(0xffffffff>>(32-data_size));
 }
 make_instr_impl_1op(call,rm,v)
+
 make_instr_func(call_near_indirect)
 {
 	int len=1+data_size/8;
+	printf("len=%x\n",len);
 
 	cpu.esp-=4;
 	OPERAND temp1;
+	temp1.type=OPR_MEM;
 	temp1.data_size=data_size;
 	temp1.addr=cpu.esp;
 	temp1.sreg=SREG_SS;
@@ -44,7 +47,7 @@ make_instr_func(call_near_indirect)
 	temp2.data_size=data_size;
 	temp2.sreg=SREG_CS;
 	modrm_rm(cpu.eip+1,&temp2);
-	uint32_t offset=sign_ext(temp2.val,32);
+	int offset=sign_ext(temp2.val,32);
 	print_asm_1("call","",1+data_size/8,&temp2);
 	cpu.eip=offset;
 	return 0;
