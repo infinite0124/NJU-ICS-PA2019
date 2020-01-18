@@ -20,7 +20,7 @@ void create_video_mapping()
 	uint32_t pdir=(uint32_t)get_updir()<<12;
 	Log("pdtr=%x\n",pdir);
 	PDE pde;
-	memcpy(&pde,pdir,4);
+	memcpy(&pde,(void *)pdir,4);
 	assert(pde.present);
 
 /*	PTE *ptable=(PTE *)pdir[0].val;
