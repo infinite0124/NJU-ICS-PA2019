@@ -1,0 +1,4 @@
+/home/zq/pa2019_fall/nemu/src/device/io/port_io.c:1:10: fatal error: nemu.h: No such file or directory
+ #include "nemu.h"
+          ^~~~~~~~
+compilation terminated.
