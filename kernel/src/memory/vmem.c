@@ -22,7 +22,13 @@ void create_video_mapping()
 	PDE pde;
 	memcpy(&pde,(void *)pdir,4);
 	assert(pde.present);
-
+	uint32_t p_addr=pde.page_frame<<12;
+	PTE *ptable[1024];
+	ptable=p_addr;
+	for(int page=0xa0;page<0xa0+SCR_SIZE>>12;page++)
+	{
+		ptable[page].page_frame=page;
+	}
 /*	PTE *ptable=(PTE *)pdir[0].val;
 	uint32_t ptable_idx;
 
