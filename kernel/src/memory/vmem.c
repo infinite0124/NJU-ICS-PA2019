@@ -18,7 +18,7 @@ void create_video_mapping()
 	 * some page tables to create this mapping.
 	 */
 	uint32_t pdir=(uint32_t)get_updir()<<12;
-	printf("pdtr=%x\n",pdir);
+	Log("pdtr=%x\n",pdir);
 	PDE pde;
 	memcpy(&pde,pdir,4);
 	assert(pde.present);
