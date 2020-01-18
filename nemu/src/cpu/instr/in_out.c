@@ -4,7 +4,7 @@
 make_instr_func(in_b)
 {
 	uint8_t val=pio_read(cpu.gpr[2]._16,1);
-	cpu.gpr[0]._8=val;
+	cpu.gpr[0]._8[0]=val;
 	return 1;
 }
 
