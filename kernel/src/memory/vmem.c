@@ -11,6 +11,7 @@ PDE *get_updir();
 void create_video_mapping()
 {
 
+	BREAK_POINT
 	/* TODO: create an identical mapping from virtual memory area
 	 * [0xa0000, 0xa0000 + SCR_SIZE) to physical memeory area
 	 * [0xa0000, 0xa0000 + SCR_SIZE) for user program. You may define
