@@ -31,8 +31,8 @@ make_instr_impl_1op(call,rm,v)
 
 make_instr_func(call_near_indirect)
 {
-	printf("\n");
-	printf("eip1=%x\n",cpu.eip);
+//	printf("\n");
+//	printf("eip1=%x\n",cpu.eip);
 
 	cpu.esp-=4;
 	OPERAND temp1;
@@ -45,14 +45,14 @@ make_instr_func(call_near_indirect)
 	temp2.data_size=data_size;
 	temp2.sreg=SREG_CS;
 	int len=1+modrm_rm(cpu.eip+1,&temp2);
-	printf("len=%x\n",len);
+//	printf("len=%x\n",len);
 
 	temp1.val=cpu.eip+len;
 	operand_write(&temp1);
 	operand_read(&temp2);
 	int offset=sign_ext(temp2.val,32);
 	print_asm_1("call","",1+data_size/8,&temp2);
-	printf("offset=%x\n",offset);
+//	printf("offset=%x\n",offset);
 	cpu.eip=offset;
 	return 0;
 }
