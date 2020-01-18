@@ -45,7 +45,7 @@ make_instr_func(call_near_indirect)
 	temp2.sreg=SREG_CS;
 	modrm_rm(cpu.eip+1,&temp2);
 	uint32_t offset=sign_ext(temp2.val,32);
-	print_asm_1("call","",1+data_size/8,&temp);
+	print_asm_1("call","",1+data_size/8,&temp2);
 	cpu.eip=offset;
 	return 0;
 }
