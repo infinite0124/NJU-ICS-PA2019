@@ -23,9 +23,9 @@ void create_video_mapping()
 
 		//pdir[pdir_idx].val=make_pde(ptable);
 		//pdir[pdir_idx+KOFFSET/PT_SIZE.val]=make_pde(ptable);
-	Log("NR_PT:%x\n",NR_PT);
+	//Log("NR_PT:%x\n",NR_PT);
 
-		for(ptable_idx=0xa0;ptable_idx<0xa0+NR_PT;ptable_idx++)
+		for(ptable_idx=0xa0;ptable_idx<(0xa0+SCR_SIZE>>12);ptable_idx++)
 		{
 			ptable[ptable_idx].val=ptable_idx;
 			//ptable->val=make_pte(pframe_idx<<12);
