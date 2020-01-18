@@ -23,9 +23,9 @@ void create_video_mapping()
 	memcpy(&pde,(void *)pdir,4);
 	assert(pde.present);
 	uint32_t p_addr=pde.page_frame<<12;
-	PTE *ptable[1024];
+	uint32_t ptable[1024];
 	ptable=p_addr;
-	for(int page=0xa0;page<0xa0+SCR_SIZE>>12;page++)
+	for(int page=0xa0;page<0xa0+(SCR_SIZE>>12);page++)
 	{
 		ptable[page].page_frame=page;
 	}
