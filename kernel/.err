@@ -1,4 +1,0 @@
-In file included from src/driver/ide/ide.c:1:
-./include/common.h:13:17: error: redeclaration of C++ built-in type 'bool' [-fpermissive]
- typedef uint8_t bool;
-                 ^~~~
